@@ -13,10 +13,10 @@ System realizuje ideę "Monolitu Informacyjnego", eliminując tradycyjne raporty
 System opiera się na strukturze powiązanych rejestrów (Single Source of Truth):
 *   **T00_LOCALISATION** — Centralny słownik tokenów i automatyczny tłumacz całego interfejsu (PL/EN/DE). Tabela ukryta.
 *   **T01_README_AND_LICENSE** — Główny panel sterowania projektem, wybór języka, wybór waluty (PLN/EUR) i przelicznik kursowy FOREX.
-*   **T02_TAKT_MATRIX** — Słownik stref rozładunkowych i Takt-Boxów z wbudowanym limitem wyporności kapitałowej [Max] wyrażonym w walucie bazowej.
-*   **T03_PRODUCTION_INTERFACES** — Rejestr styków branżowych, koordynacji technicznej oraz nadrzędnych kryteriów wejścia na front robót.
-*   **T04_MATERIAL_PASSPORTS** — Karty techniczne, paszporty materiałowe i deklaracje właściwości użytkowych weryfikowane przed wjazdem na plac budowy.
-*   **T05_CONTRACTS_REGISTER** — Centralny rejestr umów, tożsamości cyfrowych generalnego wykonawcy (MAI), podwykonawców (SUB) oraz dostawców (SUP).
+*   **T02_TAKT_MATRIX** — Słownik stref rozładunkowych i Takt-Boxów z wbudowanym limitem składowania kapitału [Max] wyrażonym w walucie bazowej.
+*   **T03_PRODUCTION_INTERFACES** — Rejestr kodów branżowych, koordynacji technicznej oraz nadrzędnych kryteriów wejścia na front robót.
+*   **T04_LOGISTICS_SLOTS_DICTIONARY** — Karty techniczne, paszporty materiałowe i deklaracje właściwości użytkowych weryfikowane przed wjazdem na plac budowy.
+*   **T05_CONTRACTS_REGISTER** — Centralny rejestr umów, tożsamości cyfrowych generalnego wykonawcy (MAI), podwykonawców (SUB), dostawców (SUP) oraz sum kontraktowych.
 *   **T06_TAKT_MASTER_SCHEDULE** — Harmonogram główny inżyniera kontraktu generujący dynamiczne klucze planu (`SCHEDULE_KEY`) i czasy cykli.
 *   **T07_VARIABILITY_MANAGEMENT** — Izba Awarii monitorująca marnotrawstwo finansowe, przestoje oraz statusy Andon (`🚨 W TOKU` / `ZAMKNIĘTY`).
 *   **T08_DELIVERIES** — Rejestr dostaw bocznych z automatycznym radarem przepełnienia logistycznego hubów materiałowych (`HDR_HUB_STATUS`).
