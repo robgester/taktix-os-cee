@@ -15,11 +15,11 @@ System opiera się na strukturze powiązanych rejestrów (Single Source of Truth
 *   **T01_README_AND_LICENSE** — Główny panel sterowania projektem, wybór języka, wybór waluty (PLN/EUR) i przelicznik kursowy FOREX.
 *   **T02_TAKT_MATRIX** — Słownik stref rozładunkowych i Takt-Boxów z wbudowanym limitem składowania kapitału [Max] wyrażonym w walucie bazowej.
 *   **T03_PRODUCTION_INTERFACES** — Rejestr kodów branżowych, koordynacji technicznej oraz nadrzędnych kryteriów wejścia na front robót.
-*   **T04_LOGISTICS_SLOTS_DICTIONARY** — Karty techniczne, paszporty materiałowe i deklaracje właściwości użytkowych weryfikowane przed wjazdem na plac budowy.
+*   **T04_LOGISTICS_SLOTS_DICTIONARY** — Rejestr okien czasowych dla dostaw materiałowych na teren budowy lub do zdefiniowanych w 'T02' taktów i hubów magazynowych.
 *   **T05_CONTRACTS_REGISTER** — Centralny rejestr umów, tożsamości cyfrowych generalnego wykonawcy (MAI), podwykonawców (SUB), dostawców (SUP) oraz sum kontraktowych.
-*   **T06_TAKT_MASTER_SCHEDULE** — Harmonogram główny inżyniera kontraktu generujący dynamiczne klucze planu (`SCHEDULE_KEY`) i czasy cykli.
-*   **T07_VARIABILITY_MANAGEMENT** — Izba Awarii monitorująca marnotrawstwo finansowe, przestoje oraz statusy Andon (`🚨 W TOKU` / `ZAMKNIĘTY`).
-*   **T08_DELIVERIES** — Rejestr dostaw bocznych z automatycznym radarem przepełnienia logistycznego hubów materiałowych (`HDR_HUB_STATUS`).
+*   **T06_TAKT_MASTER_SCHEDULE** — Harmonogram główny inżyniera kontraktu generujący dynamiczne klucze planu (`SCHEDULE_KEY`) i czasy cykli. Digitalny centralny plan pracy.
+*   **T07_VARIABILITY_MANAGEMENT** — Centrala awarii, monitorująca marnotrawstwo finansowe, przestoje oraz statusy Andon (`🚨 W TOKU` / `ZAMKNIĘTY`).
+*   **T08_DELIVERIES** — Rejestr dostaw z automatycznym radarem przepełnienia logistycznego hubów materiałowych (`HDR_HUB_STATUS`).
 *   **T09_QUALITY_CONFORMANCE** — Protokół odbiorów jakościowych, kart usterek rygorystycznie sprawdzanych przed zamknięciem etapu.
 *   **T10_PLAIN_PROFIT_AND_LOSS** — Główny ledger finansowy holdingu, podwójnie ryglowany i zamykany sumą kontrolną SHA-256.
 *   **T11_WEEKLY_BOX_SCORE** — Automatyczny kalkulator wskaźnika stabilności procesów Lean (wyliczający rzeczywisty wynik **PPC %**).
