@@ -97,3 +97,13 @@ Das System realisiert die Idee eines "Informationsmonolithen" und eliminiert tra
 ### 🛡️ Datankreislauf & Poka-Yoke
 *   **Forms 2 ➔ T07:** Baustellenmeldungen aktivieren sofort die Andon-Flage `🚨 IN ARBEIT` im Looker Studio Pareto-Chart, bis der Ingenieur den Vorfall in Spalte M schließt.
 *   **Forms 4 ➔ T10:** Die Qualitätsabnahme schließt den Takt-Box ab, setzt den WIP-Status auf `0` und generiert den unmanipulierbaren 64-stelligen SHA-256 Krypto-Hash.
+
+---
+
+## ⚖️ Lizenz & Urheberrecht
+
+Die Software ist unter den Bedingungen der **GNU General Public License v3 (GPL v3)** verfügbar.
+*   Dadurch wird sichergestellt, dass das System für die Ingenieursgemeinschaft frei ud offen bleibt.
+*   Jede Integration des TAKTIX OS-Quellcodes (einschliesslich des Code.gs-Skripts) in komerzielle Systeme erfordert den vollständigen Open-Source-Zugriff auf die übergeordnete Software.
+
+*Copyright (c) 2026 by Robert Szczepaniak. All rights reserved.*
