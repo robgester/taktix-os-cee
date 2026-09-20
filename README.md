@@ -29,7 +29,7 @@ System opiera się na strukturze powiązanych rejestrów (Single Source of Truth
 
 ## ⚙️ Krwioobieg Danych (Relacje Formularze ➔ Tabele)
 
-System eliminuje ręczne wprowadzanie danych poprzez precyzyjnie zaprojektowane pętle wymiany informacji, sterowane przez skrypt chmurowy `Code.gs`:
+System eliminuje ręczne wprowadzanie danych poprzez pętle wymiany informacji, sterowane przez skrypt chmurowy `Code.gs`:
 
 ### 📥 1. Pętla Planowania (Forms 0 ➔ T06_TAKT_MASTER_SCHEDULE)
 *   **Akcja:** Inżynier zapisuje sekwencję branżowych Takt-Boxów z cotygodniowych tabel Last Planner® System / Takt Time w biurze budowy.
