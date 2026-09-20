@@ -73,6 +73,7 @@ Oprogramowanie jest udostępniane na zasadach licencji **GNU General Public Lice
 *Copyright (c) 2026 by Robert Szczepaniak. All rights reserved.*
 
 ---
+---
 
 ## 🇦🇹 Deutsche Version
 
