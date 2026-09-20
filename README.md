@@ -20,8 +20,8 @@ System opiera się na strukturze powiązanych rejestrów (Single Source of Truth
 *   **T06_TAKT_MASTER_SCHEDULE** — Harmonogram główny inżyniera kontraktu generujący dynamiczne klucze planu (`SCHEDULE_KEY`) i czasy cykli. Digitalny centralny plan pracy.
 *   **T07_VARIABILITY_MANAGEMENT** — Centrala awarii, monitorująca marnotrawstwo finansowe, przestoje oraz statusy Andon (`🚨 W TOKU` / `ZAMKNIĘTY`).
 *   **T08_DELIVERIES** — Rejestr dostaw z automatycznym radarem przepełnienia logistycznego hubów materiałowych (`HDR_HUB_STATUS`).
-*   **T09_QUALITY_CONFORMANCE** — Protokół odbiorów jakościowych, kart usterek rygorystycznie sprawdzanych przed zamknięciem etapu.
-*   **T10_PLAIN_PROFIT_AND_LOSS** — Główny ledger finansowy holdingu, podwójnie ryglowany i zamykany sumą kontrolną SHA-256.
+*   **T09_LEAN_TRANSFORMATION_COSTS** — Protokół działań, mających na celu wprowadzenie metodyki lean do inwestycji.
+*   **T10_PLAIN_PROFIT_AND_LOSS** — Główny ledger finansowy holdingu, zapis codziennych i cotygodniowych raportów, podwójnie ryglowany i zamykany sumą kontrolną SHA-256.
 *   **T11_WEEKLY_BOX_SCORE** — Automatyczny kalkulator wskaźnika stabilności procesów Lean (wyliczający rzeczywisty wynik **PPC %**).
 *   **T12_GLOBAL_BOX_SCORE** — Globalne zestawienie zatorów, wskaźników WIP Congestion oraz finansowego zaangażowania budowy.
 
