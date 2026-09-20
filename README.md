@@ -11,7 +11,7 @@ System realizuje ideę "Monolitu Informacyjnego", eliminując tradycyjne raporty
 ## 🏗️ Kompletna Architektura Systemu (13 Tabel Jądra)
 
 System opiera się na strukturze powiązanych rejestrów (Single Source of Truth):
-*   **T00_LOCALISATION** — Centralny słownik tokenów i automatyczny tłumacz całego interfejsu (PL/EN/DE). Tabelas ukryta.
+*   **T00_LOCALISATION** — Centralny słownik tokenów i automatyczny tłumacz całego interfejsu (PL/EN/DE). Tabela ukryta.
 *   **T01_README_AND_LICENSE** — Główny panel sterowania projektem, wybór języka, wybór waluty (PLN/EUR) i przelicznik kursowy FOREX.
 *   **T02_TAKT_MATRIX** — Słownik stref rozładunkowych i Takt-Boxów z wbudowanym limitem wyporności kapitałowej [Max] wyrażonym w walucie bazowej.
 *   **T03_PRODUCTION_INTERFACES** — Rejestr styków branżowych, koordynacji technicznej oraz nadrzędnych kryteriów wejścia na front robót.
