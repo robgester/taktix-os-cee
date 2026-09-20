@@ -9,7 +9,7 @@ Core engine for PL/DE construction investments
 ---
 
 ## 🇵🇱 Wersja Polska
-Prototyp bezobsługowego systemu klasy Enterprise dedykowany do zarządzania produkcją i logistyką w budownictwie kubaturowym lub infrastrukturalnym na bazie metodyki **LPS (Last Planner System)**, **Takt Time Planning (Planowanie Taktowe)** oraz **Project Production (Produkcja Budowlana)** według zasad Projekt Production Institute. 
+Prototyp bezobsługowego systemu klasy Enterprise dedykowany do zarządzania produkcją i logistyką w budownictwie kubaturowym lub infrastrukturalnym na bazie metodyki **LPS (Last Planner® System)**, **Takt Time Planning (Planowanie Taktowe)** oraz **Project Production (Produkcja Budowlana)** według zasad Projekt Production Institute. 
 
 System realizuje ideę "Monolitu Informacyjnego", eliminując tradycyjne raporty Excela na rzecz automatycznych, kryptograficznie zabezpieczonych pętli relacyjnych w chmurze Google Apps Script & Looker Studio.
 
@@ -77,7 +77,7 @@ Oprogramowanie jest udostępniane na zasadach licencji **GNU General Public Lice
 
 ## 🇦🇹 Deutsche Version
 
-Prototyp eines wartungsfreien Systems der Enterprise-Klasse für das Produktions- und Logistikmanagement im Hochbau oder Infrabau, basierend auf den Methoden **LPS (Last Planner System)**, **Takt Time Planning (Taktplanung)** und **Project Production (Projektproduktion)** nach den Grundsätzen des Project Production Institute.
+Prototyp eines wartungsfreien Systems der Enterprise-Klasse für das Produktions- und Logistikmanagement im Hochbau oder Infrabau, basierend auf den Methoden **LPS (Last Planner® System)**, **Takt Time Planning (Taktplanung)** und **Project Production (Projektproduktion)** nach den Grundsätzen des Project Production Institute.
 
 Das System realisiert die Idee eines "Informationsmonolithen" und eliminiert traditionelle Excel-Berichte zugunsten von automatisierten, kryptografisch gesicherten relationalen Schleifen in der Google Apps Script- & Looker Studio-Cloud.
 
