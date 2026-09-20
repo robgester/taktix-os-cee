@@ -80,6 +80,8 @@ Prototyp eines wartungsfreien Systems der Enterprise-Klasse für das Produktions
 
 Das System realisiert die Idee eines "Informationsmonolithen" und eliminiert traditionelle Excel-Berichte zugunsten von automatisierten, kryptografisch gesicherten relationalen Schleifen in der Google Apps Script- & Looker Studio-Cloud.
 
+---
+
 ### 🏗️ Komplette Systemarchitektur (Die 13 Tabellen des Kerns)
 *   **T00_LOCALISATION** — Zentrales Token-Wörterbuch und automatischer Interface-Übersetzer (PL/EN/DE).
 *   **T01_README_AND_LICENSE** — Haupt-Dashboard, Währungsauswahl (PLN/EUR) und FOREX-Wechselkurs-Sicherung.
@@ -94,7 +96,7 @@ Das System realisiert die Idee eines "Informationsmonolithen" und eliminiert tra
 *   **T11_PLAIN_PROFIT_AND_LOSS** — Haupt-Finanzledger der Holding, doppelt verriegelt durch SHA-256-Integritätshashes.
 *   **T12_PLAIN_PROFIT_AND_LOSS** — Haupt-Finanzledger der Holding, doppelt verriegelt durch SHA-256-Integritätshashes.
 
-### 🛡️ Datankreislauf & Poka-Yoke
+### 🛡️ Datenkreislauf & Poka-Yoke
 *   **Forms 2 ➔ T07:** Baustellenmeldungen aktivieren sofort die Andon-Flage `🚨 IN ARBEIT` im Looker Studio Pareto-Chart, bis der Ingenieur den Vorfall in Spalte M schließt.
 *   **Forms 4 ➔ T10:** Die Qualitätsabnahme schließt den Takt-Box ab, setzt den WIP-Status auf `0` und generiert den unmanipulierbaren 64-stelligen SHA-256 Krypto-Hash.
 
