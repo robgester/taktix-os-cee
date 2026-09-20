@@ -77,7 +77,7 @@ Oprogramowanie jest udostępniane na zasadach licencji **GNU General Public Lice
 
 ## 🇦🇹 Deutsche Version
 
-Prototyp eines wartungsfreien Systems der Enterprise-Klasse für das Produktions- und Logistikmanagement im Hochbau oder Infrabau, basierend auf den Methoden **LPS (Last Planner® System)**, **Takt Time Planning (Taktplanung)** und **Project Production (Projektproduktion)** nach den Grundsätzen des Project Production Institute.
+Prototyp eines wartungsfreien Systems der Enterprise-Klasse für das Produktions- und Logistikmanagement im Hochbau oder Infrabau, basierend auf den Methoden **LPS (Last Planner® System)**, **Takt Time Planning (Taktplanung)** und **Project Production (Bauproduktion)** nach den Grundsätzen des Project Production Institute.
 
 Das System realisiert die Idee eines "Informationsmonolithen" und eliminiert traditionelle Excel-Berichte zugunsten von automatisierten, kryptografisch gesicherten relationalen Schleifen in der Google Apps Script- & Looker Studio-Cloud.
 
