@@ -2,7 +2,7 @@
 Core engine for PL/DE construction contracts
 # 🎛️ TAKTIX OS — Central Production & Logistics Matrix Engine [CEE Region]
 
-Prototyp bezobsługowego systemu klasy Enterprise dedykowany do zarządzania produkcją i logistyką w budownictwie kubaturowym na bazie metodyki **LPS (Last Planner System)** oraz **Takt Time Planning (Planowanie Taktowe)**. 
+Prototyp bezobsługowego systemu klasy Enterprise dedykowany do zarządzania produkcją i logistyką w budownictwie kubaturowym na bazie metodyki **LPS (Last Planner System)**, **Takt Time Planning (Planowanie Taktowe)** oraz **Project Production (Produkcja Budowlana)** według zasad Projekt Production Institute. 
 
 System realizuje ideę "Monolitu Informacyjnego", eliminując tradycyjne raporty Excela na rzecz automatycznych, kryptograficznie zabezpieczonych pętli relacyjnych w chmurze Google Apps Script & Looker Studio.
 
