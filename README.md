@@ -51,7 +51,7 @@ System eliminuje ręczne wprowadzanie danych poprzez pętle wymiany informacji, 
 *   **Powiązanie:** Skrypt generuje rekord w głównym ledgerze `T10`. Za pomocą bezpiecznika Wildcard, system odpytuje plan `T06` na podstawie strefy i branży, automatycznie wstrzykując do klucza zadania (`TASK_KEY`) właściwy numer tygodnia operacyjnego (`W05|...`). Stan WIP w kolumnie I automatycznie podnosi się do poziomu `1` (praca w toku), a akcja jest kodowana w hash i timestamp w chmurze blockchain.
 
 ### 📥 4. Pętla Kryptograficznego Odbioru (Forms 4 ➔ T10_PLAIN_PROFIT_AND_LOSS)
-*   **Akcja:** Brygadzista podwykonawcy raportuje zakończenie swojego 'taktu'. Inżynier dokonuje technicznego odbioru jakościowego wykonanego taktu z akceptacją w tabeli 'T10'.
+*   **Akcja:** Brygadzista podwykonawcy raportuje zakończenie swojego 'taktu' przez formularz na smartfonie. Inżynier dokonuje technicznego odbioru jakościowego wykonanego taktu z akceptacją w tabeli 'T10'.
 *   **Powiązanie:** Weryfikacja w chmurze odnajduje pasujący `TASK_KEY` w `T10`, przestawia kolumnę T (`ZADANIE_UKONCZONE`) na `TRUE`, zeruje wskaźnik WIP w kolumnie I (front zwolniony) i uruchamia algorytm SHA-256, generując 64-znakowy nienaruszalny hash pieczętujący marżę rzeczywistą. Ożywa tabela `T11`, przerzucając wskaźnik PPC do Looker Studio.
 
 ### 📥 5. Pętla Zarządzania Zmiennością (Forms 2 ➔ T07_VARIABILITY_MANAGEMENT)
@@ -59,7 +59,7 @@ System eliminuje ręczne wprowadzanie danych poprzez pętle wymiany informacji, 
 *   **Powiązanie:** Incydent zasila centralę awarii `T07`. Kolumna L za pomocą dynamicznego, wielojęzycznego `XLOOKUP` podnosi flagę Andon (`🚨 W TOKU` / `🚨 IN ARBEIT`), która świeci na czerwono na wykresie Pareto w Looker Studio, dopóki inżynier nie zamknie usterki w kolumnie M tabeli 'T07'. Akcja jest kodowana w hash i timestampo w chmurze blockchain.
 
 ### 📥 6. Pętla Ewaluacji i Transformacji Lean (Forms 5 ➔ T09_LEAN_TRANSFORMATION_COSTS)
-*   **Akcja:** Rejestr kosztów wprowadzania metodyki lean do inwestycji (licencje, warsztaty, szkolenia, doradztwo). Odpowiedzialny podmiot wprowadza dane do formularza.
+*   **Akcja:** Rejestr kosztów wprowadzania metodyki lean do inwestycji (licencje, warsztaty, szkolenia, doradztwo). Odpowiedzialny podmiot wprowadza dane do formularza na smartfonie.
 *   **Powiązanie:** Dane (finansowe i statystyczne) są automatycznie zasysane przez tabelę 'T09', a potem wprowadzane do Looker Studio w odpowiednich wizualnych diagramach dla zarządu holdingu. Działanie finansowe jest kodowane w hash i timestamp w chmurze blockchain.
   
 ---
