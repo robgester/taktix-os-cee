@@ -44,7 +44,7 @@ System eliminuje ręczne wprowadzanie danych poprzez pętle wymiany informacji, 
 
 ### 📥 2. Pętla Logistyczna (Forms 1A & 1B ➔ T08_DELIVERIES)
 *   **Akcja:** Logistyk/Dostawca zgłasza transport (Paszport Logistyczny) wraz z deklarowaną wartością finansową ładunku w PLN/EUR.
-*   **Powiązanie:** Dane trafiają do `T08`. Formuła `XLOOKUP` weryfikuje adres e-mail dostawcy w `T05`, pobiera jego ludzką nazwę, a funkcja `SUMIFS` sprawdza skumulowaną wartość towaru w strefie i porównuje ją z limitami finansowymi z `T02`. W przypadku przekroczenia budżetu, w kolumnie P zapala się numeryczny alert przepełnienia. Akcje są kodowane w hash i timestamp w chmurze blockchain.
+*   **Powiązanie:** Dane trafiają do `T08`. Formuła `XLOOKUP` weryfikuje adres e-mail dostawcy w `T05`, pobiera jego ludzką nazwę, a funkcja `SUMIFS` sprawdza skumulowaną wartość towaru w strefie i porównuje ją z limitami finansowymi z `T02`. W przypadku przekroczenia budżetu danego huba, w kolumnie P zapala się numeryczny alert przepełnienia. Akcje są kodowane w hash i timestamp w chmurze blockchain.
 
 ### 📥 3. Pętla Meldowania Terenowego (Forms 3 ➔ T10_PLAIN_PROFIT_AND_LOSS)
 *   **Akcja:** Brygadzista podwykonawcy melduje codzienny status robót na konkretnym Takt-Boxie przez formularz na smartfonie.
