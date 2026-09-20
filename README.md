@@ -37,11 +37,11 @@ System eliminuje ręczne wprowadzanie danych poprzez pętle wymiany informacji, 
 
 ### 📥 2. Pętla Logistyczna (Forms 1A & 1B ➔ T08_DELIVERIES)
 *   **Akcja:** Logistyk/Dostawca zgłasza transport (Paszport Logistyczny) wraz z deklarowaną wartością finansową ładunku w PLN/EUR.
-*   **Powiązanie:** Dane trafiają do `T08`. Formuła `XLOOKUP` weryfikuje adres e-mail dostawcy w `T05`, pobiera jego ludzką nazwę, a funkcja `SUMIFS` sprawdza skumulowaną wartość towaru w strefie i porównuje ją z limitami z `T02`. W przypadku przekroczenia budżetu, w kolumnie P zapala się numeryczny alert przepełnienia.
+*   **Powiązanie:** Dane trafiają do `T08`. Formuła `XLOOKUP` weryfikuje adres e-mail dostawcy w `T05`, pobiera jego ludzką nazwę, a funkcja `SUMIFS` sprawdza skumulowaną wartość towaru w strefie i porównuje ją z limitami z `T02`. W przypadku przekroczenia budżetu, w kolumnie P zapala się numeryczny alert przepełnienia. Akcje są kodowane w hash i timestamp w chmurze blockchain.
 
 ### 📥 3. Pętla Meldowania Terenowego (Forms 3 ➔ T10_PLAIN_PROFIT_AND_LOSS)
 *   **Akcja:** Brygadzista podwykonawcy melduje codzienny status robót na konkretnym Takt-Boxie przez formularz na smartfonie.
-*   **Powiązanie:** Skrypt generuje rekord w głównym ledgerze `T10`. Za pomocą bezpiecznika Wildcard, system odpytuje plan `T06` na podstawie strefy i branży, automatycznie wstrzykując do klucza zadania (`TASK_KEY`) właściwy numer tygodnia operacyjnego (`W05|...`). Stan WIP w kolumnie I automatycznie podnosi się do poziomu `1` (praca w toku).
+*   **Powiązanie:** Skrypt generuje rekord w głównym ledgerze `T10`. Za pomocą bezpiecznika Wildcard, system odpytuje plan `T06` na podstawie strefy i branży, automatycznie wstrzykując do klucza zadania (`TASK_KEY`) właściwy numer tygodnia operacyjnego (`W05|...`). Stan WIP w kolumnie I automatycznie podnosi się do poziomu `1` (praca w toku), a akcja jest kodowana w hash i timestamp w chmurze blockchain.
 
 ### 📥 4. Pętla Kryptograficznego Odbioru (Forms 4 ➔ T10_PLAIN_PROFIT_AND_LOSS)
 *   **Akcja:** Brygadzista podwykonawcy raportuje zakończenie swojego 'taktu'. Inżynier dokonuje technicznego odbioru jakościowego wykonanego taktu z akceptacją w tabeli 'T10'.
@@ -49,11 +49,11 @@ System eliminuje ręczne wprowadzanie danych poprzez pętle wymiany informacji, 
 
 ### 📥 5. Pętla Zarządzania Zmiennością (Forms 2 ➔ T07_VARIABILITY_MANAGEMENT)
 *   **Akcja:** Wystąpienie awarii, opóźnienia dostawy lub braku frontu robót jest meldowane z placu budowy przez formularz na smartfonie.
-*   **Powiązanie:** Incydent zasila centralę awarii `T07`. Kolumna L za pomocą dynamicznego, wielojęzycznego `XLOOKUP` podnosi flagę Andon (`🚨 W TOKU` / `🚨 IN ARBEIT`), która świeci na czerwono na wykresie Pareto w Looker Studio, dopóki inżynier nie zamknie usterki w kolumnie M tabeli 'T07'.
+*   **Powiązanie:** Incydent zasila centralę awarii `T07`. Kolumna L za pomocą dynamicznego, wielojęzycznego `XLOOKUP` podnosi flagę Andon (`🚨 W TOKU` / `🚨 IN ARBEIT`), która świeci na czerwono na wykresie Pareto w Looker Studio, dopóki inżynier nie zamknie usterki w kolumnie M tabeli 'T07'. Akcja jest kodowana w hash i timestampo w chmurze blockchain.
 
 ### 📥 6. Pętla Ewaluacji i Transformacji Lean (Forms 5 ➔ T09_LEAN_TRANSFORMATION_COSTS)
 *   **Akcja:** Rejestr kosztów wprowadzania metodyki lean do inwestycji (licencje, warsztaty, szkolenia, doradztwo). Odpowiedzialny podmiot wprowadza dane do formularza.
-*   **Powiązanie:** Dane (finansowe i statystyczne) są automatycznie zasysane przez tabelę 'T09', a potem wprowadzane do Looker Studio w odpowiednich wizualnych diagramach dla zarządu holdingu.
+*   **Powiązanie:** Dane (finansowe i statystyczne) są automatycznie zasysane przez tabelę 'T09', a potem wprowadzane do Looker Studio w odpowiednich wizualnych diagramach dla zarządu holdingu. Działanie finansowe jest kodowane w hash i timestamp w chmurze blockchain.
   
 ---
 
