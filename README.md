@@ -32,7 +32,7 @@ System opiera się na nienaruszalnej strukturze powiązanych rejestrów (Single 
 System eliminuje ręczne wprowadzanie danych poprzez precyzyjnie zaprojektowane pętle wymiany informacji, sterowane przez skrypt chmurowy `Code.gs`:
 
 ### 📥 1. Pętla Planowania (Forms 0 ➔ T06_TAKT_MASTER_SCHEDULE)
-*   **Akcja:** Inżynier planuje sekwencję Takt-Boxów w formularzu planowania.
+*   **Akcja:** Inżynier zapisuje sekwencję branżowych Takt-Boxów z cotygodniowych tabel Lsst Planner® System / Takt Time w biurze budowy.
 *   **Powiązanie:** Skrypt przechwytuje dane i w locie generuje w `T06` unikalny identyfikator `SCHEDULE_KEY` (`Tydzień|Strefa|Branża`). Od tej sekundy plan jest nienaruszalny.
 
 ### 📥 2. Pętla Logistyczna (Forms 1A & 1B ➔ T08_DELIVERIES)
