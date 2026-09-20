@@ -49,7 +49,7 @@ System eliminuje ręczne wprowadzanie danych poprzez pętle wymiany informacji, 
 
 ### 📥 5. Pętla Zarządzania Zmiennością (Forms 2 ➔ T07_VARIABILITY_MANAGEMENT)
 *   **Akcja:** Wystąpienie awarii, opóźnienia dostawy lub braku frontu robót jest meldowane z placu budowy przez formularz na smartfonie.
-*   **Powiązanie:** Incydent zasila Izbę Awarii `T07`. Kolumna L za pomocą dynamicznego, wielojęzycznego `XLOOKUP` podnosi flagę Andon (`🚨 W TOKU` / `🚨 IN ARBEIT`), która świeci czerwonym światłem na wykresie Pareto w Looker Studio dopóki inżynier nie zamknie usterki w kolumnie M.
+*   **Powiązanie:** Incydent zasila centralę awarii `T07`. Kolumna L za pomocą dynamicznego, wielojęzycznego `XLOOKUP` podnosi flagę Andon (`🚨 W TOKU` / `🚨 IN ARBEIT`), która świeci na czerwono na wykresie Pareto w Looker Studio, dopóki inżynier nie zamknie usterki w kolumnie M tabeli 'T07'.
 
 ### 📥 6. Pętla Ewaluacji i Transformacji Lean (Forms 5 ➔ T09_LEAN_TRANSFORMATION_COSTS)
 *   **Akcja:** Rejestr kosztów wprowadzania metodyki lean do inwestycji (licencje, warsztaty, szkolenia, doradztwo). Odpowiedzialny podmiot wprowadza dane do formularza.
