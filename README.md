@@ -40,15 +40,15 @@ System eliminuje ręczne wprowadzanie danych poprzez pętle wymiany informacji, 
 *   **Powiązanie:** Dane trafiają do `T08`. Formuła `XLOOKUP` weryfikuje adres e-mail dostawcy w `T05`, pobiera jego ludzką nazwę, a funkcja `SUMIFS` sprawdza skumulowaną wartość towaru w strefie i porównuje ją z limitami z `T02`. W przypadku przekroczenia budżetu, w kolumnie P zapala się numeryczny alert przepełnienia.
 
 ### 📥 3. Pętla Meldowania Terenowego (Forms 3 ➔ T10_PLAIN_PROFIT_AND_LOSS)
-*   **Akcja:** Brygadzista podwykonawcy melduje rozpoczęcie robót na konkretnym Takt-Boxie przez telefon.
-*   **Powiązanie:** Skrypt generuje rekord w głównym ledgerze `T10`. Za pomocą bezpiecznika Wildcard, system odpytuje plan `T06` na podstawie strefy i branży, automatycznie wstrzykując do klucza zadania (`TASK_KEY`) właściwy numer tygodnia technologicznego (`W05|...`). Stan WIP w kolumnie I automatycznie podnosi się do poziomu `1` (praca w toku).
+*   **Akcja:** Brygadzista podwykonawcy melduje codzienny status robót na konkretnym Takt-Boxie przez formularz na smartfonie.
+*   **Powiązanie:** Skrypt generuje rekord w głównym ledgerze `T10`. Za pomocą bezpiecznika Wildcard, system odpytuje plan `T06` na podstawie strefy i branży, automatycznie wstrzykując do klucza zadania (`TASK_KEY`) właściwy numer tygodnia operacyjnego (`W05|...`). Stan WIP w kolumnie I automatycznie podnosi się do poziomu `1` (praca w toku).
 
 ### 📥 4. Pętla Kryptograficznego Odbioru (Forms 4 ➔ T10_PLAIN_PROFIT_AND_LOSS)
-*   **Akcja:** Kierownik Budowy dokonuje technicznego odbioru jakościowego wykonanego taktu.
-*   **Powiązanie:** Weryfikacja w chmurze odnajduje pasujący `TASK_KEY` w `T10`, przestawia kolumnę T (`ZADANIE_UKONCZONE`) na `TRUE`, zeruje wskaźnik WIP w kolumnie I (front zwolniony) i w locie uruchamia algorytm SHA-256, generując 64-znakowy nienaruszalny hash pieczętujący marżę rzeczywistą. Kaskadowo ożywa tabela `T11`, przerzucając wskaźnik PPC do Looker Studio.
+*   **Akcja:** Brygadzista podwykonawcy raportuje zakończenie swojego 'taktu'. Inżynier dokonuje technicznego odbioru jakościowego wykonanego taktu z akceptacją w tabeli 'T10'.
+*   **Powiązanie:** Weryfikacja w chmurze odnajduje pasujący `TASK_KEY` w `T10`, przestawia kolumnę T (`ZADANIE_UKONCZONE`) na `TRUE`, zeruje wskaźnik WIP w kolumnie I (front zwolniony) i uruchamia algorytm SHA-256, generując 64-znakowy nienaruszalny hash pieczętujący marżę rzeczywistą. Ożywa tabela `T11`, przerzucając wskaźnik PPC do Looker Studio.
 
 ### 📥 5. Pętla Zarządzania Zmiennością (Forms 2 ➔ T07_VARIABILITY_MANAGEMENT)
-*   **Akcja:** Wystąpienie awarii, opóźnienia dostawy lub braku frontu robót jest meldowane natychmiast z placu budowy.
+*   **Akcja:** Wystąpienie awarii, opóźnienia dostawy lub braku frontu robót jest meldowane z placu budowy przez formularz na smartfonie.
 *   **Powiązanie:** Incydent zasila Izbę Awarii `T07`. Kolumna L za pomocą dynamicznego, wielojęzycznego `XLOOKUP` podnosi flagę Andon (`🚨 W TOKU` / `🚨 IN ARBEIT`), która świeci czerwonym światłem na wykresie Pareto w Looker Studio dopóki inżynier nie zamknie usterki w kolumnie M.
 
 ### 📥 6. Pętla Ewaluacji i Transformacji Lean (Forms 5 ➔ T09_LEAN_TRANSFORMATION_COSTS)
