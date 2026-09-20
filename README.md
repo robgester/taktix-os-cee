@@ -27,7 +27,7 @@ System opiera się na nienaruszalnej strukturze powiązanych rejestrów (Single 
 
 ---
 
-## ⚙️ Krwiobieg Danych (Relacje Formularze ➔ Tabele)
+## ⚙️ Krwioobieg Danych (Relacje Formularze ➔ Tabele)
 
 System eliminuje ręczne wprowadzanie danych poprzez precyzyjnie zaprojektowane pętle wymiany informacji, sterowane przez skrypt chmurowy `Code.gs`:
 
