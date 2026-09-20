@@ -2,6 +2,13 @@
 Core engine for PL/DE construction investments
 # 🎛️ TAKTIX OS — Central Production & Logistics Matrix Engine [CEE Region]
 
+---
+### 🌐 Language / Sprache
+*   [🇵🇱 Przejdź do wersji polskiej](#-wersja-polska)
+*   [🇦🇹 Zur deutschen Version springen](#-deutsche-version)
+---
+
+## 🇵🇱 Wersja Polska
 Prototyp bezobsługowego systemu klasy Enterprise dedykowany do zarządzania produkcją i logistyką w budownictwie kubaturowym lub infrastrukturalnym na bazie metodyki **LPS (Last Planner System)**, **Takt Time Planning (Planowanie Taktowe)** oraz **Project Production (Produkcja Budowlana)** według zasad Projekt Production Institute. 
 
 System realizuje ideę "Monolitu Informacyjnego", eliminując tradycyjne raporty Excela na rzecz automatycznych, kryptograficznie zabezpieczonych pętli relacyjnych w chmurze Google Apps Script & Looker Studio.
@@ -64,3 +71,23 @@ Oprogramowanie jest udostępniane na zasadach licencji **GNU General Public Lice
 *   Jakiekolwiek wbudowanie kodu źródłowego TAKTIX OS (w tym skryptu `Code.gs`) do systemów komercyjnych wymusza pełne otwarcie kodu źródłowego oprogramowania nadrzędnego.
 
 *Copyright (c) 2026 by Robert Szczepaniak. All rights reserved.*
+
+---
+
+## 🇦🇹 Deutsche Version
+
+Prototyp eines wartungsfreien Systems der Enterprise-Klasse für das Produktions- und Logistikmanagement im Hochbau, basierend auf den Methoden **LPS (Last Planner System)** und **Takt Time Planning (Taktplanung)**.
+
+Das System realisiert die Idee eines "Informationsmonolithen" und eliminiert traditionelle Excel-Berichte zugunsten von automatisierten, kryptografisch gesicherten relationalen Schleifen in der Google Apps Script- & Looker Studio-Cloud.
+
+### 🏗️ Komplette Systemarchitektur (Die 13 Tabellen des Kerns)
+*   **T00_LOCALISATION** — Zentrales Token-Wörterbuch und automatischer Interface-Übersetzer (PL/EN/DE).
+*   **T01_README_AND_LICENSE** — Haupt-Dashboard, Währungsauswahl (PLN/EUR) und FOREX-Wechselkurs-Sicherung.
+*   **T02_TAKT_MATRIX** — Verzeichnis von Entladezonen und Takt-Boxes mit integrierter finanzieller Kapazitätsgrenze.
+*   **T07_VARIABILITY_MANAGEMENT** — Störungsregister zur Überwachung von finanziellem Waste und Andon-Status (`🚨 IN ARBEIT` / `GESCHLOSSEN`).
+*   **T08_DELIVERIES** — Logistikregister mit automatischem Überlastungsradar für Material-Hubs (`HDR_HUB_STATUS`).
+*   **T10_PLAIN_PROFIT_AND_LOSS** — Haupt-Finanzledger der Holding, doppelt verriegelt durch SHA-256-Integritätshashes.
+
+### 🛡️ Datankreislauf & Poka-Yoke
+*   **Forms 2 ➔ T07:** Baustellenmeldungen aktivieren sofort die Andon-Flage `🚨 IN ARBEIT` im Looker Studio Pareto-Chart, bis der Ingenieur den Vorfall in Spalte M schließt.
+*   **Forms 4 ➔ T10:** Die Qualitätsabnahme schließt den Takt-Box ab, setzt den WIP-Status auf `0` und generiert den unmanipulierbaren 64-stelligen SHA-256 Krypto-Hash.
