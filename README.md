@@ -76,7 +76,7 @@ Oprogramowanie jest udostępniane na zasadach licencji **GNU General Public Lice
 
 ## 🇦🇹 Deutsche Version
 
-Prototyp eines wartungsfreien Systems der Enterprise-Klasse für das Produktions- und Logistikmanagement im Hochbau, basierend auf den Methoden **LPS (Last Planner System)** und **Takt Time Planning (Taktplanung)**.
+Prototyp eines wartungsfreien Systems der Enterprise-Klasse für das Produktions- und Logistikmanagement im Hochbau oder Infrabau, basierend auf den Methoden **LPS (Last Planner System)**, **Takt Time Planning (Taktplanung)** und **Project Production (Projektproduktion)** .
 
 Das System realisiert die Idee eines "Informationsmonolithen" und eliminiert traditionelle Excel-Berichte zugunsten von automatisierten, kryptografisch gesicherten relationalen Schleifen in der Google Apps Script- & Looker Studio-Cloud.
 
@@ -84,9 +84,15 @@ Das System realisiert die Idee eines "Informationsmonolithen" und eliminiert tra
 *   **T00_LOCALISATION** — Zentrales Token-Wörterbuch und automatischer Interface-Übersetzer (PL/EN/DE).
 *   **T01_README_AND_LICENSE** — Haupt-Dashboard, Währungsauswahl (PLN/EUR) und FOREX-Wechselkurs-Sicherung.
 *   **T02_TAKT_MATRIX** — Verzeichnis von Entladezonen und Takt-Boxes mit integrierter finanzieller Kapazitätsgrenze.
+*   **T03_TAKT_MATRIX** — Verzeichnis von Entladezonen und Takt-Boxes mit integrierter finanzieller Kapazitätsgrenze.
+*   **T04_TAKT_MATRIX** — Verzeichnis von Entladezonen und Takt-Boxes mit integrierter finanzieller Kapazitätsgrenze.
+*   **T05_TAKT_MATRIX** — Verzeichnis von Entladezonen und Takt-Boxes mit integrierter finanzieller Kapazitätsgrenze.
+*   **T06_TAKT_MATRIX** — Verzeichnis von Entladezonen und Takt-Boxes mit integrierter finanzieller Kapazitätsgrenze.
 *   **T07_VARIABILITY_MANAGEMENT** — Störungsregister zur Überwachung von finanziellem Waste und Andon-Status (`🚨 IN ARBEIT` / `GESCHLOSSEN`).
 *   **T08_DELIVERIES** — Logistikregister mit automatischem Überlastungsradar für Material-Hubs (`HDR_HUB_STATUS`).
 *   **T10_PLAIN_PROFIT_AND_LOSS** — Haupt-Finanzledger der Holding, doppelt verriegelt durch SHA-256-Integritätshashes.
+*   **T11_PLAIN_PROFIT_AND_LOSS** — Haupt-Finanzledger der Holding, doppelt verriegelt durch SHA-256-Integritätshashes.
+*   **T12_PLAIN_PROFIT_AND_LOSS** — Haupt-Finanzledger der Holding, doppelt verriegelt durch SHA-256-Integritätshashes.
 
 ### 🛡️ Datankreislauf & Poka-Yoke
 *   **Forms 2 ➔ T07:** Baustellenmeldungen aktivieren sofort die Andon-Flage `🚨 IN ARBEIT` im Looker Studio Pareto-Chart, bis der Ingenieur den Vorfall in Spalte M schließt.
