@@ -1,5 +1,5 @@
 # taktix-os-cee
-Core engine for PL/DE construction contracts
+Core engine for PL/DE construction investments
 # 🎛️ TAKTIX OS — Central Production & Logistics Matrix Engine [CEE Region]
 
 Prototyp bezobsługowego systemu klasy Enterprise dedykowany do zarządzania produkcją i logistyką w budownictwie kubaturowym na bazie metodyki **LPS (Last Planner System)**, **Takt Time Planning (Planowanie Taktowe)** oraz **Project Production (Produkcja Budowlana)** według zasad Projekt Production Institute. 
