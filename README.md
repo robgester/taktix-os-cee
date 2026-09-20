@@ -39,8 +39,8 @@ System opiera się na strukturze powiązanych rejestrów (Single Source of Truth
 System eliminuje ręczne wprowadzanie danych poprzez pętle wymiany informacji, sterowane przez skrypt chmurowy `Code.gs`:
 
 ### 📥 1. Pętla Planowania (Forms 0 ➔ T06_TAKT_MASTER_SCHEDULE)
-*   **Akcja:** Inżynier zapisuje sekwencję branżowych Takt-Boxów z cotygodniowych tabel Last Planner® System / Takt Time w biurze budowy.
-*   **Powiązanie:** Skrypt przechwytuje dane i generuje w `T06` unikalny identyfikator `SCHEDULE_KEY` (`Tydzień|Strefa|Branża`). Od tej pory plan jest nienaruszalny.
+*   **Akcja:** Odpowiedzialny inżynier zapisuje sekwencję branżowych Takt-Boxów z cotygodniowych tabel Last Planner® System / Takt Time w biurze budowy.
+*   **Powiązanie:** Skrypt przechwytuje dane i generuje w `T06` unikalny identyfikator `SCHEDULE_KEY` (`Tydzień|Strefa|Branża`). Od tej pory plan tygodniowy jest zapisany elektronicznie.
 
 ### 📥 2. Pętla Logistyczna (Forms 1A & 1B ➔ T08_DELIVERIES)
 *   **Akcja:** Logistyk/Dostawca zgłasza transport (Paszport Logistyczny) wraz z deklarowaną wartością finansową ładunku w PLN/EUR.
