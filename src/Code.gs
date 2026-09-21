@@ -533,7 +533,7 @@ function secureNewTaktixRegisters(e) {
     var row = e.range.getRow();
     var rowValues = e.range.getValues()[0]; // Pobranie wartości nowo dodanego wiersza
     
-    // Sprawdzamy, czy to jedna z trzech nowych tabel
+    // Sprawdzamy, czy to jedna z trzech nowych tabel holdingowych
     if (sheetName === "T07_VARIABILITY_MANAGEMENT" || 
         sheetName === "T08_DELIVERIES" || 
         sheetName === "T09_LEAN_TRANSFORMATION_COSTS") {
@@ -544,11 +544,14 @@ function secureNewTaktixRegisters(e) {
       
       // 2. Chirurgiczny wtrysk hasha w odpowiednią kolumnę, nadpisując "LOCAL_SECURED"
       if (sheetName === "T07_VARIABILITY_MANAGEMENT") {
-        sheet.getRange(row, 15).setValue(cryptoHash); // Kolumna O
-      } else if (sheetName === "T08_DELIVERIES") {
-        sheet.getRange(row, 17).setValue(cryptoHash); // Kolumna Q
-      } else if (sheetName === "T09_LEAN_TRANSFORMATION_COSTS") {
-        sheet.getRange(row, 9).setValue(cryptoHash);  // Kolumna I
+        sheet.getRange(row, 15).setValue(cryptoHash); // Kolumna O (15)
+      } 
+      else if (sheetName === "T08_DELIVERIES") {
+        // NOWOŚĆ: Przesuwamy wtrysk bezpośrednio do Kolumny R (18), chroniąc dane DPP w Q!
+        sheet.getRange(row, 18).setValue(cryptoHash); // Kolumna R (18)
+      } 
+      else if (sheetName === "T09_LEAN_TRANSFORMATION_COSTS") {
+        sheet.getRange(row, 9).setValue(cryptoHash);  // Kolumna I (9)
       }
     }
   } catch(err) {
