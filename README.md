@@ -25,7 +25,7 @@ System opiera się na strukturze powiązanych rejestrów (Single Source of Truth
 *   **T04_LOGISTICS_SLOTS_DICTIONARY** — Rejestr okien czasowych dla dostaw materiałowych do zdefiniowanych w 'T02' taktów, ogólnych miejsc składowania na terenie budowy lub zewnętrznych hubów magazynowych.
 *   **T05_CONTRACTS_REGISTER** — Centralny rejestr umów, tożsamości cyfrowych generalnego wykonawcy (MAI), podwykonawców (SUB), dostawców (SUP) oraz sum kontraktowych.
 *   **T06_TAKT_MASTER_SCHEDULE** — Harmonogram główny inżyniera kontraktu generujący dynamiczne klucze planu (`SCHEDULE_KEY`) i czasy cykli. Digitalny centralny plan pracy.
-*   **T07_VARIABILITY_MANAGEMENT** — Centrala awarii, monitorująca marnotrawstwo finansowe, przestoje oraz statusy Andon (`🚨 W TOKU` / `ZAMKNIĘTY`).
+*   **T07_VARIABILITY_MANAGEMENT** — Centrala awarii, monitorująca marnotrawstwo finansowe, przestoje oraz statusy usuwania usterek Andon (`🚨 W TOKU` / `ZAMKNIĘTY`).
 *   **T08_DELIVERIES** — Rejestr dostaw z automatycznym radarem przepełnienia logistycznego hubów materiałowych (`HDR_HUB_STATUS`).
 *   **T09_LEAN_TRANSFORMATION_COSTS** — Protokół działań, mających na celu wprowadzenie metodyki lean do inwestycji.
 *   **T10_PLAIN_PROFIT_AND_LOSS** — Główny ledger finansowy holdingu, zapis codziennych i cotygodniowych raportów, podwójnie ryglowany i zamykany sumą kontrolną SHA-256.
