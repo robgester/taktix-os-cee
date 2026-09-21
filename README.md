@@ -21,7 +21,7 @@ System opiera się na strukturze powiązanych rejestrów (Single Source of Truth
 *   **T00_LOCALISATION** — Centralny słownik tokenów i automatyczny tłumacz całego interfejsu (PL/EN/DE). Tabela ukryta.
 *   **T01_README_AND_LICENSE** — Główny panel sterowania projektem, wybór języka, wybór waluty (PLN/EUR) i przelicznik kursowy FOREX oraz ustawienie maksymalnej ilości prac w toku (WIP - Work in Process) dla poszczególnych branż i całej inwestycji.
 *   **T02_TAKT_MATRIX** — Słownik stref rozładunkowych i Takt-Boxów z wbudowanym limitem składowania kapitału [Max] wyrażonym w walucie bazowej projektu.
-*   **T03_PRODUCTION_INTERFACES** — Rejestr kodów branżowych, dwujęzycznych opisów zakresu prac oraz kryteriów wejścia na front robót.
+*   **T03_PRODUCTION_FLOW_DICTIONARY** — Rejestr kodów branżowych, dwujęzycznych opisów zakresu prac oraz kryteriów wejścia na front robót.
 *   **T04_LOGISTICS_SLOTS_DICTIONARY** — Rejestr okien czasowych dla dostaw materiałowych do zdefiniowanych w 'T02' taktów, ogólnych miejsc składowania na terenie budowy lub zewnętrznych hubów magazynowych.
 *   **T05_CONTRACTS_REGISTER** — Centralny rejestr umów, tożsamości cyfrowych generalnego wykonawcy (MAI), podwykonawców (SUB), dostawców (SUP) oraz sum kontraktowych.
 *   **T06_TAKT_MASTER_SCHEDULE** — Harmonogram główny inżyniera kontraktu generujący dynamiczne klucze planu (`SCHEDULE_KEY`) i czasy cykli. Digitalny centralny plan pracy.
@@ -84,18 +84,19 @@ Das System realisiert die Idee eines "Informationsmonolithen" und eliminiert tra
 ---
 
 ### 🏗️ Komplette Systemarchitektur (Die 13 Tabellen des Kerns)
-*   **T00_LOCALISATION** — Zentrales Token-Wörterbuch und automatischer Interface-Übersetzer (PL/EN/DE).
-*   **T01_README_AND_LICENSE** — Haupt-Dashboard, Währungsauswahl (PLN/EUR) und FOREX-Wechselkurs-Sicherung.
-*   **T02_TAKT_MATRIX** — Verzeichnis von Entladezonen und Takt-Boxes mit integrierter finanzieller Kapazitätsgrenze.
-*   **T03_TAKT_MATRIX** — Verzeichnis von Entladezonen und Takt-Boxes mit integrierter finanzieller Kapazitätsgrenze.
-*   **T04_TAKT_MATRIX** — Verzeichnis von Entladezonen und Takt-Boxes mit integrierter finanzieller Kapazitätsgrenze.
-*   **T05_TAKT_MATRIX** — Verzeichnis von Entladezonen und Takt-Boxes mit integrierter finanzieller Kapazitätsgrenze.
-*   **T06_TAKT_MATRIX** — Verzeichnis von Entladezonen und Takt-Boxes mit integrierter finanzieller Kapazitätsgrenze.
+*   **T00_LOCALISATION** — Zentrales Token-Wörterbuch und automatischer Interface-Übersetzer (PL/EN/DE). Tabelle versteckt.
+*   **T01_README_AND_LICENSE** — Zentrale Projektsteuerung, Sprach- und Währungsauswahl (PLN/EUR) sowie FOREX-Wechselkursumrechnung und Festlegung der maximalen Anzahl laufender Arbeiten (WIP – Work in Process) für die einzelnen Gewerke und das Gesamtprojekt.
+*   **T02_TAKT_MATRIX** — Verzeichnis der Entladezonen und Takt-Boxen mit integriertem Limit für das gebundene Kapital [Max], angegeben in der Basiswährung des Projekts.
+*   **T03_PRODUCTION_FLOW_DICTIONARY** — Verzeichnis der Branchencodes, zweisprachigen Beschreibungen des Leistungsumfangs sowie der Kriterien für den Arbeitsbeginn.
+*   **T04_LOGISTICS_SLOTS_DICTIONARY** — Verzeichnis von Entladezonen und Takt-Boxes mit integrierter finanzieller Kapazitätsgrenze.
+*   **T05_CONTRACTS_REGISTER** — Verzeichnis von Entladezonen und Takt-Boxes mit integrierter finanzieller Kapazitätsgrenze.
+*   **T06_TAKT_MASTER_SCHEDULE** — Verzeichnis von Entladezonen und Takt-Boxes mit integrierter finanzieller Kapazitätsgrenze.
 *   **T07_VARIABILITY_MANAGEMENT** — Störungsregister zur Überwachung von finanziellem Waste und Andon-Status (`🚨 IN ARBEIT` / `GESCHLOSSEN`).
 *   **T08_DELIVERIES** — Logistikregister mit automatischem Überlastungsradar für Material-Hubs (`HDR_HUB_STATUS`).
+*   **T09_LEAN_TRANSFORMATION_COSTS** — Haupt-Finanzledger der Holding, doppelt verriegelt durch SHA-256-Integritätshashes.
 *   **T10_PLAIN_PROFIT_AND_LOSS** — Haupt-Finanzledger der Holding, doppelt verriegelt durch SHA-256-Integritätshashes.
-*   **T11_PLAIN_PROFIT_AND_LOSS** — Haupt-Finanzledger der Holding, doppelt verriegelt durch SHA-256-Integritätshashes.
-*   **T12_PLAIN_PROFIT_AND_LOSS** — Haupt-Finanzledger der Holding, doppelt verriegelt durch SHA-256-Integritätshashes.
+*   **T11_WEEKLY_BOX_SCORE** — Haupt-Finanzledger der Holding, doppelt verriegelt durch SHA-256-Integritätshashes.
+*   **T12_GLOBAL_BOX_SCORE** — Haupt-Finanzledger der Holding, doppelt verriegelt durch SHA-256-Integritätshashes.
 
 ### 🛡️ Datenkreislauf & Poka-Yoke
 *   **Forms 2 ➔ T07:** Baustellenmeldungen aktivieren sofort die Andon-Flage `🚨 IN ARBEIT` im Looker Studio Pareto-Chart, bis der Ingenieur den Vorfall in Spalte M schließt.
