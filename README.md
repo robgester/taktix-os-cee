@@ -24,7 +24,7 @@ System opiera się na strukturze powiązanych rejestrów (Single Source of Truth
 *   **T03_PRODUCTION_FLOW_DICTIONARY** — Rejestr kodów branżowych, dwujęzycznych opisów zakresu prac oraz kryteriów wejścia na front robót.
 *   **T04_LOGISTICS_SLOTS_DICTIONARY** — Rejestr okien czasowych dla dostaw materiałowych do zdefiniowanych w 'T02' taktów, ogólnych miejsc składowania na terenie budowy lub zewnętrznych hubów magazynowych.
 *   **T05_CONTRACTS_REGISTER** — Centralny rejestr umów, tożsamości cyfrowych generalnego wykonawcy (MAI), podwykonawców (SUB), dostawców (SUP) oraz sum kontraktowych.
-*   **T06_TAKT_MASTER_SCHEDULE** — Harmonogram główny inżyniera kontraktu generujący dynamiczne klucze planu (`SCHEDULE_KEY`) i czasy cykli. Digitalny centralny plan pracy.
+*   **T06_TAKT_MASTER_SCHEDULE** — Bieżący harmonogram inżyniera kontraktu generujący dynamiczne klucze planu (`SCHEDULE_KEY`) i czasy cykli na bazie tabel Last Planner® śystem i Takt Time. Digitalny centralny plan pracy.
 *   **T07_VARIABILITY_MANAGEMENT** — Centrala awarii, monitorująca marnotrawstwo finansowe, przestoje oraz statusy usuwania usterek Andon (`🚨 W TOKU` / `ZAMKNIĘTY`).
 *   **T08_DELIVERIES** — Rejestr dostaw z automatycznym radarem przepełnienia logistycznego hubów materiałowych (`HDR_HUB_STATUS`).
 *   **T09_LEAN_TRANSFORMATION_COSTS** — Protokół działań, mających na celu wprowadzenie metodyki lean do inwestycji.
@@ -88,15 +88,15 @@ Das System realisiert die Idee eines "Informationsmonolithen" und eliminiert tra
 *   **T01_README_AND_LICENSE** — Zentrale Projektsteuerung, Sprach- und Währungsauswahl (PLN/EUR) sowie FOREX-Wechselkursumrechnung und Festlegung der maximalen Anzahl laufender Arbeiten (WIP – Work in Process) für die einzelnen Gewerke und das Gesamtprojekt.
 *   **T02_TAKT_MATRIX** — Verzeichnis der Entladezonen und Takt-Boxen mit integriertem Limit für das gebundene Kapital [Max], angegeben in der Basiswährung des Projekts.
 *   **T03_PRODUCTION_FLOW_DICTIONARY** — Verzeichnis der Branchencodes, zweisprachigen Beschreibungen des Leistungsumfangs sowie der Kriterien für den Arbeitsbeginn.
-*   **T04_LOGISTICS_SLOTS_DICTIONARY** — Verzeichnis von Entladezonen und Takt-Boxes mit integrierter finanzieller Kapazitätsgrenze.
-*   **T05_CONTRACTS_REGISTER** — Verzeichnis von Entladezonen und Takt-Boxes mit integrierter finanzieller Kapazitätsgrenze.
-*   **T06_TAKT_MASTER_SCHEDULE** — Verzeichnis von Entladezonen und Takt-Boxes mit integrierter finanzieller Kapazitätsgrenze.
-*   **T07_VARIABILITY_MANAGEMENT** — Störungsregister zur Überwachung von finanziellem Waste und Andon-Status (`🚨 IN ARBEIT` / `GESCHLOSSEN`).
-*   **T08_DELIVERIES** — Logistikregister mit automatischem Überlastungsradar für Material-Hubs (`HDR_HUB_STATUS`).
-*   **T09_LEAN_TRANSFORMATION_COSTS** — Haupt-Finanzledger der Holding, doppelt verriegelt durch SHA-256-Integritätshashes.
-*   **T10_PLAIN_PROFIT_AND_LOSS** — Haupt-Finanzledger der Holding, doppelt verriegelt durch SHA-256-Integritätshashes.
-*   **T11_WEEKLY_BOX_SCORE** — Haupt-Finanzledger der Holding, doppelt verriegelt durch SHA-256-Integritätshashes.
-*   **T12_GLOBAL_BOX_SCORE** — Haupt-Finanzledger der Holding, doppelt verriegelt durch SHA-256-Integritätshashes.
+*   **T04_LOGISTICS_SLOTS_DICTIONARY** — Verzeichnis der Zeitfenster für Materiallieferungen an die in „T02“ definierten Takte, an allgemeine Lagerbereiche auf der Baustelle oder an externe Lager-Hubs.
+*   **T05_CONTRACTS_REGISTER** — Zentrales Register für Verträge, digitale Identitäten von Generalunternehmern (MAI), Subunternehmern (SUB) und Lieferanten (SUP) sowie Vertragssummen.
+*   **T06_TAKT_MASTER_SCHEDULE** — Aktueller Zeitplan des Vertragsingenieurs, der dynamische Planungsschlüssel (`SCHEDULE_KEY`) sowie Taktzeiten auf der Grundlage von Last-Planner®- und Taktzeit-Systemtabellen generiert. Digitaler zentraler Arbeitsplan.
+*   **T07_VARIABILITY_MANAGEMENT** — Zentrale zur Überwachung von finanzieller Verschwendung, Stillständen sowie dem Status der Störungsbehebung (Andon: `🚨 IN BEARBEITUNG` / `ABGESCHLOSSEN`).
+*   **T08_DELIVERIES** — Lieferregister mit automatischer Überwachung von Überlastungen an Material-Logistik-Hubs (`HDR_HUB_STATUS`).
+*   **T09_LEAN_TRANSFORMATION_COSTS** — Protokoll der Maßnahmen zur Einführung der Lean-Methodik bei Investitionsvorhaben.
+*   **T10_PLAIN_PROFIT_AND_LOSS** — Das Hauptfinanzbuch des Holdings – eine Aufzeichnung täglicher und wöchentlicher Berichte –, doppelt gesichert und mittels SHA-256-Prüfsumme versiegelt.
+*   **T11_WEEKLY_BOX_SCORE** — Automatischer Rechner für den Stabilitätsindex von Lean-Prozessen (zur Ermittlung des tatsächlichen **PPC-%-Werts**).
+*   **T12_GLOBAL_BOX_SCORE** — Globale Übersicht über Engpässe, WIP-Congestion-Kennzahlen und das finanzielle Bauvolumen.
 
 ### 🛡️ Datenkreislauf & Poka-Yoke
 *   **Forms 2 ➔ T07:** Baustellenmeldungen aktivieren sofort die Andon-Flage `🚨 IN ARBEIT` im Looker Studio Pareto-Chart, bis der Ingenieur den Vorfall in Spalte M schließt.
