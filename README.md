@@ -18,7 +18,7 @@ System realizuje ideę "Monolitu Informacyjnego", eliminując tradycyjne raporty
 ## 🏗️ Kompletna Architektura Systemu (13 Tabel Jądra)
 
 System opiera się na strukturze powiązanych rejestrów (Single Source of Truth):
-*   **T00_LOCALISATION** — Centralny słownik tokenów i automatyczny tłumacz całego interfejsu (PL/EN/DE). Tabela ukryta.
+*   **T00_LOCALISATION** — Centralny słownik tokenów i automatyczny tłumacz całego interfejsu (PL/DE). Tabela ukryta.
 *   **T01_README_AND_LICENSE** — Główny panel sterowania projektem, wybór języka, wybór waluty (PLN/EUR) i przelicznik kursowy FOREX oraz ustawienie maksymalnej ilości prac w toku (WIP - Work in Process) dla poszczególnych branż i całej inwestycji.
 *   **T02_TAKT_MATRIX** — Słownik stref rozładunkowych i Takt-Boxów z wbudowanym limitem składowania kapitału [Max] wyrażonym w walucie bazowej projektu.
 *   **T03_PRODUCTION_FLOW_DICTIONARY** — Rejestr kodów branżowych, dwujęzycznych opisów zakresu prac oraz kryteriów wejścia na front robót.
@@ -84,7 +84,7 @@ Das System realisiert die Idee eines "Informationsmonolithen" und eliminiert tra
 ---
 
 ### 🏗️ Komplette Systemarchitektur (Die 13 Tabellen des Kerns)
-*   **T00_LOCALISATION** — Zentrales Token-Wörterbuch und automatischer Interface-Übersetzer (PL/EN/DE). Tabelle versteckt.
+*   **T00_LOCALISATION** — Zentrales Token-Wörterbuch und automatischer Interface-Übersetzer (PL/DE). Tabelle versteckt.
 *   **T01_README_AND_LICENSE** — Zentrale Projektsteuerung, Sprach- und Währungsauswahl (PLN/EUR) sowie FOREX-Wechselkursumrechnung und Festlegung der maximalen Anzahl laufender Arbeiten (WIP – Work in Process) für die einzelnen Gewerke und das Gesamtprojekt.
 *   **T02_TAKT_MATRIX** — Verzeichnis der Entladezonen und Takt-Boxen mit integriertem Limit für das gebundene Kapital [Max], angegeben in der Basiswährung des Projekts.
 *   **T03_PRODUCTION_FLOW_DICTIONARY** — Verzeichnis der Branchencodes, zweisprachigen Beschreibungen des Leistungsumfangs sowie der Kriterien für den Arbeitsbeginn.
