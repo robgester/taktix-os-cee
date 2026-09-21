@@ -98,7 +98,30 @@ Das System realisiert die Idee eines "Informationsmonolithen" und eliminiert tra
 *   **T11_WEEKLY_BOX_SCORE** — Automatischer Rechner für den Stabilitätsindex von Lean-Prozessen (zur Ermittlung des tatsächlichen **PPC-%-Werts**).
 *   **T12_GLOBAL_BOX_SCORE** — Globale Übersicht über Engpässe, WIP-Congestion-Kennzahlen und das finanzielle Bauvolumen.
 
-### 🛡️ Datenkreislauf & Poka-Yoke
+---
+
+### 🛡️ Datenkreislauf & Poka-Yoke (Beziehungen Formulare ➔ Tabellen)
+
+Das System eliminiert die manuelle Dateneingabe durch Informationsaustauschschleifen, die von dem Cloud-Skript `Code.gs` gesteuert werden:
+
+### 📥 1. Planungsschleife (Forms 0 ➔ T06_TAKT_MASTER_SCHEDULE)
+*   **Aktion:** Der verantwortliche Ingenieur erfasst die Abfolge der gewerkspezifischen Takt-Boxen aus den wöchentlichen Last-Planner®-System- bzw. Taktzeit-Tabellen im Baubüro über ein Smartphone-Formular; dabei nutzt er Dropdown-Listen, die vor Projektbeginn vorbereitet und in den entsprechenden Tabellen hinterlegt wurden.
+*   **Verknüpfung:** Ein Skript erfasst die Daten und generiert in `T06` eine eindeutige Kennung `SCHEDULE_KEY` (`Woche|Takt|Gewerk`). Damit ist der Wochenplan elektronisch gespeichert.
+
+### 📥 2. Logistik-Schleife (Formulare 1A & 1B ➔ T08_DELIVERIES)
+*   **Aktion:** Logistiker/Lieferant meldet einen Transport (Logistik-Pass) unter Angabe des deklarierten Warenwerts in PLN/EUR an.
+*   **Verknüpfung:** Die Daten werden an `T08` übermittelt. Die `XLOOKUP`-Formel validiert die E-Mail-Adresse des Lieferanten in `T05` und ruft dessen Namen ab; die Funktion `SUMIFS` ermittelt den kumulierten Warenwert in der Zone und vergleicht ihn mit den Finanzlimits aus `T02`. Bei Überschreitung des Budgets für den jeweiligen Hub erscheint in Spalte P ein numerischer Warnhinweis (Überlastungsalarm). Die Vorgänge werden mittels Hash und Zeitstempel in der Blockchain-Cloud kodiert.
+
+### 📥 3. Rückmeldeschleife vor Ort (Forms 3 ➔ T10_PLAIN_PROFIT_AND_LOSS)
+*   **Aktion:** Der Vorarbeiter des Subunternehmers meldet den täglichen Arbeitsstatus für eine bestimmte Takt-Box über ein Smartphone-Formular.
+*   **Verknüpfung:** Das Skript erzeugt einen Datensatz im Haupt-Ledger `T10`. Mittels einer Wildcard-Logik fragt das System den Plan `T06` basierend auf Zone und Gewerk ab und fügt automatisch die korrekte operative Kalenderwoche (`W05|...`) in den Aufgaben-Schlüssel (`TASK_KEY`) ein. Der WIP-Status in Spalte I wird automatisch auf `1` (Work in Process) gesetzt, und die Aktion wird als Hash sowie Zeitstempel in der Blockchain-Cloud kodiert.
+
+### 📥 4. Kryptografischer Abnahmeschritt (Forms 4 ➔ T10_PLAIN_PROFIT_AND_LOSS)
+*   **Aktion:** Der Vorarbeiter des Subunternehmers meldet den Abschluss seines „Takts“ über ein Smartphone-Formular. Ein Ingenieur führt die technische Qualitätsabnahme des ausgeführten Takts durch und bestätigt diese in der Tabelle „T10“.
+*   **Verknüpfung:** Die Cloud-Verifizierung identifiziert den passenden `TASK_KEY` in „T10“, setzt die Spalte T (`AUFGABE ABGESCHLOSSEN`) auf `TRUE`, setzt den WIP-Indikator in Spalte I (Arbeitsbereich freigegeben) auf Null und startet den SHA-256-Algorithmus; dabei wird ein unveränderlicher 64-Zeichen-Hash generiert, der die tatsächliche Marge besiegelt. Die Tabelle „T11“ wird aktiviert und überträgt den PPC-Indikator über entsprechend vorbereitete Diagramme an Looker Studio.
+
+
+
 *   **Forms 2 ➔ T07:** Baustellenmeldungen aktivieren sofort die Andon-Flage `🚨 IN ARBEIT` im Looker Studio Pareto-Chart, bis der Ingenieur den Vorfall in Spalte M schließt.
 *   **Forms 4 ➔ T10:** Die Qualitätsabnahme schließt den Takt-Box ab, setzt den WIP-Status auf `0` und generiert den unmanipulierbaren 64-stelligen SHA-256 Krypto-Hash.
 
