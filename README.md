@@ -122,7 +122,7 @@ Das System eliminiert die manuelle Dateneingabe durch Informationsaustauschschle
 
 ### 📥 5. Variabilitätsmanagement-Schleife (Forms 2 ➔ T07_VARIABILITY_MANAGEMENT)
 *   **Aktion:** Das Auftreten einer Störung, einer Lieferverzögerung oder eines fehlenden Arbeitsbereichs wird von der Baustelle aus über ein Smartphone-Formular gemeldet.
-*   **Verknüpfung:** Der Vorfall speist die Störungszentrale `T07`. Spalte L setzt mittels eines dynamischen, mehrsprachigen `XVERWEIS` (`XLOOKUP`) ein Andon-Signal (`🚨 IN ARBEIT`), das im Pareto-Diagramm in Looker Studio rot leuchtet, bis der zuständige Ingenieur die Störung in Spalte M der Tabelle 'T07' abschließt. Die Aktion wird als Hash und Zeitstempel in der Blockchain-Cloud kodiert.
+*   **Verknüpfung:** Der Vorfall speist die Störungszentrale `T07`. Spalte L setzt mittels eines dynamischen, mehrsprachigen `XVERWEIS` (`XLOOKUP`) ein Andon-Signal (`🚨 IN ARBEIT` / `ABGESCHLOSSEN`), das im Pareto-Diagramm in Looker Studio rot leuchtet, bis der zuständige Ingenieur die Störung in Spalte M der Tabelle 'T07' abschließt. Die Aktion wird als Hash und Zeitstempel in der Blockchain-Cloud kodiert.
 
 ### 📥 6. Lean-Evaluierungs- und Transformationsschleife (Forms 5 ➔ T09_LEAN_TRANSFORMATION_COSTS)
 *   **Aktion:** Erfassung der Kosten für die Einführung der Lean-Methodik im Investitionsprojekt (Lizenzen, Workshops, Schulungen, Beratung). Der verantwortliche Ingenieur gibt die Rechnungsdaten in das Formular auf dem Smartphone ein.
