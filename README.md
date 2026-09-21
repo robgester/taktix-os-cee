@@ -120,10 +120,13 @@ Das System eliminiert die manuelle Dateneingabe durch Informationsaustauschschle
 *   **Aktion:** Der Vorarbeiter des Subunternehmers meldet den Abschluss seines „Takts“ über ein Smartphone-Formular. Ein Ingenieur führt die technische Qualitätsabnahme des ausgeführten Takts durch und bestätigt diese in der Tabelle „T10“.
 *   **Verknüpfung:** Die Cloud-Verifizierung identifiziert den passenden `TASK_KEY` in „T10“, setzt die Spalte T (`AUFGABE ABGESCHLOSSEN`) auf `TRUE`, setzt den WIP-Indikator in Spalte I (Arbeitsbereich freigegeben) auf Null und startet den SHA-256-Algorithmus; dabei wird ein unveränderlicher 64-Zeichen-Hash generiert, der die tatsächliche Marge besiegelt. Die Tabelle „T11“ wird aktiviert und überträgt den PPC-Indikator über entsprechend vorbereitete Diagramme an Looker Studio.
 
+### 📥 5. Variabilitätsmanagement-Schleife (Forms 2 ➔ T07_VARIABILITY_MANAGEMENT)
+*   **Aktion:** Das Auftreten einer Störung, einer Lieferverzögerung oder eines fehlenden Arbeitsbereichs wird von der Baustelle aus über ein Smartphone-Formular gemeldet.
+*   **Verknüpfung:** Der Vorfall speist die Störungszentrale `T07`. Spalte L setzt mittels eines dynamischen, mehrsprachigen `XVERWEIS` (`XLOOKUP`) ein Andon-Signal (`🚨 IN ARBEIT`), das im Pareto-Diagramm in Looker Studio rot leuchtet, bis der zuständige Ingenieur die Störung in Spalte M der Tabelle 'T07' abschließt. Die Aktion wird als Hash und Zeitstempel in der Blockchain-Cloud kodiert.
 
-
-*   **Forms 2 ➔ T07:** Baustellenmeldungen aktivieren sofort die Andon-Flage `🚨 IN ARBEIT` im Looker Studio Pareto-Chart, bis der Ingenieur den Vorfall in Spalte M schließt.
-*   **Forms 4 ➔ T10:** Die Qualitätsabnahme schließt den Takt-Box ab, setzt den WIP-Status auf `0` und generiert den unmanipulierbaren 64-stelligen SHA-256 Krypto-Hash.
+### 📥 6. Lean-Evaluierungs- und Transformationsschleife (Forms 5 ➔ T09_LEAN_TRANSFORMATION_COSTS)
+*   **Aktion:** Erfassung der Kosten für die Einführung der Lean-Methodik im Investitionsprojekt (Lizenzen, Workshops, Schulungen, Beratung). Der verantwortliche Ingenieur gibt die Rechnungsdaten in das Formular auf dem Smartphone ein.
+*   **Verknüpfung:** Die Daten (finanziell und statistisch) werden automatisch in die Tabelle „T09“ übertragen und anschließend in Looker Studio in entsprechenden visuellen Diagrammen für die Holding-Geschäftsführung aufbereitet. Der Finanzvorgang wird mittels Hash und Zeitstempel in der Blockchain-Cloud verschlüsselt und dokumentiert.
 
 ---
 
