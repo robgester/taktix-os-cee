@@ -27,12 +27,13 @@ function onEdit(e) {
     var sheetName = sheet.getName();
     var row = range.getRow();
     var col = range.getColumn();
+    var editedValue = e.value ? e.value.toString().trim().toUpperCase() : "";
     
-    // -------------------------------------------------------------------------
+// -------------------------------------------------------------------------
     // LASER A: CENTRALNY LEDGER P&L (T10) - Blokada Finansowa
     // Nasłuchuje zmian w Kolumnie U (21) - Uwolnienie płatności
     // -------------------------------------------------------------------------
-    if (sheetName === "T10_PLAIN_PROFIT_AND_LOSS" && row > 1 && col === 21 && (e.value === "TRUE" || e.value === "1")) {
+    if (sheetName === "T10_PLAIN_PROFIT_AND_LOSS" && row > 1 && col === 21 && (editedValue === "TRUE" || editedValue === "1" || editedValue === true)) {
       var qualityCheck = sheet.getRange(row, 20).getValue(); // Kolumna T (20)
       if (qualityCheck !== true && qualityCheck !== "TRUE") {
         e.source.toast("🚨 BŁĄD: Takt nie posiada weryfikacji jakościowej w Kolumnie T! Blokada transakcji.", "TAKTIX OS ANDON", 7);
@@ -55,66 +56,88 @@ function onEdit(e) {
       
       var rowData = sheet.getRange(row, 1, 1, 21).getValues();
       var sha256Hash = calculateSHA256(rowData.join("|"));
+      var statusCell = sheet.getRange(row, 22); // Kolumna V
       
-      if (anchorToBlockchain(sha256Hash)) {
-        var statusCell = sheet.getRange(row, 22); // Kolumna V
-        statusCell.setValue("🔒 BLOCKED & ANCHORED (SHA-256: " + sha256Hash + ")");
-        statusCell.setFontColor("#008000").setFontWeight("bold");
+      // Próba kotwiczenia w OTS, jeśli serwer nie odpowie - włącza się lokalna pieczęć kryptograficzna holdingu
+      try {
+        if (anchorToBlockchain(sha256Hash)) {
+          statusCell.setValue("🔒 BLOCKED & ANCHORED (OTS-HASH: " + sha256Hash.substring(0,8) + "...)");
+          statusCell.setFontColor("#008000").setFontWeight("bold");
+          sheet.getRange(row, 1, 1, 22).setBackground("#F3F3F3");
+          e.source.toast("Wiersz trwale zakotwiczony w zewnętrznym Blockchain!", "TAKTIX OS HOLDING", 5);
+        } else {
+          // Rezerwowa pieczęć wewnętrzna grupy kapitałowej
+          statusCell.setValue("🔒 LOCAL LEDGER ANCHORED (SHA-256: " + sha256Hash.substring(0,8) + "...)");
+          statusCell.setFontColor("#0056B3").setFontWeight("bold"); // Kolor niebieski dla rejestru lokalnego
+          sheet.getRange(row, 1, 1, 22).setBackground("#F3F3F3");
+          e.source.toast("Serwer OTS zajęty. Zastosowano lokalną pieczęć kryptograficzną holdingu.", "TAKTIX OS LOCAL LEDGER", 6);
+        }
+      } catch(err) {
+        // Zabezpieczenie na wypadek całkowitego błędu wykonania funkcji sieciowej
+        statusCell.setValue("🔒 LOCAL LEDGER ANCHORED (SHA-256: " + sha256Hash.substring(0,8) + "...)");
+        statusCell.setFontColor("#0056B3").setFontWeight("bold");
         sheet.getRange(row, 1, 1, 22).setBackground("#F3F3F3");
-        e.source.toast("Row permanently anchored in Blockchain!", "TAKTIX OS HOLDING", 5);
-      } else {
-        e.source.toast("🚨 BŁĄD TIMESTAMPS: Serwer OTS nie odpowiedział poprawnie.", "TAKTIX OS KERNEL", 5);
-        range.setValue(false);
+        e.source.toast("Błąd sieciowy API. Wiersz bezpiecznie zablokowany lokalnym hashem SHA-256.", "TAKTIX OS LOCAL LEDGER", 6);
       }
     }
-    
     // -------------------------------------------------------------------------
     // LASER B: BRAMA WJAZDOWA (T08) - Blokada Paszportu Logistycznego
-    // Nasłuchuje zmian w Kolumnie J (10) - Weryfikacja inżyniera / portiera
+    // NOWOŚĆ: Nasłuchuje Dropdownu w Kolumnie J (10) - BOOKING lub REJECTION
     // -------------------------------------------------------------------------
-    if (sheetName === "T08_DELIVERIES" && row > 1 && col === 10 && (e.value === "TRUE" || e.value === "1")) {
-      e.source.toast("🔒 Generowanie dowodu wjazdu i kotwiczenie w Blockchain...", "TAKTIX LOGISTICS", 4);
+    if (sheetName === "T08_DELIVERIES" && row > 1 && col === 10 && (editedValue === "BOOKING" || editedValue === "REJECTION")) {
+      e.source.toast("🔒 Generowanie dowodu i rejestracja kryptograficzna w Blockchain...", "TAKTIX LOGISTICS", 4);
       
       var rowData = sheet.getRange(row, 1, 1, 10).getValues();
       var sha256Hash = calculateSHA256(rowData.join("|"));
       
-      var stampCell = sheet.getRange(row, 12); // Kolumna L (Blockchain Stamp)
+      var stampCell = sheet.getRange(row, 18); // Kolumna R (Blockchain Stamp)
       
       if (anchorToBlockchain(sha256Hash)) {
-        // SCENARIUSZ 1: Serwer OTS działa idealnie
         stampCell.setValue("🔒 BRAMA ZABLOKOWANA (SHA-256: " + sha256Hash + ")");
         stampCell.setFontColor("#008000").setFontWeight("bold");
         sheet.getRange(row, 1, 1, 14).setBackground("#F3F3F3"); // Zamrożenie wiersza dostawy
         e.source.toast("Delivery receipt secured in public Blockchain!", "TAKTIX LOGISTICS", 5);
       } else {
-        // SCENARIUSZ 2: Tarcza Awaryjna - Serwer OTS przeciążony. Zabezpieczamy lokalnie w chmurze!
+        // Tarcza Awaryjna chmury holdingu
         stampCell.setValue("🛡️ LOCAL LEDGER LOCKED (SHA-256: " + sha256Hash + ")");
-        stampCell.setFontColor("#FF8C00").setFontWeight("bold"); // Pomarańczowy alert pancerza chmury
-        sheet.getRange(row, 1, 1, 14).setBackground("#F9F9F9"); // Lekkie zamrożenie
+        stampCell.setFontColor("#FF8C00").setFontWeight("bold"); 
+        sheet.getRange(row, 1, 1, 18).setBackground("#F9F9F9"); 
         
         e.source.toast("OTS Server offline. Secured in local cloud ledger!", "TAKTIX RECOVERY", 6);
-        Logger.log("🛡️ SAFE FALLBACK BLOCKCHAIN: Zachowano i zaryglowano hash lokalny dla wiersza: " + row);
+        Logger.log("🛡️ SAFE FALLBACK BLOCKCHAIN: Zaryglowano hash lokalny dla wiersza dostaw: " + row);
       }
     }
+    
     // -------------------------------------------------------------------------
-    // LASER C: IZBA AWARII (T07) - Blokada Protokołu Przestoju (Andon)
-    // Nasłuchuje zmian w Kolumnie L (12) - Zamknięcie incydentu przestoju
+    // LASER C: IZBA AWARII (T07) - KOREKTA INDEKSU KOLUMNY (M = 13)
+    // Nasłuchuje zmian w Kolumnie M (13) - Zamknięcie incydentu przestoju
     // -------------------------------------------------------------------------
-    if (sheetName === "T07_VARIABILITY_MANAGEMENT" && row > 1 && col === 12 && (e.value === "TRUE" || e.value === "1")) {
+    if (sheetName === "T07_VARIABILITY_MANAGEMENT" && row > 1 && col === 13 && (editedValue === "TRUE" || editedValue === "1")) {
       e.source.toast("🔒 Zamykanie incydentu i kotwiczenie awarii w Blockchain...", "TAKTIX ANDON", 4);
       
-      var rowData = sheet.getRange(row, 1, 1, 12).getValues();
+      var rowData = sheet.getRange(row, 1, 1, 13).getValues();
       var sha256Hash = calculateSHA256(rowData.join("|"));
       
+      // Próba kotwiczenia zewnętrznego
       if (anchorToBlockchain(sha256Hash)) {
-        var stampCell = sheet.getRange(row, 13); // Kolumna M
+        var stampCell = sheet.getRange(row, 15); // Kolumna O (PIECZEC_REJESTRU_BLOCKCHAIN)
         stampCell.setValue("🔒 AWARIA ARCHIWALNA (SHA-256: " + sha256Hash + ")");
         stampCell.setFontColor("#FF0000").setFontWeight("bold");
-        sheet.getRange(row, 1, 1, 13).setBackground("#EFEFEF");
+        sheet.getRange(row, 12).setValue("ZAMKNIETY"); // Kolumna L (STATUS)
+        sheet.getRange(row, 1, 1, 16).setBackground("#EFEFEF");
         e.source.toast("Variability record locked in Blockchain!", "TAKTIX OS ANDON", 5);
       } else {
-        e.source.toast("🚨 BŁĄD ANDON: Serwer OTS nie odpowiedział.", "TAKTIX KERNEL", 5);
-        range.setValue(false);
+        // AWARYJNY RYGIEL LOKALNY (Gdy serwer OTS nie odpowiada)
+        e.source.toast("⚠️ OTS Offline. Uruchomiono lokalny rygiel zabezpieczający holdingu.", "TAKTIX KERNEL", 5);
+        
+        var stampCell = sheet.getRange(row, 15); // Kolumna O (PIECZEC_REJESTRU_BLOCKCHAIN)
+        var localTimestamp = "LOCAL_SECURED_" + new Date().getTime() + "_" + sha256Hash.substring(0, 8);
+        
+        stampCell.setValue("🔒 LOKALNY RYGIEL (ID: " + localTimestamp + ")");
+        stampCell.setFontColor("#FF8C00").setFontWeight("bold"); // Pomarańczowy kolor ostrzegawczy dla bazy lokalnej
+        
+        sheet.getRange(row, 12).setValue("ZAMKNIETY"); // Kolumna L (Fizyczna zmiana statusu na ZAMKNIĘTY)
+        sheet.getRange(row, 1, 1, 16).setBackground("#F4F4F4"); // Delikatne szare tło dla zamrożonego wiersza
       }
     }
 
@@ -173,11 +196,17 @@ function runNativeFormUpdate() {
       return;
     }
 
-    // =========================================================================
+// =========================================================================
     // SEKCJA 1B: DUAL-LANGUAGE AUTOMATED MAIL SYSTEM (CONFIRMATIONS & REJECTIONS)
     // =========================================================================
     var lastRowT08 = t08Sheet.getLastRow();
     if (lastRowT08 >= 2) {
+      // 1. Pobranie globalnego języka projektu z T01 (Domyślnie PL, jeśli puste)
+      var ss = SpreadsheetApp.getActiveSpreadsheet();
+      var t01Sheet = ss.getSheetByName("T01_README_AND_LICENSE");
+      var projectLang = t01Sheet.getRange("B1").getValue().toString().trim().toUpperCase();
+      if (projectLang === "") projectLang = "PL";
+      
       var t08Data = t08Sheet.getRange(2, 1, lastRowT08 - 1, 13).getValues();
       
       for (var d = 0; d < t08Data.length; d++) {
@@ -185,46 +214,78 @@ function runNativeFormUpdate() {
         var supplierEmail = t08Data[d][2].toString(); // Kolumna C (Indeks 2)
         var slotTime = t08Data[d][6].toString();      // Kolumna G (Indeks 6)
         var status = t08Data[d][8].toString();        // Kolumna I (Indeks 8)
-        var mailSentFlag = t08Data[d][10].toString(); // Kolumna K (Indeks 10)
+        
+        // POKA-YOKE FLAGI: Konwersja na małe litery, odporna na typ Boolean i String
+        var mailSentFlag = t08Data[d][10].toString().toLowerCase().trim(); 
         var rejectReason = t08Data[d][12].toString(); // Kolumna M (Indeks 12)
         
-        if (status === "STAT_BOOKED" && mailSentFlag !== "TRUE" && supplierEmail !== "") {
-          var qrImageUrl = "https://googleapis.com" + encodeURIComponent(tokenID);
-          var htmlBody = "<h3>TAKTIX OS — Paszport Logistyczny / Logistik-Pass</h3>" +
-                         "<p>Twój slot dostawy został zatwierdzony. Przedstaw poniższy kod QR na bramie wjazdowej budowy.</p>" +
-                         "<p>Ihr Liefer-Slot wurde bestätigt. Bitte zeigen Sie den QR-Code am Tor.</p><br>" +
-                         "<img src='" + qrImageUrl + "'><br><br>" +
-                         "<strong>TOKEN ID:</strong> " + tokenID;
-                         
-          MailApp.sendEmail({
-            to: supplierEmail,
-            subject: "TAKTIX OS — Potwierdzenie Slotu Dostawy / Liefer-Slot Bestätigung",
-            htmlBody: htmlBody
-          });
-          t08Sheet.getRange(d + 2, 11).setValue(true); // Oznaczenie kolumny K jako wysłane
+        // Bezpieczna weryfikacja: sprawdzamy czy tekst nie jest "true" oraz czy pole nie ma zaznaczonego checkboxa (TRUE)
+        if ((status === "STAT_BOOKED" || status === "STAT_REJECTED") && (mailSentFlag === "true" || t08Data[d][10] === true)) {
+          continue; // Ten wiersz został już obsłużony, bezpiecznie lecimy dalej
         }
-        else if (status === "STAT_REJECTED" && mailSentFlag !== "TRUE" && supplierEmail !== "") {
-          var humanReason = "";
-          if (rejectReason === "ERR_HUB_OVERFLOW") {
-            humanReason = "Przepełnienie Huba Magazynowego / Logistik-Hub überfüllt";
-          } else if (rejectReason === "ERR_ZONE_NOT_READY") {
-            humanReason = "Strefa montażowa niegotowa na przyjęcie towaru / Takt-Zone nicht bereit";
+        
+        // ---------------------------------------------------------------------
+        // PROCES A: DOSTAWA ZATWIERDZONA (STAT_BOOKED)
+        // ---------------------------------------------------------------------
+        if (status === "STAT_BOOKED" && supplierEmail !== "") {
+          var qrImageUrl = "https://googleapis.com" + encodeURIComponent(tokenID);
+          var subject = "";
+          var htmlBody = "";
+          
+        if (projectLang === "DE") {
+            subject = "TAKTIX OS — Liefer-Slot Bestätigung";
+            htmlBody = "<h3>TAKTIX OS — Logistik-Pass</h3>" +
+                       "<p>Ihr Liefer-Slot wurde bestätigt. Bitte zeigen Sie diesen Code am Tor.</p><br>" +
+                       "<div style='font-size:20px; font-weight:bold; color:#1a73e8; letter-spacing:1px; background:#f1f3f4; padding:15px; border-radius:5px; display:inline-block;'>" +
+                       "TOKEN ID: " + tokenID + "</div>";
           } else {
-            humanReason = rejectReason + " - Skontaktuj się z Inżynierem / Bitte Bauleiter kontaktieren";
+            // Domyślny format polski (PL)
+            subject = "TAKTIX OS — Potwierdzenie Slotu Dostawy";
+            htmlBody = "<h3>TAKTIX OS — Paszport Logistyczny</h3>" +
+                       "<p>Twój slot dostawy został zatwierdzony. Przedstaw poniższy kod identyfikacyjny na bramie wjazdowej budowy.</p><br>" +
+                       "<div style='font-size:20px; font-weight:bold; color:#1a73e8; letter-spacing:1px; background:#f1f3f4; padding:15px; border-radius:5px; display:inline-block;'>" +
+                       "TOKEN ID: " + tokenID + "</div>";
+          }
+                         
+          MailApp.sendEmail({ to: supplierEmail, subject: subject, htmlBody: htmlBody });
+          t08Sheet.getRange(d + 2, 11).setValue(true); // Wstrzyknięcie czystego logicznego TRUE (Zaznaczenie checkboxa)
+          Logger.log("✔ Wysłano mail potwierdzający do: " + supplierEmail + " (Język: " + projectLang + ")");
+        }
+        
+        // ---------------------------------------------------------------------
+        // PROCES B: DOSTAWA ODRZUCONA (STAT_REJECTED)
+        // ---------------------------------------------------------------------
+        else if (status === "STAT_REJECTED" && supplierEmail !== "") {
+          var humanReason = "";
+          var subjectReject = "";
+          var htmlRejectBody = "";
+          
+          if (projectLang === "DE") {
+            subjectReject = "TAKTIX OS — Liefer-Slot Ablehnung";
+            if (rejectReason === "ERR_HUB_OVERFLOW") humanReason = "Logistik-Hub überfüllt";
+            else if (rejectReason === "ERR_ZONE_NOT_READY") humanReason = "Takt-Zone nicht bereit";
+            else humanReason = rejectReason + " - Bitte Bauleiter kontaktieren";
+            
+            htmlRejectBody = "<h3>TAKTIX OS — Liefer-Slot Status</h3>" +
+                             "<p>Sehr geehrte Damen und Herren, Ihr Antrag auf den Liefer-Slot um " + slotTime + " wurde vom Bauleiter <strong>ABGELEHNT</strong>.</p><br>" +
+                             "<strong>Grund:</strong> <span style='color:red; font-weight:bold;'>" + humanReason + "</span><br><br>" +
+                             "<p>Bitte korrigieren Sie die Daten und senden Sie den Antrag erneut über Forms 1A.</p>";
+          } else {
+            // Domyślny format polski (PL)
+            subjectReject = "TAKTIX OS — Odrzucenie Wniosku o Slot Dostawy";
+            if (rejectReason === "ERR_HUB_OVERFLOW") humanReason = "Przepełnienie Huba Magazynowego";
+            else if (rejectReason === "ERR_ZONE_NOT_READY") humanReason = "Strefa montażowa niegotowa na przyjęcie towaru";
+            else humanReason = rejectReason + " - Skontaktuj się z Inżynierem Kontraktu";
+            
+            htmlRejectBody = "<h3>TAKTIX OS — Status Rezerwacji Slotu</h3>" +
+                             "<p>Szanowni Państwo, Państwa wniosek o slot dostawy na godzinę <strong>" + slotTime + "</strong> został <strong>ODRZUCONY</strong> przez Inżyniera Kontraktu.</p><br>" +
+                             "<strong>Przyczyna odrzucenia:</strong> <span style='color:red; font-weight:bold;'>" + humanReason + "</span><br><br>" +
+                             "<p>Proszę o skorygowanie danych planistycznych i ponowną aplikację przez Forms 1A.</p>";
           }
                                
-          var htmlRejectBody = "<h3>TAKTIX OS — Status Rezerwacji Slotu / Liefer-Slot Status</h3>" +
-                               "<p>Szanowni Państwo, Państwa wniosek o slot dostawy na godzinę <strong>" + slotTime + "</strong> został <strong>ODRZUCONY</strong> przez Inżyniera Kontraktu.</p>" +
-                               "<p>Sehr geehrte Damen und Herren, Ihr Antrag auf den Liefer-Slot um " + slotTime + " wurde vom Bauleiter <strong>ABGELEHNT</strong>.</p><br>" +
-                               "<strong>Przyczyna odrzucenia / Grund:</strong> <span style='color:red; font-weight:bold;'>" + humanReason + "</span><br><br>" +
-                               "<p>Proszę o skorygowanie danych planistycznych i ponowną aplikację przez Forms 1A. / Bitte korrigieren Sie die Daten und senden Sie den Antrag erneut über Forms 1A.</p>";
-                               
-          MailApp.sendEmail({
-            to: supplierEmail,
-            subject: "TAKTIX OS — Odrzucenie Wniosku o Slot / Liefer-Slot Ablehnung",
-            htmlBody: htmlRejectBody
-          });
-          t08Sheet.getRange(d + 2, 11).setValue(true); // Oznaczenie kolumny K jako wysłane
+          MailApp.sendEmail({ to: supplierEmail, subject: subjectReject, htmlBody: htmlRejectBody });
+          t08Sheet.getRange(d + 2, 11).setValue(true); // Wstrzyknięcie czystego logicznego TRUE (Zaznaczenie checkboxa)
+          Logger.log("❌ Wysłano mail odrzucający do: " + supplierEmail + " (Język: " + projectLang + ")");
         }
       }
     }
@@ -360,31 +421,64 @@ if (form4Sheet) {
     }
 
     // Wtrysk do Forms 1A (Dostawca wybiera wolną godzinę z grafiku)
-    var form1AId = "1mc9bAsRUKd1FHgNxdmT1laeNM4t0qkAf57w9yiFukSw"; 
+   var form1AId_Unique = "1mc9bAsRUKd1FHgNxdmT1laeNM4t0qkAf57w9yiFukSw"; 
     try {
-      var form1A = FormApp.openById(form1AId);
-      var form1AItems = form1A.getItems(FormApp.ItemType.LIST); 
-      if (form1AItems.length >= 2) {
-        form1AItems[0].asListItem().setChoiceValues(fullLogisticsNodes); // Pierwszy dropdown: Huby/Strefy
-        form1AItems[1].asListItem().setChoiceValues(dynamicSlotsMenu);   // Drugi dropdown: Żywy Grafik Godzinowy!
-        Logger.log("➔ Sukces: Forms 1A zaktualizowany o żywy grafik.");
+      // 1. Autonomiczne pobranie dwujęzycznych branż bezpośrednio z kolumny D (4) w T03
+      var ss = SpreadsheetApp.getActiveSpreadsheet();
+      var dictSheet = ss.getSheetByName("T03_PRODUCTION_FLOW_DICTIONARY");
+      var lastRowT03 = dictSheet.getLastRow();
+      var localTradeLabels = [];
+      
+      if (lastRowT03 >= 2) {
+        // Zaciągamy kolumnę D (od wiersza 2 do samego dołu)
+        var rawT03 = dictSheet.getRange(2, 4, lastRowT03 - 1, 1).getValues();
+        var rawList03 = rawT03.map(function(r) { return r.toString().trim(); }).filter(function(v) { return v !== ""; });
+        localTradeLabels = Array.from(new Set(rawList03)); // Wyczyszczenie z duplikatów i spacji
+      }
+
+      // 2. Otwarcie formularza i twarde zasilenie pierwszego pytania od góry ekranu
+      var form1A = FormApp.openById(form1AId_Unique);
+      var form1AItems = form1A.getItems(); 
+      
+      if (form1AItems.length > 0) {
+        var firstQuestion = form1AItems[0]; 
+        
+          if (localTradeLabels.length > 0) {
+          // Sukces holdingu: Skorygowane mapowanie typu LIST dla natywnych dropdownów Google Forms
+          if (firstQuestion.getType() == FormApp.ItemType.LIST) {
+            firstQuestion.asListItem().setChoiceValues(localTradeLabels);
+            Logger.log("➔ Sukces holdingu: Forms 1A (Pytanie 1: Branże z T03) zaktualizowane pomyślnie.");
+          } else if (firstQuestion.getType() == FormApp.ItemType.MULTIPLE_CHOICE) {
+            firstQuestion.asMultipleChoiceItem().setChoiceValues(localTradeLabels);
+            Logger.log("➔ Sukces holdingu: Forms 1A (Pytanie 1: Branże z T03 jako wielokrotny wybór) zaktualizowane.");
+          } else {
+            Logger.log("⚠️ Uwaga: Pierwsze pytanie w Forms 1A to typ: " + firstQuestion.getType());
+          }
+        } else {
+          Logger.log("⚠️ Uwaga: Arkusz T03_PRODUCTION_FLOW_DICTIONARY w kolumnie D wydaje się być pusty.");
+        }
+      } else {
+        Logger.log("⚠️ Uwaga: Formularz Forms 1A nie zawiera żadnych pytań.");
       }
     } catch (e) {
-      Logger.log("⚠️ Informacja: Pomijam wtrysk Forms 1A.");
+      Logger.log("🚨 KRYTYCZNY ZATOR FORMS 1A: " + e.toString());
     }
 
     // Wtrysk do Forms 1B (Portier na bramie ma podgląd pełnego grafiku dostaw)
     var form1BId = "1yixMtjnLvqCK1sDGZfjTQN4uSIqZbk70vkTXV8znE9o"; 
     try {
       var form1B = FormApp.openById(form1BId);
-      var form1BItems = form1B.getItems(FormApp.ItemType.LIST); 
-      if (form1BItems.length >= 2) {
-        form1BItems[0].asListItem().setChoiceValues(fullLogisticsNodes);
-        form1BItems[1].asListItem().setChoiceValues(dynamicSlotsMenu);
-        Logger.log("➔ Sukces: Forms 1B pomyślnie zsynchronizowany z grafikiem.");
+      var form1BItems = form1B.getItems(); // Pobieramy wszystkie pozostałe elementy
+      
+      // Portier nie ma już dropdownów o czasie i miejscu. 
+      // Skrypt wysyła tylko potwierdzenie czystego połączenia z bazą, nie dotykając usuniętych pól.
+      if (form1BItems.length > 0) {
+        Logger.log("➔ Sukces holdingu: Forms 1B (Struktura Portiera) zweryfikowana i bezpieczna.");
+      } else {
+        Logger.log("⚠️ Uwaga: Formularz Forms 1B wydaje się być pusty.");
       }
     } catch (e) {
-      Logger.log("🚨 Krytyczny błąd wtrysku Forms 1B: " + e.message);
+      Logger.log("⚠️ Informacja: Pomijam lub błąd wtrysku Forms 1B: " + e.toString());
     }
     // -------------------------------------------------------------------------
     // SEKCJA 4: NATIVE INJECTION DLA FORMS 2, 3 I 4 (EDYKCJA PRZEPŁYWÓW)
@@ -398,15 +492,21 @@ if (form4Sheet) {
     }
 
     var form2Id = "1IMUe2an7WZKhWe7EG0awxRitF05JJD8XoEwb_doH49g";
-    try {
+     try {
       var form2 = FormApp.openById(form2Id);
       var form2Items = form2.getItems(FormApp.ItemType.LIST);
+      
+      // Sukces holdingu: Obsługujemy teraz oba dropdowny w formularzu usterek
       if (form2Items.length >= 1 && uniqueTradeLabels.length > 0) {
-        form2Items[0].asListItem().setChoiceValues(uniqueTradeLabels);
-        Logger.log("➔ Sukces: Forms 2 zaktualizowany.");
+        form2Items[0].asListItem().setChoiceValues(uniqueTradeLabels); // Dropdown 1: Branże odpowiedzialne
+        Logger.log("➔ Sukces: Forms 2 (Branże) zaktualizowany.");
+      }
+      if (form2Items.length >= 2 && validatedTaktBoxes.length > 0) {
+        form2Items[1].asListItem().setChoiceValues(validatedTaktBoxes); // Dropdown 2: Lokalizacja Takt-Box (w tym P_GENERAL_MAIN)
+        Logger.log("➔ Sukces: Forms 2 (Lokalizacje) zaktualizowany.");
       }
     } catch (e) {
-      Logger.log("⚠️ Informacja: Pomijam wtrysk Forms 2.");
+      Logger.log("⚠️ Informacja: Pomijam wtrysk Forms 2: " + e.toString());
     }
 
     var form3Id = "1JtGRp4h1GIWDj39EaRrEP5KA99riSHNkBDe1QTUFmnw";
@@ -444,7 +544,7 @@ if (form4Sheet) {
     Logger.log("🚨 KRYTYCZNY BŁĄD SKRYPTU INGESTION: " + error.toString());
   }
     // Na samym końcu funkcji, po wykonaniu wszystkich natywnych aktualizacji holdingu:
-  secureNewTaktixRegisters(e);
+  secureNewTaktixRegisters(typeof e !== 'undefined' ? e : null);
 }
 
 // =========================================================================
@@ -527,6 +627,11 @@ function fetchNightlyExchangeRate() {
  * [Dopisany na końcu pliku, nie zakłóca działających funkcji]
  */
 function secureNewTaktixRegisters(e) {
+    // Jeśli funkcja została wywołana bez obiektu zdarzenia (np. z poziomu runNativeFormUpdate), natychmiast przerywamy podproces:
+  if (!e || !e.range) {
+    Logger.log("ℹ️ Autonomiczne wywołanie rejestru: Pominięto weryfikację e.range.");
+    return; 
+  }
   try {
     var sheet = e.range.getSheet();
     var sheetName = sheet.getName();
