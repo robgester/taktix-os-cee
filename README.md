@@ -17,7 +17,7 @@ Alternatywą dla środowiska Google jest Open Source NextCloud. TAKTIX OS w wers
 
 ---
 
-## 🏗️ Kompletna Architektura Systemu (13 Tabel Jądra)
+## 🏗️ Kompletna Architektura Systemu (15 Tabel Rdzenia)
 
 System opiera się na strukturze powiązanych rejestrów (Single Source of Truth):
 *   **T00_LOCALISATION** — Centralny słownik tokenów i automatyczny tłumacz całego interfejsu (PL/DE). Tabela ukryta.
