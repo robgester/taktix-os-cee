@@ -151,7 +151,7 @@ Das System eliminiert die manuelle Dateneingabe durch Informationsaustauschschle
 
 Die Software ist unter den Bedingungen der **GNU General Public License v3 (GPL v3)** verfügbar.
 *   Dadurch wird sichergestellt, dass das System für die Ingenieursgemeinschaft frei und offen bleibt.
-*   Jede Integration des TAKTIX OS-Quellcodes (einschliesslich des Code.gs-Skripts) in komerzielle Systeme erfordert den vollständigen Open-Source-Zugriff auf die übergeordnete Software.
+*   Jede Integration des TAKTIX OS-Quellcodes (einschliesslich des `Code.gs`-Skripts) in komerzielle Systeme erfordert den vollständigen Open-Source-Zugriff auf die übergeordnete Software.
 
 *Copyright (c) 2026 by Robert Szczepaniak. All rights reserved.*
 
