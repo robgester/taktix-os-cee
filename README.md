@@ -102,11 +102,13 @@ Oprogramowanie jest udostępniane na zasadach licencji **GNU General Public Lice
 
 ## 🇦🇹 Deutsche Version
 
-Prototyp eines wartungsfreien Systems der Enterprise-Klasse für das Produktions- und Logistikmanagement im Hochbau oder Infrabau, basierend auf den Methoden **LPS (Last Planner® System)**, **Takt Time Planning (Taktplanung)** und **Project Production (Bauproduktion)** nach den Grundsätzen des Project Production Institute.
+TAKTIX OS CEE – ein Prototyp eines autonomen Betriebssystems der Enterprise-Klasse für das Produktions- und Logistikmanagement im Hoch- und Infrastrukturbau. Es basiert auf der Methodik des **`Last Planner® Systems (LPS®)`**, der **`Takt Time Planning`**-Methode (Taktplanung) sowie dem **`Project Production Management`** (PPM) gemäß den Standards des Project Production Institute.
 
-Das System realisiert die Idee eines "Informationsmonolithen" und eliminiert traditionelle Excel-Berichte zugunsten von automatisierten, kryptografisch gesicherten relationalen Schleifen in der Google Apps Script- & Looker Studio-Cloud. 
+Das System verfolgt den Ansatz eines **„Informationsmonolithen“** und ersetzt verstreute Tabellenkalkulationsberichte durch automatisierte, kryptografisch abgesicherte (SHA-256 / OpenTimestamps) relationale Datenkreisläufe innerhalb des Ökosystems **`Google Workspace (Sheets, Forms, Apps Script) & Looker Studio`**.
 
-Eine Alternative zur Google-Umgebung ist das Open-Source-System NextCloud. TAKTIX OS in der NextCloud-Version befindet sich derzeit in der Entwicklung.
+Die CEE-Version bietet native Unterstützung für mehrere Sprachen (PL / DE / EN) sowie Währungen (PLN / EUR).
+
+*Als Alternative zur Google-Cloud-Umgebung ist eine Open-Source-Variante auf Basis von Nextcloud in Entwicklung.*
 
 ---
 
@@ -189,7 +191,7 @@ Die Software ist unter den Bedingungen der **GNU General Public License v3 (GPL 
 
 ## 🇬🇧 English Version
 
-An enterprise-grade, zero-maintenance operating system prototype dedicated to production and logistics management in building and infrastructure construction. Built upon **Last Planner® System (LPS®)**, **Takt Time Planning**, and **Project Production Management (PPM)** methodologies according to the principles of the Project Production Institute.
+TAKTIX OS CEE – An enterprise-grade, zero-maintenance operating system prototype dedicated to production and logistics management in building and infrastructure construction. Built upon **Last Planner® System (LPS®)**, **Takt Time Planning**, and **Project Production Management (PPM)** methodologies according to the principles of the Project Production Institute.
 
 The system implements the **"Information Monolith"** concept, eliminating traditional Excel spreadsheets in favor of automated, cryptographically secured relational loops within **Google Workspace (Sheets, Forms, Apps Script) & Looker Studio**.
 
