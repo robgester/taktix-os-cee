@@ -43,13 +43,13 @@ System opiera się na strukturze powiązanych rejestrów (Single Source of Truth
 
 System eliminuje ręczne wprowadzanie danych poprzez pętle wymiany informacji, sterowane przez skrypt chmurowy `Code.gs`:
 
+### 📥 0. Pętla Planowania (Forms 00 ➔ T00_SPATIAL_CONFIG ➔ T02_TAKT_MATRIX)
+*   **Akcja:** Odpowiedzialny inżynier wpisuje przed rozpoczęciem inwestycji wszystkie takty na wszystkich poziomach w przestrzeni obiektu inwestycyjnego w formularzu na smartfonie, korzystając z list rozwijanych, przygotowanych przed rozpoczęciem inwestycji i zapisanych w odpowiednich tabelach. Zadanie to wymaga starannego planowania podziału inwestycji na sekcje w gronie managementu wszystkich stron uczestniczących oraz przy zastosowaniu myślenia systemowego. Dodatkowo definiowane są finansowe limity składowania materiałów i ekwipunku w zapisanych taktach/hubach oraz bramy dla dojazdów dla dedykowanych dostaw. Dane te są następnie automatycznie przesyłane do tabeli 'T02', będącej podstawą planowania pracy w taktach (formularz Forms 0).
+*   **Powiązanie:** Dane z formularza są przekazywane najpierw do tabeli 'T00', która sortuje i organizuje je przestrzennie, a potem są one przesyłane do 'T02' w jednym ciągłym, automatycznym procesie.
+
 ### 📥 1. Pętla Planowania (Forms 0 ➔ T06_TAKT_MASTER_SCHEDULE)
 *   **Akcja:** Odpowiedzialny inżynier zapisuje sekwencję branżowych Takt-Boxów z cotygodniowych tabel Last Planner® System / Takt Time w biurze budowy w formularzu na smartfonie, korzystając z list rozwijanych, przygotowanych przed rozpoczęciem inwestycji i zapisanych w odpowiednich tabelach.
 *   **Powiązanie:** Skrypt przechwytuje dane i generuje w `T06` unikalny identyfikator `SCHEDULE_KEY` (`Tydzień|Takt|Branża`). Od tej pory plan tygodniowy jest zapisany elektronicznie.
-
-### 📥 1. Pętla Planowania (Forms 00 ➔ T00_SPATIAL_CONFIG ➔ T02_TAKT_MATRIX)
-*   **Akcja:** Odpowiedzialny inżynier wpisuje przed rozpoczęciem inwestycji wszystkie takty na wszystkich poziomach w przestrzeni obiektu inwestycyjnego w formularzu na smartfonie, korzystając z list rozwijanych, przygotowanych przed rozpoczęciem inwestycji i zapisanych w odpowiednich tabelach. Zadanie to wymaga starannego planowania podziału inwestycji na sekcje w gronie managementu wszystkich stron uczestniczących oraz przy zastosowaniu myślenia systemowego. Dodatkowo definiowane są finansowe limity składowania materiałów i ekwipunku w zapisanych taktach/hubach oraz bramy dla dojazdów dla dedykowanych dostaw. Dane te są następnie automatycznie przesyłane do tabeli 'T02', będącej podstawą planowania pracy w taktach (formularz Forms 0).
-*   **Powiązanie:** Dane z formularza są przekazywane najpierw do tabeli 'T00', która sortuje i organizuje je przestrzennie, a potem są one przesyłane do 'T02' w jednym ciągłym, automatycznym procesie.
 
 ### 📥 2. Pętla Logistyczna (Forms 1A & 1B ➔ T08_DELIVERIES)
 *   **Akcja:** Logistyk/Dostawca zgłasza transport (Paszport Logistyczny) wraz z deklarowaną wartością finansową ładunku w PLN/EUR.
@@ -117,13 +117,13 @@ Eine Alternative zur Google-Umgebung ist das Open-Source-System NextCloud. TAKTI
 
 Das System eliminiert die manuelle Dateneingabe durch Informationsaustauschschleifen, die von dem Cloud-Skript `Code.gs` gesteuert werden:
 
+### 📥 0. Planungsschleife (Forms 00 ➔ T00_SPATIAL_CONFIG ➔ T02_TAKT_MATRIX)
+*   **Aktion:** Vor Beginn des Bauvorhabens erfasst der zuständige Ingenieur sämtliche Takte auf allen Ebenen innerhalb des Projektgeländes über ein Formular auf seinem Smartphone. Hierbei greift er auf Dropdown-Listen zurück, die im Vorfeld erstellt und in den entsprechenden Tabellen hinterlegt wurden. Diese Aufgabe erfordert eine sorgfältige Planung der Unterteilung des Bauvorhabens in Abschnitte – unter Einbeziehung des Managements aller beteiligten Parteien und unter Anwendung eines systemorientierten Denkansatzes. Zudem werden finanzielle Obergrenzen für die Lagerung von Materialien und Ausrüstung in den festgelegten Takten bzw. Hubs definiert sowie Zufahrtspunkte für spezifische Lieferungen festgelegt. Diese Daten werden anschließend automatisch in die Tabelle „T02“ übertragen, welche als Grundlage für die Taktplanung dient (Formular „Forms 0“).
+*   **Verknüpfung:** Die Daten aus dem Formular werden zunächst an die Tabelle „T00“ übermittelt, in der sie räumlich sortiert und strukturiert werden. Von dort aus gelangen sie in einem durchgängigen, automatisierten Prozess in die Tabelle „T02“.
+
 ### 📥 1. Planungsschleife (Forms 0 ➔ T06_TAKT_MASTER_SCHEDULE)
 *   **Aktion:** Der verantwortliche Ingenieur erfasst die Abfolge der gewerkspezifischen Takt-Boxen aus den wöchentlichen Last-Planner®-System- bzw. Taktzeit-Tabellen im Baubüro über ein Smartphone-Formular; dabei nutzt er Dropdown-Listen, die vor Projektbeginn vorbereitet und in den entsprechenden Tabellen hinterlegt wurden.
 *   **Verknüpfung:** Ein Skript erfasst die Daten und generiert in `T06` eine eindeutige Kennung `SCHEDULE_KEY` (`Woche|Takt|Gewerk`). Damit ist der Wochenplan elektronisch gespeichert.
-
-### 📥 1. Planungsschleife (Forms 00 ➔ T00_SPATIAL_CONFIG ➔ T02_TAKT_MATRIX)
-*   **Aktion:** Vor Beginn des Bauvorhabens erfasst der zuständige Ingenieur sämtliche Takte auf allen Ebenen innerhalb des Projektgeländes über ein Formular auf seinem Smartphone. Hierbei greift er auf Dropdown-Listen zurück, die im Vorfeld erstellt und in den entsprechenden Tabellen hinterlegt wurden. Diese Aufgabe erfordert eine sorgfältige Planung der Unterteilung des Bauvorhabens in Abschnitte – unter Einbeziehung des Managements aller beteiligten Parteien und unter Anwendung eines systemorientierten Denkansatzes. Zudem werden finanzielle Obergrenzen für die Lagerung von Materialien und Ausrüstung in den festgelegten Takten bzw. Hubs definiert sowie Zufahrtspunkte für spezifische Lieferungen festgelegt. Diese Daten werden anschließend automatisch in die Tabelle „T02“ übertragen, welche als Grundlage für die Taktplanung dient (Formular „Forms 0“).
-*   **Verknüpfung:** Die Daten aus dem Formular werden zunächst an die Tabelle „T00“ übermittelt, in der sie räumlich sortiert und strukturiert werden. Von dort aus gelangen sie in einem durchgängigen, automatisierten Prozess in die Tabelle „T02“.
 
 ### 📥 2. Logistik-Schleife (Formulare 1A & 1B ➔ T08_DELIVERIES)
 *   **Aktion:** Logistiker/Lieferant meldet einen Transport (Logistik-Pass) unter Angabe des deklarierten Warenwerts in PLN/EUR an.
