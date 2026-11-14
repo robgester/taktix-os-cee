@@ -109,7 +109,7 @@ Eine Alternative zur Google-Umgebung ist das Open-Source-System NextCloud. TAKTI
 *   **T10_PLAIN_PROFIT_AND_LOSS** — Das Hauptfinanzbuch des Holdings – eine Aufzeichnung täglicher und wöchentlicher Berichte –, doppelt gesichert und mittels SHA-256-Prüfsumme versiegelt.
 *   **T11_WEEKLY_BOX_SCORE** — Automatischer Rechner für den Stabilitätsindex von Lean-Prozessen (zur Ermittlung des tatsächlichen **PPC-%-Werts**).
 *   **T12_GLOBAL_BOX_SCORE** — Globale Übersicht über Engpässe, WIP-Congestion-Kennzahlen und das finanzielle Bauvolumen.
-*   **T13_WIP_DAILY_MONITOR** – Tägliche Überwachung der Menge der laufenden Arbeiten (**WIP**) für das Gesamtprojekt sowie für die einzelnen Gewerke, basierend auf den in ‚T01‘ festgelegten zulässigen WIP-Mengen.
+*   **'T13_WIP_DAILY_MONITOR'** – Tägliche Überwachung der Menge der laufenden Arbeiten (**WIP**) für das Gesamtprojekt sowie für die einzelnen Gewerke, basierend auf den in ‚T01‘ festgelegten zulässigen WIP-Mengen.
 
 ---
 
