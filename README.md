@@ -11,9 +11,9 @@ Core engine for PL/DE construction investments
 
 ## 🇵🇱 Wersja Polska
 
-TAKTIX OS CEE — prototyp bezobsługowego systemu operacyjnego klasy Enterprise do zarządzania produkcją i logistyką w budownictwie kubaturowym oraz infrastrukturalnym. Oparty na metodyce **`Last Planner® System (LPS®)`**, **`Takt Time Planning`** (Planowanie Taktowe) oraz **`Project Production Management`** (PPM) według standardów Project Production Institute.
+TAKTIX OS CEE — prototyp bezobsługowego systemu operacyjnego klasy Enterprise do zarządzania produkcją i logistyką w budownictwie kubaturowym oraz infrastrukturalnym. Oparty na metodyce **`Last Planner® System (LPS®)`**, **`Takt Time Planning`** (Planowanie Taktowe) oraz **`Project Production Management (PPM)`** według standardów Project Production Institute.
 
-System realizuje ideę **`Monolitu Informacyjnego`**, eliminując rozproszone raporty arkuszowe na rzecz automatycznych, kryptograficznie zabezpieczonych (SHA-256 / OpenTimestamps) pętli relacyjnych w ekosystemie **`Google Workspace (Sheets, Forms, Apps Script) & Looker Studio`**. 
+System realizuje ideę **"Monolitu Informacyjnego"**, eliminując rozproszone raporty arkuszowe na rzecz automatycznych, kryptograficznie zabezpieczonych (SHA-256 / OpenTimestamps) pętli relacyjnych w ekosystemie **`Google Workspace (Sheets, Forms, Apps Script) & Looker Studio`**. 
 
 Wersja CEE zapewnia natywną obsługę wielojęzyczną (PL / DE / EN) oraz wielowalutową (PLN / EUR).
 
@@ -46,21 +46,21 @@ System opiera się na strukturze powiązanych rejestrów (Single Source of Truth
 
 System eliminuje ręczne wprowadzanie danych poprzez pętle wymiany informacji, sterowane przez skrypt chmurowy `Code.gs`:
 
-### 📥 0. Pętla Planowania (`Forms 00` ➔ `T00_SPATIAL_CONFIG` ➔ `T02_TAKT_MATRIX`)
-*   **Akcja:** Odpowiedzialny inżynier wpisuje przed rozpoczęciem inwestycji wszystkie takty na wszystkich poziomach w przestrzeni obiektu inwestycyjnego w formularzu na smartfonie, korzystając z list rozwijanych, przygotowanych przed rozpoczęciem inwestycji i zapisanych w odpowiednich tabelach. Zadanie to wymaga starannego planowania podziału inwestycji na sekcje w gronie managementu wszystkich stron uczestniczących oraz przy zastosowaniu myślenia systemowego. Dodatkowo definiowane są finansowe limity składowania materiałów i ekwipunku w zapisanych taktach/hubach oraz bramy dla dojazdów dla dedykowanych dostaw. Dane te są następnie automatycznie przesyłane do tabeli `T02`, będącej podstawą planowania pracy w taktach (formularz `Forms 0`).
-*   **Powiązanie:** Dane z formularza są przekazywane najpierw do tabeli `T00`, która sortuje i organizuje je przestrzennie, a potem są one przesyłane do `T02` w jednym ciągłym, automatycznym procesie.
+### 📥 0. Pętla Konfiguracji Przestrzennej (`Forms 00` ➔ `T00_SPATIAL_CONFIG` ➔ `T02_TAKT_MATRIX`)
+* **Akcja:** Przed rozpoczęciem inwestycji odpowiedzialny inżynier definiuje w formularzu na smartfonie wszystkie takty na wszystkich poziomach obiektu, korzystając z przygotowanych list rozwijanych. Zadanie to wymaga starannego podziału inwestycji na sekcje w gronie kadry zarządzającej wszystkich stron uczestniczących z zastosowaniem myślenia systemowego. Dodatkowo określane są finansowe limity składowania materiałów i sprzętu w poszczególnych taktach/hubach oraz przypisane do nich **bramy wjazdowe (Delivery Gates)**.
+* **Powiązanie:** Dane z formularza trafiają najpierw do ukrytej tabeli `T00_SPATIAL_CONFIG`, która sortuje i porządkuje je przestrzennie, a następnie zasila tabelę `T02_TAKT_MATRIX`, stanowiącą fundament planowania taktowego.
 
-### 📥 1. Pętla Planowania (`Forms 0` ➔ `T06_TAKT_MASTER_SCHEDULE`)
-*   **Akcja:** Odpowiedzialny inżynier zapisuje sekwencję branżowych Takt-Boxów z cotygodniowych tabel Last Planner® System / Takt Time w biurze budowy w formularzu na smartfonie, korzystając z list rozwijanych, przygotowanych przed rozpoczęciem inwestycji i zapisanych w odpowiednich tabelach.
-*   **Powiązanie:** Skrypt przechwytuje dane i generuje w `T06` unikalny identyfikator `SCHEDULE_KEY` (`Tydzień|Takt|Branża`). Od tej pory plan tygodniowy jest zapisany elektronicznie.
+### 📥 1. Pętla Planowania Tygodniowego (`Forms 0` ➔ `T06_TAKT_MASTER_SCHEDULE`)
+* **Akcja:** Odpowiedzialny inżynier zapisuje cotygodniową sekwencję branżowych Takt-Boxów (z tablic *Last Planner® System* / *Takt Time* w biurze budowy) za pomocą formularza na smartfonie.
+* **Powiązanie:** Skrypt przechwytuje dane i generuje w `T06` unikalny identyfikator `SCHEDULE_KEY` (`Tydzień|Takt|Branża`). Od tego momentu plan tygodniowy jest zapisany elektronicznie i służy do automatycznego parowania raportów terenowych.
 
-### 📥 2. Pętla Logistyczna (`Forms 1A` & `1B` ➔ `T08_DELIVERIES`)
-*   **Akcja:** Logistyk/Dostawca zgłasza transport (Paszport Logistyczny) wraz z deklarowaną wartością finansową ładunku w PLN/EUR.
-*   **Powiązanie:** Dane trafiają do `T08`. Formuła `XLOOKUP` weryfikuje adres e-mail dostawcy w `T05`, pobiera jego ludzką nazwę, a funkcja `SUMIFS` sprawdza skumulowaną wartość towaru w strefie i porównuje ją z limitami finansowymi z `T02`. W przypadku przekroczenia budżetu danego huba, w kolumnie P zapala się numeryczny alert przepełnienia. Akcje są kodowane w hash i timestamp w chmurze blockchain.
+### 📥 2. Pętla Logistyczna i Kontroli Bram (`Forms 1A & 1B` ➔ `T08_DELIVERIES`)
+* **Akcja:** Dostawca/logistyk zgłasza transport przez **Forms 1A** wraz z deklarowaną wartością ładunku (PLN/EUR), natomiast portier na bramie wjazdowej obsługuje weryfikację fizycznego wjazdu przez **Forms 1B**.
+* **Powiązanie:** Dane trafiają do `T08`. Formuła `XLOOKUP` weryfikuje adres e-mail dostawcy w `T05` i pobiera jego nazwę, a `SUMIFS` sprawdza skumulowaną wartość towaru w strefie względem limitów z `T02`. Po zatwierdzeniu slotu (`STAT_BOOKED`) skrypt `Code.gs` automatycznie pobiera przypisaną bramę wjazdową z `T00_SPATIAL_CONFIG` i wysyła wielojęzyczny **Paszport Logistyczny (e-mail + Token ID)**, ryglowany sumą SHA-256 i znacznikiem czasu w chmurze OpenTimestamps.
 
 ### 📥 3. Pętla Meldowania Terenowego (`Forms 3` ➔ `T10_PLAIN_PROFIT_AND_LOSS`)
-*   **Akcja:** Brygadzista podwykonawcy melduje codzienny status robót na konkretnym Takt-Boxie przez formularz na smartfonie.
-*   **Powiązanie:** Skrypt generuje rekord w głównym ledgerze `T10`. Za pomocą bezpiecznika Wildcard, system odpytuje plan `T06` na podstawie strefy i branży, automatycznie wstrzykując do klucza zadania (`TASK_KEY`) właściwy numer tygodnia operacyjnego (`W05|...`). Stan WIP w kolumnie I automatycznie podnosi się do poziomu `1` (praca w toku), a akcja jest kodowana w hash i timestamp w chmurze blockchain.
+* **Akcja:** Brygadzista wykonawcy (zarówno `MAI`, jak i podwykonawcy `SUB`) melduje codzienny postęp procentowy robót na konkretnym Takt-Boxie za pomocą formularza na smartfonie (wybierając takt przyciskami *Multiple Choice* oraz kod branży z listy *Dropdown*).
+* **Powiązanie:** Skrypt generuje rekord w głównym ledgerze `T10`, łącząc podwykonawcę z jego firmą-matką (`MAI`) w kolumnie `Z`. Na podstawie strefy i branży system odpytuje harmonogram `T06` i automatycznie wstrzykuje do klucza zadania (`TASK_KEY`) właściwy numer tygodnia operacyjnego (`W05|...`). Wskaźnik WIP w kolumnie `I` podnosi się do poziomu `1` (praca w toku), a wpis zostaje zabezpieczony kryptograficznie.
 
 ### 📥 4. Pętla Kryptograficznego Odbioru (`Forms 4` ➔ `T10_PLAIN_PROFIT_AND_LOSS`)
 *   **Akcja:** Brygadzista podwykonawcy raportuje zakończenie swojego 'taktu' przez formularz na smartfonie. Inżynier dokonuje technicznego odbioru jakościowego wykonanego taktu z akceptacją w tabeli `T10`.
@@ -102,9 +102,9 @@ Oprogramowanie jest udostępniane na zasadach licencji **GNU General Public Lice
 
 ## 🇦🇹 Deutsche Version
 
-TAKTIX OS CEE – ein Prototyp eines autonomen Betriebssystems der Enterprise-Klasse für das Produktions- und Logistikmanagement im Hoch- und Infrastrukturbau. Es basiert auf der Methodik des **`Last Planner® Systems (LPS®)`**, der **`Takt Time Planning`**-Methode (Taktplanung) sowie dem **`Project Production Management`** (PPM) gemäß den Standards des Project Production Institute.
+TAKTIX OS CEE – ein Prototyp eines autonomen Betriebssystems der Enterprise-Klasse für das Produktions- und Logistikmanagement im Hoch- und Infrastrukturbau. Es basiert auf der Methodik des **`Last Planner® Systems (LPS®)`**, der **`Takt Time Planning`**-Methode (Taktplanung) sowie dem **`Project Production Management (PPM)`** gemäß den Standards des Project Production Institute.
 
-Das System verfolgt den Ansatz eines **„Informationsmonolithen“** und ersetzt verstreute Tabellenkalkulationsberichte durch automatisierte, kryptografisch abgesicherte (SHA-256 / OpenTimestamps) relationale Datenkreisläufe innerhalb des Ökosystems **`Google Workspace (Sheets, Forms, Apps Script) & Looker Studio`**.
+Das System verfolgt den Ansatz eines **"Informationsmonolithen“** und ersetzt verstreute Tabellenkalkulationsberichte durch automatisierte, kryptografisch abgesicherte (SHA-256 / OpenTimestamps) relationale Datenkreisläufe innerhalb des Ökosystems **`Google Workspace (Sheets, Forms, Apps Script) & Looker Studio`**.
 
 Die CEE-Version bietet native Unterstützung für mehrere Sprachen (PL / DE / EN) sowie Währungen (PLN / EUR).
 
@@ -191,7 +191,7 @@ Die Software ist unter den Bedingungen der **GNU General Public License v3 (GPL 
 
 ## 🇬🇧 English Version
 
-TAKTIX OS CEE – An enterprise-grade, zero-maintenance operating system prototype dedicated to production and logistics management in building and infrastructure construction. Built upon **Last Planner® System (LPS®)**, **Takt Time Planning**, and **Project Production Management (PPM)** methodologies according to the principles of the Project Production Institute.
+TAKTIX OS CEE – An enterprise-grade, zero-maintenance operating system prototype dedicated to production and logistics management in building and infrastructure construction. Built upon **`Last Planner® System (LPS®)`**, **`Takt Time Planning`**, and **`Project Production Management (PPM)`** methodologies according to the principles of the Project Production Institute.
 
 The system implements the **"Information Monolith"** concept, eliminating traditional Excel spreadsheets in favor of automated, cryptographically secured relational loops within **Google Workspace (Sheets, Forms, Apps Script) & Looker Studio**.
 
