@@ -156,6 +156,7 @@ Die Software ist unter den Bedingungen der **GNU General Public License v3 (GPL 
 *Copyright (c) 2026 by Robert Szczepaniak. All rights reserved.*
 
 ---
+---
 
 ## 🇬🇧 English Version
 
