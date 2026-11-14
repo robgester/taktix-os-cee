@@ -4,6 +4,7 @@ Core engine for PL/DE construction investments
 
 ---
 ### 🌐 Language / Sprache
+*   🇵🇱 [Polski](README.md) | 🇩🇪 [Deutsch](README_DE.md) | 🇬🇧 **English**
 *   [🇵🇱 Przejdź do wersji polskiej](#-wersja-polska)
 *   [🇦🇹 Zur deutschen Version springen](#-deutsche-version)
 ---
@@ -153,3 +154,87 @@ Die Software ist unter den Bedingungen der **GNU General Public License v3 (GPL 
 *   Jede Integration des TAKTIX OS-Quellcodes (einschliesslich des Code.gs-Skripts) in komerzielle Systeme erfordert den vollständigen Open-Source-Zugriff auf die übergeordnete Software.
 
 *Copyright (c) 2026 by Robert Szczepaniak. All rights reserved.*
+
+## 🇬🇧 Wersja Angielska
+
+An enterprise-grade, zero-maintenance operating system prototype dedicated to production and logistics management in building and infrastructure construction. Built upon **Last Planner® System (LPS®)**, **Takt Time Planning**, and **Project Production Management (PPM)** methodologies according to the principles of the Project Production Institute.
+
+The system implements the **"Information Monolith"** concept, eliminating traditional Excel spreadsheets in favor of automated, cryptographically secured relational loops within **Google Workspace (Sheets, Forms, Apps Script) & Looker Studio**.
+
+*An Open Source alternative built on **Nextcloud** is currently under development.*
+
+---
+
+## Complete System Architecture (15 Core Tables)
+
+The system is built upon interconnected registers (*Single Source of Truth*):
+
+* **`T00_LOCALISATION`** — Central token dictionary and automatic translator for the entire interface (PL/DE/EN). *Hidden table.*
+* **`T00_SPATIAL_CONFIG`** — Central dictionary of takts, sections, logistics hubs, project levels, and **assigned delivery gates** for site logistics. *Hidden table.*
+* **`T01_README_AND_LICENSE`** — Main project control panel: language selection, reporting currency selection (PLN/EUR), FOREX exchange rate converter, margin parameters, and Work in Process (**WIP**) limits for individual trades and the entire project.
+* **`T02_TAKT_MATRIX`** — Dictionary of unloading zones and Takt-Boxes with built-in capital storage limits `[Max]` expressed in the project's base currency, tracking current limit reserves.
+* **`T03_PRODUCTION_FLOW_DICTIONARY`** — Register of trade codes, multilingual scope descriptions, and front-of-work readiness criteria (*Make-Ready*).
+* **`T04_LOGISTICS_SLOTS_DICTIONARY`** — Register of delivery time slots for material deliveries to takts defined in `T02`, general on-site storage areas, or external off-site logistics hubs.
+* **`T05_CONTRACTS_REGISTER`** — Central register of contracts, digital identities of the General / Main Contractor (`MAI`), Subcontractors (`SUB`), Suppliers (`SUP`), cost centers, and contract values.
+* **`T06_TAKT_MASTER_SCHEDULE`** — Active schedule of the Site Engineer generating dynamic schedule keys (`SCHEDULE_KEY`) and cycle times based on *Last Planner® System* and *Takt Time* tables. The digital master production plan.
+* **`T07_VARIABILITY_MANAGEMENT`** — Incident command center monitoring financial waste, downtime, and Andon resolution statuses (`🚨 IN PROGRESS` / `CLOSED`), secured with a SHA-256 checksum.
+* **`T08_DELIVERIES`** — Delivery register featuring an automated material hub overflow radar (`HDR_HUB_STATUS`) and a cryptographically locked **Logistics Passport generator (e-mail + Token ID + assigned gate)**.
+* **`T09_LEAN_TRANSFORMATION_COSTS`** — Protocol and cost register of activities aimed at implementing Lean methodology on the construction project (secured with a SHA-256 hash).
+* **`T10_PLAIN_PROFIT_AND_LOSS`** — Main holding operational and financial ledger linking `MAI–SUB` hierarchies, daily and weekly progress reports, logistics costs, and variability costs; double-locked (quality sign-off + payment release) and anchored with a SHA-256 / OpenTimestamps checksum.
+* **`T11_WEEKLY_BOX_SCORE`** — Automated Lean process stability calculator computing the actual **PPC %** (*Percent Plan Complete*) alongside weekly revenues, costs, and margins.
+* **`T12_GLOBAL_BOX_SCORE`** — Global executive overview of bottlenecks, **WIP Congestion** indicators, and strategic financial commitment across contracts.
+* **`T13_WIP_DAILY_MONITOR`** — Daily monitor of Work in Process (**WIP**) volume for the entire project and each trade based on permissible WIP limits defined in `T01`.
+
+---
+
+## Data Flow & Automation Loops (`Code.gs`)
+
+The system eliminates manual data entry through **7 automated information exchange loops**, controlled by the cloud script `Code.gs`:
+
+### 📥 0. Spatial Configuration Loop (`Forms 00` ➔ `T00_SPATIAL_CONFIG` ➔ `T02_TAKT_MATRIX`)
+* **Action:** Prior to project kickoff, the responsible Site Engineer defines all takts across all building levels using a smartphone form with pre-configured dropdown lists. This step requires careful spatial zoning by the management teams of all participating stakeholders applying systems thinking. Additionally, financial storage limits for materials/equipment and **dedicated delivery gates** are assigned.
+* **Connection:** Form entries are routed first to the hidden `T00_SPATIAL_CONFIG` table, which sorts and organizes them spatially, and then automatically populates `T02_TAKT_MATRIX` as the foundation for takt planning.
+
+### 📥 1. Weekly Planning Loop (`Forms 0` ➔ `T06_TAKT_MASTER_SCHEDULE`)
+* **Action:** The responsible engineer records the weekly sequence of trade Takt-Boxes (from *Last Planner® System* / *Takt Time* site boards) via smartphone form.
+* **Connection:** The script captures the input and generates a unique `SCHEDULE_KEY` (`Week|Takt|Trade`) in `T06`. From this moment on, the weekly production plan is digitally locked and used to automatically match field reports.
+
+### 📥 2. Logistics & Gate Control Loop (`Forms 1A & 1B` ➔ `T08_DELIVERIES`)
+* **Action:** The supplier/logistics coordinator books a delivery slot via **Forms 1A** with the declared cargo value (PLN/EUR), while gate security manages physical arrival verification via **Forms 1B**.
+* **Connection:** Data flows into `T08`. `XLOOKUP` verifies the supplier's e-mail in `T05` to retrieve their company name, while `SUMIFS` checks cumulative cargo value in the zone against limits from `T02`. Upon slot approval (`STAT_BOOKED`), `Code.gs` automatically fetches the assigned delivery gate from `T00_SPATIAL_CONFIG` and sends a multilingual **Logistics Passport (e-mail + Token ID)**, anchored with SHA-256 and OpenTimestamps.
+
+### 📥 3. Field Reporting Loop (`Forms 3` ➔ `T10_PLAIN_PROFIT_AND_LOSS`)
+* **Action:** The subcontractor's foreman reports daily percentage progress on a specific Takt-Box via smartphone form (selecting the takt via *Multiple Choice* buttons and the trade code via *Dropdown*).
+* **Connection:** The script creates a record in the main ledger `T10`, linking subcontractors (`SUB`) to their parent contractor (`MAI`) in Column `Z`. Based on zone and trade, the system queries `T06` and automatically injects the active operational week number (`W05|...`) into the `TASK_KEY`. The WIP indicator in Column `I` rises to `1` (work in progress), and the entry is cryptographically secured.
+
+### 📥 4. Cryptographic Sign-Off Loop (`Forms 4` ➔ `T10_PLAIN_PROFIT_AND_LOSS`)
+* **Action:** The foreman reports takt completion via smartphone form, and the Site Engineer performs technical quality verification with acceptance in `T10`.
+* **Connection:** Cloud verification locates the matching `TASK_KEY` in `T10`, sets Quality Acceptance (`Column T`) to `TRUE`, resets the WIP indicator in Column `I` to `0` (zone released), and upon payment release (`Column U`) triggers the **SHA-256 / OpenTimestamps** algorithm, generating a 64-character immutable hash sealing the actual margin. `T11` updates simultaneously, feeding PPC metrics into Looker Studio dashboards.
+
+### 📥 5. Variability Management Loop (`Forms 2` ➔ `T07_VARIABILITY_MANAGEMENT`)
+* **Action:** Breakdowns, delivery delays, or lack of work front readiness are reported directly from the construction site via smartphone form.
+* **Connection:** The incident feeds the `T07` command center. A multilingual status mechanism raises an Andon flag (`🚨 IN PROGRESS` / `CLOSED`), highlighted in red on the Looker Studio Pareto chart until the responsible engineer closes the issue in Column `M` of `T07` (triggering a local or external SHA-256 seal).
+
+### 📥 6. Lean Evaluation & Transformation Loop (`Forms 5` ➔ `T09_LEAN_TRANSFORMATION_COSTS`)
+* **Action:** The responsible engineer logs Lean implementation costs (licenses, workshops, training, consulting) via smartphone form.
+* **Connection:** Financial and statistical data are automatically ingested into `T09` and visualized in executive Looker Studio reports. Each cost record is secured with a SHA-256 checksum.
+
+---
+
+## Quick Start / Deployment Guide
+
+To deploy your own instance of **TAKTIX OS CEE** in Google Workspace:
+
+1. **Copy the Template:** Make a copy of the master Google Sheet in your Google Drive (along with the linked forms: `Forms 00`, `Forms 0`, `Forms 1A`, `Forms 1B`, `Forms 2`, `Forms 3`, `Forms 4`, `Forms 5`).
+2. **Core Configuration (`T01_README_AND_LICENSE`):** Select your interface language (`PL` / `DE` / `EN`), holding reporting currency (`PLN` / `EUR`), margin parameters, and WIP limits.
+3. **Script Setup (`Code.gs`):** Open **Extensions ➔ Apps Script**, paste `Code.gs`, and replace the form ID placeholders (`form0Id`, `form1AId_Unique`, `form1BId`, `form2Id`, `form3Id`, `form4Id`) with your own copied Google Form IDs.
+4. **Sync & Triggers:** Run `runNativeFormUpdate` once to authorize script permissions, then configure event triggers (`On edit` for `onEdit` and `On form submit` for `runNativeFormUpdate`).
+
+---
+
+## License & Copyright
+
+This software is distributed under the **GNU General Public License v3.0 (GPL-3.0)**.
+
+* This guarantees that the system remains free and open for the engineering community.
+* Any incorporation of **TAKTIX OS** source code (including the `Code.gs` script and formula architecture) into proprietary commercial systems requires the complete source code of the parent software to be released under the same license terms.
