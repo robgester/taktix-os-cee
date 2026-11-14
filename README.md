@@ -73,6 +73,17 @@ System eliminuje ręczne wprowadzanie danych poprzez pętle wymiany informacji, 
   
 ---
 
+## Szybki Start / Instrukcja Wdrożenia (Quick Start)
+
+Aby uruchomić własną instancję **TAKTIX OS CEE** w środowisku Google Workspace:
+
+1. **Kopia szablonu:** Utwórz kopię głównego Arkusza Google na swoim Dysku Google (wraz z powiązanymi 8 formularzami: `Forms 00`, `Forms 0`, `Forms 1A`, `Forms 1B`, `Forms 2`, `Forms 3`, `Forms 4`, `Forms 5`).
+2. **Konfiguracja podstawowa (`T01_README_AND_LICENSE`):** Wybierz język interfejsu (`PL` / `DE` / `EN`), walutę raportową holdingu (`PLN` / `EUR`), wskaźniki marżowe oraz limity WIP.
+3. **Konfiguracja skryptu (`Code.gs`):** Otwórz edytor **Rozszerzenia ➔ Apps Script**, wklej plik `Code.gs` i podmień placeholdery identyfikatorów formularzy (`form0Id`, `form1AId_Unique`, `form1BId`, `form2Id`, `form3Id`, `form4Id`) na własne ID skopiowanych formularzy Google.
+4. **Synchronizacja i wyzwalacze (Triggers):** Uruchom jednorazowo funkcję `runNativeFormUpdate` (autoryzując dostęp skryptu), a następnie ustaw wyzwalacze czasowe/zdarzeniowe (`On edit` dla `onEdit` oraz `On form submit` dla `runNativeFormUpdate`).
+
+---
+
 ## ⚖️ Licencja & Prawa Autorskie
 
 Oprogramowanie jest udostępniane na zasadach licencji **GNU General Public License v3 (GPL v3)**.
