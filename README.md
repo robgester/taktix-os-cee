@@ -10,11 +10,12 @@ Core engine for PL/DE construction investments
 ---
 
 ## 🇵🇱 Wersja Polska
-Prototyp bezobsługowego systemu klasy Enterprise dedykowany do zarządzania produkcją i logistyką w budownictwie kubaturowym lub infrastrukturalnym na bazie metodyki **LP®S (Last Planner® System)**, **Takt Time Planning (Planowanie Taktowe)** oraz **Project Production (Produkcja Budowlana)** według zasad Project Production Institute. 
 
-System realizuje ideę "Monolitu Informacyjnego", eliminując tradycyjne raporty Excela na rzecz automatycznych, kryptograficznie zabezpieczonych pętli relacyjnych w chmurze Google Apps Script & Looker Studio. 
+TAKTIX OS CEE — prototyp bezobsługowego systemu operacyjnego klasy Enterprise do zarządzania produkcją i logistyką w budownictwie kubaturowym oraz infrastrukturalnym. Oparty na metodyce **`Last Planner® System (LPS®)`**, **`Takt Time Planning`** (Planowanie Taktowe) oraz **`Project Production Management`** (PPM) według standardów Project Production Institute.
+System realizuje ideę **`Monolitu Informacyjnego`**, eliminując rozproszone raporty arkuszowe na rzecz automatycznych, kryptograficznie zabezpieczonych (SHA-256 / OpenTimestamps) pętli relacyjnych w ekosystemie **`Google Workspace (Sheets, Forms, Apps Script) & Looker Studio`**. 
+Wersja CEE zapewnia natywną obsługę wielojęzyczną (PL / DE / EN) oraz wielowalutową (PLN / EUR).
 
-Alternatywą dla środowiska Google jest Open Source NextCloud. TAKTIX OS w wersji NextCloud jest na razie w opracowaniu.
+*Alternatywą dla środowiska chmurowego Google jest wariant Open Source oparty na Nextcloud (obecnie w fazie opracowania).*
 
 ---
 
