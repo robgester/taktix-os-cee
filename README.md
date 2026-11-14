@@ -26,8 +26,8 @@ System opiera się na strukturze powiązanych rejestrów (Single Source of Truth
 *   **`T01_README_AND_LICENSE`** — Główny panel sterowania projektem, wybór języka, wybór waluty (PLN/EUR) i przelicznik kursowy FOREX oraz ustawienie maksymalnej ilości prac w toku (WIP - Work in Process) dla poszczególnych branż i całej inwestycji.
 *   **`T02_TAKT_MATRIX`** — Słownik stref rozładunkowych i Takt-Boxów z wbudowanym limitem składowania kapitału [Max] wyrażonym w walucie bazowej projektu oraz stanem aktualnej rezerwy limitów.
 *   **`T03_PRODUCTION_FLOW_DICTIONARY`** — Rejestr kodów branżowych, dwujęzycznych opisów zakresu prac oraz kryteriów wejścia na front robót.
-*   **`T04_LOGISTICS_SLOTS_DICTIONARY`** — Rejestr okien czasowych dla dostaw materiałowych do zdefiniowanych w 'T02' taktów, ogólnych miejsc składowania na terenie budowy lub zewnętrznych hubów magazynowych.
-*   **`T05_CONTRACTS_REGISTER`** — Centralny rejestr umów, tożsamości cyfrowych generalnego wykonawcy (MAI), podwykonawców (SUB), dostawców (SUP) oraz sum kontraktowych.
+*   **`T04_LOGISTICS_SLOTS_DICTIONARY`** — Rejestr okien czasowych dla dostaw materiałowych do zdefiniowanych w `T02` taktów, ogólnych miejsc składowania na terenie budowy lub zewnętrznych hubów magazynowych.
+*   **`T05_CONTRACTS_REGISTER`** — Centralny rejestr umów, tożsamości cyfrowych generalnego wykonawcy (`MAI`), podwykonawców (`SUB`), dostawców (`SUP`) oraz sum kontraktowych.
 *   **`T06_TAKT_MASTER_SCHEDULE`** — Bieżący harmonogram inżyniera kontraktu generujący dynamiczne klucze planu (`SCHEDULE_KEY`) i czasy cykli na bazie tabel Last Planner® śystem i Takt Time. Digitalny centralny plan pracy.
 *   **`T07_VARIABILITY_MANAGEMENT`** — Centrala awarii, monitorująca marnotrawstwo finansowe, przestoje oraz statusy usuwania usterek Andon (`🚨 W TOKU` / `ZAMKNIĘTY`).
 *   **`T08_DELIVERIES`** — Rejestr dostaw z automatycznym radarem przepełnienia logistycznego hubów materiałowych (`HDR_HUB_STATUS`).
@@ -35,7 +35,7 @@ System opiera się na strukturze powiązanych rejestrów (Single Source of Truth
 *   **`T10_PLAIN_PROFIT_AND_LOSS`** — Główny ledger finansowy holdingu, zapis codziennych i cotygodniowych raportów, podwójnie ryglowany i zamykany sumą kontrolną SHA-256.
 *   **`T11_WEEKLY_BOX_SCORE`** — Automatyczny kalkulator wskaźnika stabilności procesów Lean (wyliczający rzeczywisty wynik **`PPC %`**).
 *   **`T12_GLOBAL_BOX_SCORE`** — Globalne zestawienie zatorów, wskaźników WIP Congestion oraz finansowego zaangażowania budowy.
-*   **`T13_WIP_DAILY_MONITOR`** - Dzienny monitor ilości prac w toku (**`WIP`**) dla całej inwestycji i każdej z branż na bazie dopuszczalnych ilości WIP, zapisanych w 'T01'.
+*   **`T13_WIP_DAILY_MONITOR`** - Dzienny monitor ilości prac w toku (**`WIP`**) dla całej inwestycji i każdej z branż na bazie dopuszczalnych ilości WIP, zapisanych w `T01`.
 
 ---
 
@@ -44,8 +44,8 @@ System opiera się na strukturze powiązanych rejestrów (Single Source of Truth
 System eliminuje ręczne wprowadzanie danych poprzez pętle wymiany informacji, sterowane przez skrypt chmurowy `Code.gs`:
 
 ### 📥 0. Pętla Planowania (`Forms 00` ➔ `T00_SPATIAL_CONFIG` ➔ `T02_TAKT_MATRIX`)
-*   **Akcja:** Odpowiedzialny inżynier wpisuje przed rozpoczęciem inwestycji wszystkie takty na wszystkich poziomach w przestrzeni obiektu inwestycyjnego w formularzu na smartfonie, korzystając z list rozwijanych, przygotowanych przed rozpoczęciem inwestycji i zapisanych w odpowiednich tabelach. Zadanie to wymaga starannego planowania podziału inwestycji na sekcje w gronie managementu wszystkich stron uczestniczących oraz przy zastosowaniu myślenia systemowego. Dodatkowo definiowane są finansowe limity składowania materiałów i ekwipunku w zapisanych taktach/hubach oraz bramy dla dojazdów dla dedykowanych dostaw. Dane te są następnie automatycznie przesyłane do tabeli 'T02', będącej podstawą planowania pracy w taktach (formularz Forms 0).
-*   **Powiązanie:** Dane z formularza są przekazywane najpierw do tabeli 'T00', która sortuje i organizuje je przestrzennie, a potem są one przesyłane do 'T02' w jednym ciągłym, automatycznym procesie.
+*   **Akcja:** Odpowiedzialny inżynier wpisuje przed rozpoczęciem inwestycji wszystkie takty na wszystkich poziomach w przestrzeni obiektu inwestycyjnego w formularzu na smartfonie, korzystając z list rozwijanych, przygotowanych przed rozpoczęciem inwestycji i zapisanych w odpowiednich tabelach. Zadanie to wymaga starannego planowania podziału inwestycji na sekcje w gronie managementu wszystkich stron uczestniczących oraz przy zastosowaniu myślenia systemowego. Dodatkowo definiowane są finansowe limity składowania materiałów i ekwipunku w zapisanych taktach/hubach oraz bramy dla dojazdów dla dedykowanych dostaw. Dane te są następnie automatycznie przesyłane do tabeli `T02`, będącej podstawą planowania pracy w taktach (formularz `Forms 0`).
+*   **Powiązanie:** Dane z formularza są przekazywane najpierw do tabeli `T00`, która sortuje i organizuje je przestrzennie, a potem są one przesyłane do `T02` w jednym ciągłym, automatycznym procesie.
 
 ### 📥 1. Pętla Planowania (`Forms 0` ➔ `T06_TAKT_MASTER_SCHEDULE`)
 *   **Akcja:** Odpowiedzialny inżynier zapisuje sekwencję branżowych Takt-Boxów z cotygodniowych tabel Last Planner® System / Takt Time w biurze budowy w formularzu na smartfonie, korzystając z list rozwijanych, przygotowanych przed rozpoczęciem inwestycji i zapisanych w odpowiednich tabelach.
@@ -60,7 +60,7 @@ System eliminuje ręczne wprowadzanie danych poprzez pętle wymiany informacji, 
 *   **Powiązanie:** Skrypt generuje rekord w głównym ledgerze `T10`. Za pomocą bezpiecznika Wildcard, system odpytuje plan `T06` na podstawie strefy i branży, automatycznie wstrzykując do klucza zadania (`TASK_KEY`) właściwy numer tygodnia operacyjnego (`W05|...`). Stan WIP w kolumnie I automatycznie podnosi się do poziomu `1` (praca w toku), a akcja jest kodowana w hash i timestamp w chmurze blockchain.
 
 ### 📥 4. Pętla Kryptograficznego Odbioru (`Forms 4` ➔ `T10_PLAIN_PROFIT_AND_LOSS`)
-*   **Akcja:** Brygadzista podwykonawcy raportuje zakończenie swojego 'taktu' przez formularz na smartfonie. Inżynier dokonuje technicznego odbioru jakościowego wykonanego taktu z akceptacją w tabeli 'T10'.
+*   **Akcja:** Brygadzista podwykonawcy raportuje zakończenie swojego 'taktu' przez formularz na smartfonie. Inżynier dokonuje technicznego odbioru jakościowego wykonanego taktu z akceptacją w tabeli `T10`.
 *   **Powiązanie:** Weryfikacja w chmurze odnajduje pasujący `TASK_KEY` w `T10`, przestawia kolumnę T (`ZADANIE_UKONCZONE`) na `TRUE`, zeruje wskaźnik WIP w kolumnie I (front zwolniony) i uruchamia algorytm SHA-256, generując 64-znakowy nienaruszalny hash pieczętujący marżę rzeczywistą. Ożywa tabela `T11`, przerzucając wskaźnik PPC do Looker Studio poprzez przygotowane odpowiednie diagramy.
 
 ### 📥 5. Pętla Zarządzania Zmiennością (`Forms 2` ➔ `T07_VARIABILITY_MANAGEMENT`)
@@ -69,7 +69,7 @@ System eliminuje ręczne wprowadzanie danych poprzez pętle wymiany informacji, 
 
 ### 📥 6. Pętla Ewaluacji i Transformacji Lean (`Forms 5` ➔ `T09_LEAN_TRANSFORMATION_COSTS`)
 *   **Akcja:** Rejestr kosztów wprowadzania metodyki lean do inwestycji (licencje, warsztaty, szkolenia, doradztwo). Odpowiedzialny inżynier wprowadza dane faktury do formularza na smartfonie.
-*   **Powiązanie:** Dane (finansowe i statystyczne) są automatycznie zasysane przez tabelę 'T09', a potem wprowadzane do Looker Studio w odpowiednich wizualnych diagramach dla zarządu holdingu. Działanie finansowe jest kodowane w hash i timestamp w chmurze blockchain.
+*   **Powiązanie:** Dane (finansowe i statystyczne) są automatycznie zasysane przez tabelę `T09`, a potem wprowadzane do Looker Studio w odpowiednich wizualnych diagramach dla zarządu holdingu. Działanie finansowe jest kodowane w hash i timestamp w chmurze blockchain.
   
 ---
 
@@ -100,16 +100,16 @@ Eine Alternative zur Google-Umgebung ist das Open-Source-System NextCloud. TAKTI
 *   **`T01_README_AND_LICENSE`** — Zentrale Projektsteuerung, Sprach- und Währungsauswahl (PLN/EUR) sowie FOREX-Wechselkursumrechnung und Festlegung der maximalen Anzahl laufender Arbeiten (WIP – Work in Process) für die einzelnen Gewerke und das Gesamtprojekt.
 *   **`T02_TAKT_MATRIX`** — Verzeichnis der Entladezonen und Takt-Boxen mit integriertem Limit für das gebundene Kapital [Max], angegeben in der Basiswährung des Projekts, mit der Anzeige der aktuellen Limitreserve.
 *   **`T03_PRODUCTION_FLOW_DICTIONARY`** — Verzeichnis der Branchencodes, zweisprachigen Beschreibungen des Leistungsumfangs sowie der Kriterien für den Arbeitsbeginn.
-*   **`T04_LOGISTICS_SLOTS_DICTIONARY`** — Verzeichnis der Zeitfenster für Materiallieferungen an die in „T02“ definierten Takte, an allgemeine Lagerbereiche auf der Baustelle oder an externe Lager-Hubs.
-*   **`T05_CONTRACTS_REGISTER`** — Zentrales Register für Verträge, digitale Identitäten von Generalunternehmern (MAI), Subunternehmern (SUB) und Lieferanten (SUP) sowie Vertragssummen.
+*   **`T04_LOGISTICS_SLOTS_DICTIONARY`** — Verzeichnis der Zeitfenster für Materiallieferungen an die in `T02` definierten Takte, an allgemeine Lagerbereiche auf der Baustelle oder an externe Lager-Hubs.
+*   **`T05_CONTRACTS_REGISTER`** — Zentrales Register für Verträge, digitale Identitäten von Generalunternehmern (`MAI`), Subunternehmern (`SUB`) und Lieferanten (`SUP`) sowie Vertragssummen.
 *   **`T06_TAKT_MASTER_SCHEDULE`** — Aktueller Zeitplan des Vertragsingenieurs, der dynamische Planungsschlüssel (`SCHEDULE_KEY`) sowie Taktzeiten auf der Grundlage von Last-Planner®- und Taktzeit-Systemtabellen generiert. Digitaler zentraler Arbeitsplan.
 *   **`T07_VARIABILITY_MANAGEMENT`** — Zentrale zur Überwachung von finanzieller Verschwendung, Stillständen sowie dem Status der Störungsbehebung (Andon: `🚨 IN BEARBEITUNG` / `ABGESCHLOSSEN`).
 *   **`T08_DELIVERIES`** — Lieferregister mit automatischer Überwachung von Überlastungen an Material-Logistik-Hubs (`HDR_HUB_STATUS`).
 *   **`T09_LEAN_TRANSFORMATION_COSTS`** — Protokoll der Maßnahmen zur Einführung der Lean-Methodik bei Investitionsvorhaben.
 *   **`T10_PLAIN_PROFIT_AND_LOSS`** — Das Hauptfinanzbuch des Holdings – eine Aufzeichnung täglicher und wöchentlicher Berichte –, doppelt gesichert und mittels SHA-256-Prüfsumme versiegelt.
-*   **`T11_WEEKLY_BOX_SCORE`** — Automatischer Rechner für den Stabilitätsindex von Lean-Prozessen (zur Ermittlung des tatsächlichen **PPC-%-Werts**).
+*   **`T11_WEEKLY_BOX_SCORE`** — Automatischer Rechner für den Stabilitätsindex von Lean-Prozessen (zur Ermittlung des tatsächlichen **`PPC-%-Werts`**).
 *   **`T12_GLOBAL_BOX_SCORE`** — Globale Übersicht über Engpässe, WIP-Congestion-Kennzahlen und das finanzielle Bauvolumen.
-*   **`T13_WIP_DAILY_MONITOR`** – Tägliche Überwachung der Menge der laufenden Arbeiten (**WIP**) für das Gesamtprojekt sowie für die einzelnen Gewerke, basierend auf den in ‚T01‘ festgelegten zulässigen WIP-Mengen.
+*   **`T13_WIP_DAILY_MONITOR`** – Tägliche Überwachung der Menge der laufenden Arbeiten (**`WIP`**) für das Gesamtprojekt sowie für die einzelnen Gewerke, basierend auf den in `T01` festgelegten zulässigen WIP-Mengen.
 
 ---
 
@@ -118,8 +118,8 @@ Eine Alternative zur Google-Umgebung ist das Open-Source-System NextCloud. TAKTI
 Das System eliminiert die manuelle Dateneingabe durch Informationsaustauschschleifen, die von dem Cloud-Skript `Code.gs` gesteuert werden:
 
 ### 📥 0. Planungsschleife (`Forms 00` ➔ `T00_SPATIAL_CONFIG` ➔ `T02_TAKT_MATRIX`)
-*   **Aktion:** Vor Beginn des Bauvorhabens erfasst der zuständige Ingenieur sämtliche Takte auf allen Ebenen innerhalb des Projektgeländes über ein Formular auf seinem Smartphone. Hierbei greift er auf Dropdown-Listen zurück, die im Vorfeld erstellt und in den entsprechenden Tabellen hinterlegt wurden. Diese Aufgabe erfordert eine sorgfältige Planung der Unterteilung des Bauvorhabens in Abschnitte – unter Einbeziehung des Managements aller beteiligten Parteien und unter Anwendung eines systemorientierten Denkansatzes. Zudem werden finanzielle Obergrenzen für die Lagerung von Materialien und Ausrüstung in den festgelegten Takten bzw. Hubs definiert sowie Zufahrtspunkte für spezifische Lieferungen festgelegt. Diese Daten werden anschließend automatisch in die Tabelle „T02“ übertragen, welche als Grundlage für die Taktplanung dient (Formular „Forms 0“).
-*   **Verknüpfung:** Die Daten aus dem Formular werden zunächst an die Tabelle „T00“ übermittelt, in der sie räumlich sortiert und strukturiert werden. Von dort aus gelangen sie in einem durchgängigen, automatisierten Prozess in die Tabelle „T02“.
+*   **Aktion:** Vor Beginn des Bauvorhabens erfasst der zuständige Ingenieur sämtliche Takte auf allen Ebenen innerhalb des Projektgeländes über ein Formular auf seinem Smartphone. Hierbei greift er auf Dropdown-Listen zurück, die im Vorfeld erstellt und in den entsprechenden Tabellen hinterlegt wurden. Diese Aufgabe erfordert eine sorgfältige Planung der Unterteilung des Bauvorhabens in Abschnitte – unter Einbeziehung des Managements aller beteiligten Parteien und unter Anwendung eines systemorientierten Denkansatzes. Zudem werden finanzielle Obergrenzen für die Lagerung von Materialien und Ausrüstung in den festgelegten Takten bzw. Hubs definiert sowie Zufahrtspunkte für spezifische Lieferungen festgelegt. Diese Daten werden anschließend automatisch in die Tabelle `T02` übertragen, welche als Grundlage für die Taktplanung dient (Formular `Forms 0`).
+*   **Verknüpfung:** Die Daten aus dem Formular werden zunächst an die Tabelle „T00“ übermittelt, in der sie räumlich sortiert und strukturiert werden. Von dort aus gelangen sie in einem durchgängigen, automatisierten Prozess in die Tabelle `T02`.
 
 ### 📥 1. Planungsschleife (`Forms 0` ➔ `T06_TAKT_MASTER_SCHEDULE`)
 *   **Aktion:** Der verantwortliche Ingenieur erfasst die Abfolge der gewerkspezifischen Takt-Boxen aus den wöchentlichen Last-Planner®-System- bzw. Taktzeit-Tabellen im Baubüro über ein Smartphone-Formular; dabei nutzt er Dropdown-Listen, die vor Projektbeginn vorbereitet und in den entsprechenden Tabellen hinterlegt wurden.
@@ -134,8 +134,8 @@ Das System eliminiert die manuelle Dateneingabe durch Informationsaustauschschle
 *   **Verknüpfung:** Das Skript erzeugt einen Datensatz im Haupt-Ledger `T10`. Mittels einer Wildcard-Logik fragt das System den Plan `T06` basierend auf Zone und Gewerk ab und fügt automatisch die korrekte operative Kalenderwoche (`W05|...`) in den Aufgaben-Schlüssel (`TASK_KEY`) ein. Der WIP-Status in Spalte I wird automatisch auf `1` (Work in Process) gesetzt, und die Aktion wird als Hash sowie Zeitstempel in der Blockchain-Cloud kodiert.
 
 ### 📥 4. Kryptografischer Abnahmeschritt (`Forms 4` ➔ `T10_PLAIN_PROFIT_AND_LOSS`)
-*   **Aktion:** Der Vorarbeiter des Subunternehmers meldet den Abschluss seines „Takts“ über ein Smartphone-Formular. Ein Ingenieur führt die technische Qualitätsabnahme des ausgeführten Takts durch und bestätigt diese in der Tabelle „T10“.
-*   **Verknüpfung:** Die Cloud-Verifizierung identifiziert den passenden `TASK_KEY` in „T10“, setzt die Spalte T (`AUFGABE ABGESCHLOSSEN`) auf `TRUE`, setzt den WIP-Indikator in Spalte I (Arbeitsbereich freigegeben) auf Null und startet den SHA-256-Algorithmus; dabei wird ein unveränderlicher 64-Zeichen-Hash generiert, der die tatsächliche Marge besiegelt. Die Tabelle „T11“ wird aktiviert und überträgt den PPC-Indikator über entsprechend vorbereitete Diagramme an Looker Studio.
+*   **Aktion:** Der Vorarbeiter des Subunternehmers meldet den Abschluss seines „Takts“ über ein Smartphone-Formular. Ein Ingenieur führt die technische Qualitätsabnahme des ausgeführten Takts durch und bestätigt diese in der Tabelle `T10`.
+*   **Verknüpfung:** Die Cloud-Verifizierung identifiziert den passenden `TASK_KEY` in `T10`, setzt die Spalte T (`AUFGABE ABGESCHLOSSEN`) auf `TRUE`, setzt den WIP-Indikator in Spalte I (Arbeitsbereich freigegeben) auf Null und startet den SHA-256-Algorithmus; dabei wird ein unveränderlicher 64-Zeichen-Hash generiert, der die tatsächliche Marge besiegelt. Die Tabelle `T11` wird aktiviert und überträgt den PPC-Indikator über entsprechend vorbereitete Diagramme an Looker Studio.
 
 ### 📥 5. Variabilitätsmanagement-Schleife (`Forms 2` ➔ `T07_VARIABILITY_MANAGEMENT`)
 *   **Aktion:** Das Auftreten einer Störung, einer Lieferverzögerung oder eines fehlenden Arbeitsbereichs wird von der Baustelle aus über ein Smartphone-Formular gemeldet.
@@ -143,7 +143,7 @@ Das System eliminiert die manuelle Dateneingabe durch Informationsaustauschschle
 
 ### 📥 6. Lean-Evaluierungs- und Transformationsschleife (`Forms 5` ➔ `T09_LEAN_TRANSFORMATION_COSTS`)
 *   **Aktion:** Erfassung der Kosten für die Einführung der Lean-Methodik im Investitionsprojekt (Lizenzen, Workshops, Schulungen, Beratung). Der verantwortliche Ingenieur gibt die Rechnungsdaten in das Formular auf dem Smartphone ein.
-*   **Verknüpfung:** Die Daten (finanziell und statistisch) werden automatisch in die Tabelle „T09“ übertragen und anschließend in Looker Studio in entsprechenden visuellen Diagrammen für die Holding-Geschäftsführung aufbereitet. Der Finanzvorgang wird mittels Hash und Zeitstempel in der Blockchain-Cloud verschlüsselt und dokumentiert.
+*   **Verknüpfung:** Die Daten (finanziell und statistisch) werden automatisch in die Tabelle `T09` übertragen und anschließend in Looker Studio in entsprechenden visuellen Diagrammen für die Holding-Geschäftsführung aufbereitet. Der Finanzvorgang wird mittels Hash und Zeitstempel in der Blockchain-Cloud verschlüsselt und dokumentiert.
 
 ---
 
