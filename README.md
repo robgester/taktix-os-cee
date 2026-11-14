@@ -164,7 +164,7 @@ Das System eliminiert die manuelle Dateneingabe durch Informationsaustauschschle
 
 Um Ihre eigene Instanz von **TAKTIX OS CEE** in der Google Workspace-Umgebung in Betrieb zu nehmen:
 
-1. **Kopie der Vorlage:** Erstellen Sie eine Kopie der Haupt-Google-Tabelle in Ihrem Google Drive (einschließlich der 8 zugehörigen Formulare: `Forms 00`, `Forms 0`, `Forms 1A`, `Forms 1B`, `Forms 2`, `Forms 3`, `Forms 4`, `Forms 5`).
+1. **Kopie der Vorlage:** Erstellen Sie eine Kopie der Haupt-Google-Tabelle in Ihrem Google Drive (einschliesslich der 8 zugehörigen Formulare: `Forms 00`, `Forms 0`, `Forms 1A`, `Forms 1B`, `Forms 2`, `Forms 3`, `Forms 4`, `Forms 5`).
 2. **Grundkonfiguration (`T01_README_AND_LICENSE`):** Legen Sie die Benutzeroberflächensprache (`PL` / `DE` / `EN`), die Berichtswährung der Holding (`PLN` / `EUR`), die Margenkennzahlen sowie die WIP-Limits fest.
 3. **Skriptkonfiguration (`Code.gs`):** Öffnen Sie den Editor über **Erweiterungen ➔ Apps Script**, fügen Sie den Inhalt der Datei `Code.gs` ein und ersetzen Sie die Platzhalter für die Formular-IDs (`form0Id`, `form1AId_Unique`, `form1BId`, `form2Id`, `form3Id`, `form4Id`) durch die tatsächlichen IDs Ihrer kopierten Google-Formulare.
 4. **Synchronisierung und Trigger:** Führen Sie einmalig die Funktion `runNativeFormUpdate` aus (und erteilen Sie dabei die erforderlichen Berechtigungen für das Skript). Richten Sie anschliessend die entsprechenden Trigger ein (zeitgesteuert oder ereignisbasiert: `Bei Bearbeitung` für `onEdit` sowie `Bei Formularübermittlung` für `runNativeFormUpdate`).
@@ -174,8 +174,10 @@ Um Ihre eigene Instanz von **TAKTIX OS CEE** in der Google Workspace-Umgebung in
 ## ⚖️ Lizenz & Urheberrecht
 
 Die Software ist unter den Bedingungen der **GNU General Public License v3 (GPL v3)** verfügbar.
-*   Dadurch wird sichergestellt, dass das System für die Ingenieursgemeinschaft frei und offen bleibt.
-*   Jede Integration des TAKTIX OS-Quellcodes (einschliesslich des `Code.gs`-Skripts) in komerzielle Systeme erfordert den vollständigen Open-Source-Zugriff auf die übergeordnete Software.
+
+* Dies stellt sicher, dass das System für die Ingenieurs-Community frei und kostenlos bleibt.
+* Die Einbindung des Quellcodes von **TAKTIX OS** (einschliesslich des Skripts `Code.gs` sowie der Formelarchitektur) in kommerzielle Systeme verpflichtet dazu, den Quellcode der übergeordneten Software unter denselben Lizenzbedingungen vollständig offenzulegen.
+* Zudem muss im Hauptverzeichnis des GitHub-Repositorys eine Datei namens `LICENSE` hinzugefügt werden, die den vollständigen Text der GNU GPL v3.0-Lizenz enthält.
 
 *Copyright (c) 2026 by Robert Szczepaniak. All rights reserved.*
 
@@ -259,7 +261,7 @@ To deploy your own instance of **TAKTIX OS CEE** in Google Workspace:
 
 ---
 
-## License & Copyright
+## ⚖️ License & Copyright
 
 This software is distributed under the **GNU General Public License v3.0 (GPL-3.0)**.
 
