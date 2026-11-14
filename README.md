@@ -8,6 +8,7 @@ Core engine for PL/DE construction investments
 *   [🇦🇹 Zur deutschen Version springen](#-deutsche-version)
 *   [🇬🇧 Jump to English Version](#-english-version)
 ---
+---
 
 ## 🇵🇱 Wersja Polska
 
@@ -99,6 +100,7 @@ Oprogramowanie jest udostępniane na zasadach licencji **GNU General Public Lice
 
 ---
 ---
+---
 
 ## 🇦🇹 Deutsche Version
 
@@ -187,6 +189,7 @@ Die Software ist unter den Bedingungen der **GNU General Public License v3 (GPL 
 
 *Copyright (c) 2026 by Robert Szczepaniak. All rights reserved.*
 
+---
 ---
 ---
 
