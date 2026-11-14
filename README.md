@@ -119,7 +119,7 @@ Das System eliminiert die manuelle Dateneingabe durch Informationsaustauschschle
 
 ### 📥 0. Planungsschleife (`Forms 00` ➔ `T00_SPATIAL_CONFIG` ➔ `T02_TAKT_MATRIX`)
 *   **Aktion:** Vor Beginn des Bauvorhabens erfasst der zuständige Ingenieur sämtliche Takte auf allen Ebenen innerhalb des Projektgeländes über ein Formular auf seinem Smartphone. Hierbei greift er auf Dropdown-Listen zurück, die im Vorfeld erstellt und in den entsprechenden Tabellen hinterlegt wurden. Diese Aufgabe erfordert eine sorgfältige Planung der Unterteilung des Bauvorhabens in Abschnitte – unter Einbeziehung des Managements aller beteiligten Parteien und unter Anwendung eines systemorientierten Denkansatzes. Zudem werden finanzielle Obergrenzen für die Lagerung von Materialien und Ausrüstung in den festgelegten Takten bzw. Hubs definiert sowie Zufahrtspunkte für spezifische Lieferungen festgelegt. Diese Daten werden anschließend automatisch in die Tabelle `T02` übertragen, welche als Grundlage für die Taktplanung dient (Formular `Forms 0`).
-*   **Verknüpfung:** Die Daten aus dem Formular werden zunächst an die Tabelle „T00“ übermittelt, in der sie räumlich sortiert und strukturiert werden. Von dort aus gelangen sie in einem durchgängigen, automatisierten Prozess in die Tabelle `T02`.
+*   **Verknüpfung:** Die Daten aus dem Formular werden zunächst an die Tabelle `T00` übermittelt, in der sie räumlich sortiert und strukturiert werden. Von dort aus gelangen sie in einem durchgängigen, automatisierten Prozess in die Tabelle `T02`.
 
 ### 📥 1. Planungsschleife (`Forms 0` ➔ `T06_TAKT_MASTER_SCHEDULE`)
 *   **Aktion:** Der verantwortliche Ingenieur erfasst die Abfolge der gewerkspezifischen Takt-Boxen aus den wöchentlichen Last-Planner®-System- bzw. Taktzeit-Tabellen im Baubüro über ein Smartphone-Formular; dabei nutzt er Dropdown-Listen, die vor Projektbeginn vorbereitet und in den entsprechenden Tabellen hinterlegt wurden.
@@ -139,7 +139,7 @@ Das System eliminiert die manuelle Dateneingabe durch Informationsaustauschschle
 
 ### 📥 5. Variabilitätsmanagement-Schleife (`Forms 2` ➔ `T07_VARIABILITY_MANAGEMENT`)
 *   **Aktion:** Das Auftreten einer Störung, einer Lieferverzögerung oder eines fehlenden Arbeitsbereichs wird von der Baustelle aus über ein Smartphone-Formular gemeldet.
-*   **Verknüpfung:** Der Vorfall speist die Störungszentrale `T07`. Spalte L setzt mittels eines dynamischen, mehrsprachigen `XVERWEIS` (`XLOOKUP`) ein Andon-Signal (`🚨 IN ARBEIT` / `ABGESCHLOSSEN`), das im Pareto-Diagramm in Looker Studio rot leuchtet, bis der zuständige Ingenieur die Störung in Spalte M der Tabelle 'T07' abschließt. Die Aktion wird als Hash und Zeitstempel in der Blockchain-Cloud kodiert.
+*   **Verknüpfung:** Der Vorfall speist die Störungszentrale `T07`. Spalte L setzt mittels eines dynamischen, mehrsprachigen `XVERWEIS` (`XLOOKUP`) ein Andon-Signal (`🚨 IN ARBEIT` / `ABGESCHLOSSEN`), das im Pareto-Diagramm in Looker Studio rot leuchtet, bis der zuständige Ingenieur die Störung in Spalte M der Tabelle `T07` abschließt. Die Aktion wird als Hash und Zeitstempel in der Blockchain-Cloud kodiert.
 
 ### 📥 6. Lean-Evaluierungs- und Transformationsschleife (`Forms 5` ➔ `T09_LEAN_TRANSFORMATION_COSTS`)
 *   **Aktion:** Erfassung der Kosten für die Einführung der Lean-Methodik im Investitionsprojekt (Lizenzen, Workshops, Schulungen, Beratung). Der verantwortliche Ingenieur gibt die Rechnungsdaten in das Formular auf dem Smartphone ein.
