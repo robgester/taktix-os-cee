@@ -240,3 +240,5 @@ This software is distributed under the **GNU General Public License v3.0 (GPL-3.
 
 * This guarantees that the system remains free and open for the engineering community.
 * Any incorporation of **TAKTIX OS** source code (including the `Code.gs` script and formula architecture) into proprietary commercial systems requires the complete source code of the parent software to be released under the same license terms.
+
+*Copyright (c) 2026 by Robert Szczepaniak. All rights reserved.*
