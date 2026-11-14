@@ -155,6 +155,8 @@ Die Software ist unter den Bedingungen der **GNU General Public License v3 (GPL 
 
 *Copyright (c) 2026 by Robert Szczepaniak. All rights reserved.*
 
+---
+
 ## 🇬🇧 English Version
 
 An enterprise-grade, zero-maintenance operating system prototype dedicated to production and logistics management in building and infrastructure construction. Built upon **Last Planner® System (LPS®)**, **Takt Time Planning**, and **Project Production Management (PPM)** methodologies according to the principles of the Project Production Institute.
