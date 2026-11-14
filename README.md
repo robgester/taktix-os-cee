@@ -34,7 +34,7 @@ System opiera się na strukturze powiązanych rejestrów (Single Source of Truth
 *   **T10_PLAIN_PROFIT_AND_LOSS** — Główny ledger finansowy holdingu, zapis codziennych i cotygodniowych raportów, podwójnie ryglowany i zamykany sumą kontrolną SHA-256.
 *   **T11_WEEKLY_BOX_SCORE** — Automatyczny kalkulator wskaźnika stabilności procesów Lean (wyliczający rzeczywisty wynik **PPC %**).
 *   **T12_GLOBAL_BOX_SCORE** — Globalne zestawienie zatorów, wskaźników WIP Congestion oraz finansowego zaangażowania budowy.
-*   **T13_WIP_DAILY_MONITOR** - Dzienny monitor ilości prac w toku **WIP** dla całej inwestycji i każdej z branż na bazie dopuszczalnych ilości 'WIP', zapisanych w 'T01'.
+*   **T13_WIP_DAILY_MONITOR** - Dzienny monitor ilości prac w toku **WIP** dla całej inwestycji i każdej z branż na bazie dopuszczalnych ilości WIP, zapisanych w 'T01'.
 
 ---
 
