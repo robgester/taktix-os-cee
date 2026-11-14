@@ -86,9 +86,11 @@ Aby uruchomić własną instancję **TAKTIX OS CEE** w środowisku Google Worksp
 
 ## ⚖️ Licencja & Prawa Autorskie
 
-Oprogramowanie jest udostępniane na zasadach licencji **GNU General Public License v3 (GPL v3)**.
-*   Gwarantuje to, że system pozostanie wolny i darmowy dla społeczności inżynierskiej.
-*   Jakiekolwiek wbudowanie kodu źródłowego TAKTIX OS (w tym skryptu `Code.gs`) do systemów komercyjnych wymusza pełne otwarcie kodu źródłowego oprogramowania nadrzędnego.
+Oprogramowanie jest udostępniane na zasadach licencji **GNU General Public License v3.0 (GPL-3.0)**.
+
+* Gwarantuje to, że system pozostanie wolny i darmowy dla społeczności inżynierskiej.
+* Jakiekolwiek wbudowanie kodu źródłowego **TAKTIX OS** (w tym skryptu `Code.gs` oraz architektury formuł) do systemów komercyjnych wymusza pełne otwarcie kodu źródłowego oprogramowania nadrzędnego na tych samych zasadach licencyjnych.
+* W projekcie należy również dodać plik `LICENSE` zawierający pełny tekst licencji GNU GPL v3.0 w głównym katalogu repozytorium GitHub.
 
 *Copyright (c) 2026 by Robert Szczepaniak. All rights reserved.*
 
