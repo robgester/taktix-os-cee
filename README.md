@@ -94,7 +94,8 @@ Eine Alternative zur Google-Umgebung ist das Open-Source-System NextCloud. TAKTI
 ---
 
 ### 🏗️ Komplette Systemarchitektur (Die 13 Tabellen des Kerns)
-*   **T00_LOCALISATION** — Zentrales Token-Wörterbuch und automatischer Interface-Übersetzer (PL/DE). Tabelle versteckt.
+*   **T00_LOCALISATION** — Zentrales Token-Wörterbuch und automatischer Interface-Übersetzer (PL/DE). Ausgeblendete Tabelle.
+*   **T00_SPATIAL_CONFIG** – Zentrales Verzeichnis von Takten, Sektionen, Lager-Hubs und Investitionsebenen (Zwischen- bzw. Organisationstabelle). Ausgeblendete Tabelle.
 *   **T01_README_AND_LICENSE** — Zentrale Projektsteuerung, Sprach- und Währungsauswahl (PLN/EUR) sowie FOREX-Wechselkursumrechnung und Festlegung der maximalen Anzahl laufender Arbeiten (WIP – Work in Process) für die einzelnen Gewerke und das Gesamtprojekt.
 *   **T02_TAKT_MATRIX** — Verzeichnis der Entladezonen und Takt-Boxen mit integriertem Limit für das gebundene Kapital [Max], angegeben in der Basiswährung des Projekts.
 *   **T03_PRODUCTION_FLOW_DICTIONARY** — Verzeichnis der Branchencodes, zweisprachigen Beschreibungen des Leistungsumfangs sowie der Kriterien für den Arbeitsbeginn.
@@ -107,6 +108,7 @@ Eine Alternative zur Google-Umgebung ist das Open-Source-System NextCloud. TAKTI
 *   **T10_PLAIN_PROFIT_AND_LOSS** — Das Hauptfinanzbuch des Holdings – eine Aufzeichnung täglicher und wöchentlicher Berichte –, doppelt gesichert und mittels SHA-256-Prüfsumme versiegelt.
 *   **T11_WEEKLY_BOX_SCORE** — Automatischer Rechner für den Stabilitätsindex von Lean-Prozessen (zur Ermittlung des tatsächlichen **PPC-%-Werts**).
 *   **T12_GLOBAL_BOX_SCORE** — Globale Übersicht über Engpässe, WIP-Congestion-Kennzahlen und das finanzielle Bauvolumen.
+*   **T13_WIP_DAILY_MONITOR** – Tägliche Überwachung der Menge der laufenden Arbeiten (**WIP**) für das Gesamtprojekt sowie für die einzelnen Gewerke, basierend auf den in ‚T01‘ festgelegten zulässigen WIP-Mengen.
 
 ---
 
