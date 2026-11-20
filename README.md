@@ -1,6 +1,6 @@
-# taktix-os-cee
+# taktix-os-cee (v1.0.0)
 Core engine for PL/DE construction investments
-# 🎛️ TAKTIX OS — Central Production & Logistics Matrix Engine [CEE Region]
+# 🎛️ TAKTIX OS CEE PL-DE (v1.0.0) — Central Production & Logistics Matrix Engine [CEE Region]
 
 ---
 ### 🌐 Language / Sprache
