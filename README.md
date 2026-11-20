@@ -5,7 +5,7 @@ Core engine for PL/DE construction investments
 ---
 ### 🌐 Language / Sprache
 *   [🇵🇱 Przejdź do wersji polskiej](#-wersja-polska)
-*   [🇦🇹 Zur deutschen Version springen](#-deutsche-version)
+*   [🇦🇹/🇩🇪 Zur deutschen Version springen](#-deutsche-version)
 *   [🇬🇧 Jump to English Version](#-english-version)
 ---
 ---
@@ -93,6 +93,18 @@ System składa się z głównego Arkusza Google oraz **8 powiązanych formularzy
    * Pamiętaj, aby po skopiowaniu pojedynczego formularza podpiąć go do odpowiedniej zakładki w Arkuszu (**Odpowiedzi ➔ Wybierz miejsce docelowe odpowiedzi ➔ Wybierz istniejący arkusz kalkulacyjny**).
 3. > ⚠️ **Ważna zasada bezpieczeństwa:** Wszystkie silniki obliczeniowe (`ARRAYFORMULA`) są zaszyte w **wierszu #1 (nagłówki)** lub **wierszu #2**. Nigdy nie usuwaj tych wierszy – dane operacyjne wprowadzane są zawsze od wiersza #2 (lub #3 w zależności od tabeli) w dół.
 
+| Moduł / Formularz | Rola w systemie | Link do skopiowania szablonu |
+| :--- | :--- | :--- |
+| **TAKTIX OS CEE (Master Sheet)** | Główny Monolit (15 tabel + `Code.gs`) | `[Wklej link z końcówką /copy]` |
+| **Forms 00** | Konfiguracja przestrzenna i bramy wjazdowe | `[Wklej link z końcówką /copy]` |
+| **Forms 0** | Planowanie tygodniowe (`T06`) | `[Wklej link z końcówką /copy]` |
+| **Forms 1A** | Rezerwacja slotów dostaw przez dostawców | `[Wklej link z końcówką /copy]` |
+| **Forms 1B** | Kontrola bram wjazdowych przez portiera | `[Wklej link z końcówką /copy]` |
+| **Forms 2** | Zgłaszanie awarii i incydentów Andon (`T07`) | `[Wklej link z końcówką /copy]` |
+| **Forms 3** | Dzienne raportowanie postępu robót (`T10`) | `[Wklej link z końcówką /copy]` |
+| **Forms 4** | Cotygodniowy odbiór jakościowy (`T10`) | `[Wklej link z końcówką /copy]` |
+| **Forms 5** | Rejestr kosztów transformacji Lean (`T09`) | `[Wklej link z końcówką /copy]` |
+
 ### Krok 2: Konfiguracja parametrów projektu (`T01` – `T05`)
 1. **`T01_README_AND_LICENSE`:** Wybierz język interfejsu (`PL` / `DE` / `EN`), walutę raportową holdingu (`PLN` / `EUR`), wskaźniki narzutów marżowych (`B14`, `B15`) oraz limity prac w toku (**WIP**).
 2. **`T05_CONTRACTS_REGISTER`:** Zdefiniuj strukturę wykonawców (`MAI` – główny wykonawca pakietu, `SUB` – podwykonawcy, `SUP` – dostawcy), przypisz ich adresy e-mail (klucz autoryzacji w terenie!), kwoty kontraktowe oraz stawki narzutu logistycznego (`Kolumna K`).
@@ -132,7 +144,7 @@ Oprogramowanie jest udostępniane na zasadach licencji **GNU General Public Lice
 ---
 ---
 
-## 🇦🇹 Deutsche Version
+## 🇦🇹/🇩🇪 Deutsche Version
 
 TAKTIX OS CEE – ein Prototyp eines autonomen Betriebssystems der Enterprise-Klasse für das Produktions- und Logistikmanagement im Hoch- und Infrastrukturbau. Es basiert auf der Methodik des **`Last Planner® Systems (LPS®)`**, der **`Takt Time Planning`**-Methode (Taktplanung) sowie dem **`Project Production Management (PPM)`** gemäß den Standards des Project Production Institute.
 
@@ -198,14 +210,57 @@ Das System eliminiert die manuelle Dateneingabe durch Informationsaustauschschle
 
 ---
 
-## Schnellstart / Implementierungsanleitung (Quick Start)
+## 🚀 Schnellstart / Bereitstellungsanleitung (Quick Start)
 
-Um Ihre eigene Instanz von **TAKTIX OS CEE** in der Google Workspace-Umgebung in Betrieb zu nehmen:
+Um Ihre eigene, vollständig autonome Instanz von **TAKTIX OS CEE** in der Google Workspace-Umgebung bereitzustellen, führen Sie bitte die folgenden Schritte aus:
 
-1. **Kopie der Vorlage:** Erstellen Sie eine Kopie der Haupt-Google-Tabelle in Ihrem Google Drive (einschliesslich der 8 zugehörigen Formulare: `Forms 00`, `Forms 0`, `Forms 1A`, `Forms 1B`, `Forms 2`, `Forms 3`, `Forms 4`, `Forms 5`).
-2. **Grundkonfiguration (`T01_README_AND_LICENSE`):** Legen Sie die Benutzeroberflächensprache (`PL` / `DE` / `EN`), die Berichtswährung der Holding (`PLN` / `EUR`), die Margenkennzahlen sowie die WIP-Limits fest.
-3. **Skriptkonfiguration (`Code.gs`):** Öffnen Sie den Editor über **Erweiterungen ➔ Apps Script**, fügen Sie den Inhalt der Datei `Code.gs` ein und ersetzen Sie die Platzhalter für die Formular-IDs (`form0Id`, `form1AId_Unique`, `form1BId`, `form2Id`, `form3Id`, `form4Id`) durch die tatsächlichen IDs Ihrer kopierten Google-Formulare.
-4. **Synchronisierung und Trigger:** Führen Sie einmalig die Funktion `runNativeFormUpdate` aus (und erteilen Sie dabei die erforderlichen Berechtigungen für das Skript). Richten Sie anschliessend die entsprechenden Trigger ein (zeitgesteuert oder ereignisbasiert: `On edit` für `onEdit` sowie `On form submit` für `runNativeFormUpdate`).
+### Schritt 1: Vorlagen herunterladen (Google Drive-Ordner / `/copy`-Links)
+Das System besteht aus der Haupt-Google-Tabelle sowie **8 verknüpften Baustellen-Formularen** (`Forms 00`, `Forms 0`, `Forms 1A`, `Forms 1B`, `Forms 2`, `Forms 3`, `Forms 4`, `Forms 5`). Alle Dateien werden schreibgeschützt (*Betrachter* / *Viewer*) bereitgestellt, sodass jeder Nutzer eine eigene, unabhängige Kopie in seinem Google Drive erstellt:
+
+1. **Herunterladen über die Haupttabelle (Empfohlen — schnellste Methode):**
+   * Öffnen Sie den freigegebenen Link zur Google Sheets-Vorlage (oder wechseln Sie in den öffentlichen Vorlagenordner **TAKTIX_OS_CEE_TEMPLATE**).
+   * Wählen Sie im oberen Menü: **Datei ➔ Kopie erstellen** (*File ➔ Make a copy*).
+   * Google Workspace **kopiert automatisch sowohl die Haupttabelle als auch alle 8 verknüpften Formulare in Ihr Google Drive**, wobei die Verknüpfungen zu den `Form responses`-Tabs erhalten bleiben.
+2. **Einzelne Formulare kopieren (`/copy`-Links):**
+   * Wenn Sie ein bestimmtes Formular separat kopieren möchten, klicken Sie auf den entsprechenden Link mit der Endung **`/copy`** (z. B. `.../forms/d/[ID]/copy`) und bestätigen Sie mit **Kopie erstellen** (*Make a copy*).
+   * Verknüpfen Sie das einzeln kopierte Formular anschließend mit dem entsprechenden Tab in Ihrer Tabelle (**Antworten ➔ Ziel für Antworten auswählen ➔ Vorhandene Tabelle auswählen**).
+3. > ⚠️ **Wichtige Sicherheitsregel:** Alle Berechnungs-Engines (`ARRAYFORMULA`) sind in **Zeile #1 (Kopfzeilen)** oder **Zeile #2** verankert. Löschen Sie diese Zeilen niemals – operative Daten werden immer ab Zeile #2 (bzw. #3 je nach Tabelle) abwärts eingetragen.
+
+| Modul / Formular | Rolle im System | Link zum Kopieren der Vorlage |
+| :--- | :--- | :--- |
+| **TAKTIX OS CEE (Master Sheet)** | Haupt-Monolith (15 Tabellen + `Code.gs`) | `[Link mit Endung /copy einfügen]` |
+| **Forms 00** | Räumliche Konfiguration & Zufahrtstore | `[Link mit Endung /copy einfügen]` |
+| **Forms 0** | Wöchentliche Taktplanung (`T06`) | `[Link mit Endung /copy einfügen]` |
+| **Forms 1A** | Liefer-Slot-Buchung durch Lieferanten | `[Link mit Endung /copy einfügen]` |
+| **Forms 1B** | Torkontrolle durch den Pförtner | `[Link mit Endung /copy einfügen]` |
+| **Forms 2** | Störungs- & Andon-Meldungen (`T07`) | `[Link mit Endung /copy einfügen]` |
+| **Forms 3** | Tägliche Baufortschrittsmeldung (`T10`) | `[Link mit Endung /copy einfügen]` |
+| **Forms 4** | Wöchentliche Qualitätsabnahme (`T10`) | `[Link mit Endung /copy einfügen]` |
+| **Forms 5** | Kostenregister Lean-Transformation (`T09`) | `[Link mit Endung /copy einfügen]` |
+
+### Schritt 2: Projektparameter konfigurieren (`T01` – `T05`)
+1. **`T01_README_AND_LICENSE`:** Wählen Sie die Oberflächensprache (`PL` / `DE` / `EN`), die Holding-Berichtswährung (`PLN` / `EUR`), die Margenaufschläge (`B14`, `B15`) sowie die Work-in-Process-Limits (**WIP**).
+2. **`T05_CONTRACTS_REGISTER`:** Definieren Sie die Auftragsstruktur (`MAI` – Hauptauftragnehmer des Gewerkepakets, `SUB` – Nachunternehmer, `SUP` – Lieferanten), hinterlegen Sie deren E-Mail-Adressen (Autorisierungsschlüssel auf der Baustelle!), Vertragssummen sowie Logistik-Umlagesätze (`Spalte K`).
+3. **`T03` & `T04`:** Überprüfen Sie die Gewerkecodes sowie die Lieferzeitfenster (Logistik-Slots).
+
+### Schritt 3: Formulare im Skript verknüpfen (`Code.gs`)
+1. Öffnen Sie in Ihrer kopierten Google-Tabelle das obere Menü: **Erweiterungen ➔ Apps Script**.
+2. Suchen Sie in der Datei `Code.gs` nach den Variablen für die Formular-IDs (`form0Id`, `form1AId_Unique`, `form1BId`, `form2Id`, `form3Id`, `form4Id`).
+3. Öffnen Sie jedes Ihrer kopierten Formulare im Bearbeitungsmodus und kopieren Sie die eindeutige ID aus der Adresszeile des Browsers:
+   `https://google.com`**`[HIER_STEHT_IHRE_FORMULAR_ID]`**`/edit`
+4. Fügen Sie Ihre IDs anstelle der Platzhalter ein und speichern Sie das Projekt (`Strg + S`).
+
+### Schritt 4: Autorisierung und Trigger-Konfiguration
+1. Wählen Sie im Apps Script-Editor in der oberen Leiste die Funktion **`runNativeFormUpdate`** aus und klicken Sie auf **Ausführen** (*Run*).
+2. **Google-Autorisierung:** Beim ersten Start erscheint die Meldung *„Google hat diese App nicht überprüft“*. Klicken Sie auf **Erweitert ➔ Weiter zu [Projektname] (unsicher) ➔ Zulassen**, um dem Skript die Berechtigung zur Aktualisierung der Formulare und zum Versand der Logistik-Pässe per E-Mail zu erteilen.
+3. Klicken Sie im linken Menü des Editors auf das Wecker-Symbol (**Trigger**) und fügen Sie **3 Trigger** hinzu (`+ Trigger hinzufügen`):
+   * **Kryptografische Sperren & Andon:** Funktion `onEdit` | Ereignisquelle: *Aus Tabelle* | Ereignistyp: *Bei Bearbeitung* (`On edit`).
+   * **Live-Aktualisierung der Formulare:** Funktion `runNativeFormUpdate` | Ereignisquelle: *Aus Tabelle* | Ereignistyp: *Beim Senden des Formulars* (`On form submit`).
+   * **Nächtliche FX-Kurs-Synchronisation:** Funktion `runNativeFormUpdate` | Ereignisquelle: *Zeitgesteuert* (`Time-driven`) | *Tages-Timer* (z. B. `00:00–01:00 Uhr`).
+
+### Schritt 5: Räumliche Baustellenkonfiguration (`Forms 00`)
+Füllen Sie vor Baubeginn das Formular **Forms 00** aus, um Zonen/Takte auf den einzelnen Geschossen, Kapital-Lagerlimits sowie die zugehörigen **Zufahrtstore** zu definieren. Das System befüllt automatisch die Tabellen `T00_SPATIAL_CONFIG` und `T02_TAKT_MATRIX` und schaltet damit die wöchentliche Taktplanung in `Forms 0` frei.
+
 
 ---
 
@@ -289,14 +344,57 @@ The system eliminates manual data entry through **7 automated information exchan
 
 ---
 
-## Quick Start / Deployment Guide
+## 🚀 Quick Start / Deployment Guide
 
-To deploy your own instance of **TAKTIX OS CEE** in Google Workspace:
+To deploy your own fully autonomous instance of **TAKTIX OS CEE** in Google Workspace, follow these steps:
 
-1. **Copy the Template:** Make a copy of the master Google Sheet in your Google Drive (along with the linked forms: `Forms 00`, `Forms 0`, `Forms 1A`, `Forms 1B`, `Forms 2`, `Forms 3`, `Forms 4`, `Forms 5`).
-2. **Core Configuration (`T01_README_AND_LICENSE`):** Select your interface language (`PL` / `DE` / `EN`), holding reporting currency (`PLN` / `EUR`), margin parameters, and WIP limits.
-3. **Script Setup (`Code.gs`):** Open **Extensions ➔ Apps Script**, paste `Code.gs`, and replace the form ID placeholders (`form0Id`, `form1AId_Unique`, `form1BId`, `form2Id`, `form3Id`, `form4Id`) with your own copied Google Form IDs.
-4. **Sync & Triggers:** Run `runNativeFormUpdate` once to authorize script permissions, then configure event triggers (`On edit` for `onEdit` and `On form submit` for `runNativeFormUpdate`).
+### Step 1: Download Templates (Drive Folder / `/copy` Links)
+The system consists of the master Google Sheet and **8 linked field forms** (`Forms 00`, `Forms 0`, `Forms 1A`, `Forms 1B`, `Forms 2`, `Forms 3`, `Forms 4`, `Forms 5`). All files are shared in read-only mode (*Viewer*), allowing every user to create an independent copy in their own Google Drive:
+
+1. **Copy via the Master Sheet (Recommended — fastest method):**
+   * Open the shared link to the Google Sheet template (or open the public template folder **TAKTIX_OS_CEE_TEMPLATE**).
+   * Select from the top menu: **File ➔ Make a copy**.
+   * Google Workspace will **automatically copy both the Master Sheet and all 8 linked forms to your Google Drive**, preserving their connections to the `Form responses` tabs.
+2. **Copy Individual Forms (`/copy` Links):**
+   * To copy a specific form separately, click its dedicated link ending with **`/copy`** (e.g., `.../forms/d/[ID]/copy`) and confirm by clicking **Make a copy**.
+   * Remember to link any individually copied form to the corresponding tab in your Sheet (**Responses ➔ Select destination for responses ➔ Select existing spreadsheet**).
+3. > ⚠️ **Important Safety Rule:** All calculation engines (`ARRAYFORMULA`) are embedded in **Row #1 (headers)** or **Row #2**. Never delete these rows—operational data is always entered from Row #2 (or #3 depending on the table) downward.
+
+| Module / Form | Role in System | Template Copy Link |
+| :--- | :--- | :--- |
+| **TAKTIX OS CEE (Master Sheet)** | Core Monolith (15 tables + `Code.gs`) | `[Insert /copy link here]` |
+| **Forms 00** | Spatial configuration & delivery gates | `[Insert /copy link here]` |
+| **Forms 0** | Weekly takt scheduling (`T06`) | `[Insert /copy link here]` |
+| **Forms 1A** | Delivery slot booking by suppliers | `[Insert /copy link here]` |
+| **Forms 1B** | Gate access control by security | `[Insert /copy link here]` |
+| **Forms 2** | Breakdown & Andon incident reporting (`T07`) | `[Insert /copy link here]` |
+| **Forms 3** | Daily field progress reporting (`T10`) | `[Insert /copy link here]` |
+| **Forms 4** | Weekly quality sign-off (`T10`) | `[Insert /copy link here]` |
+| **Forms 5** | Lean transformation cost register (`T09`) | `[Insert /copy link here]` |
+
+### Step 2: Configure Project Parameters (`T01` – `T05`)
+1. **`T01_README_AND_LICENSE`:** Select the interface language (`PL` / `DE` / `EN`), holding reporting currency (`PLN` / `EUR`), margin markups (`B14`, `B15`), and Work in Process (**WIP**) limits.
+2. **`T05_CONTRACTS_REGISTER`:** Define the contractor hierarchy (`MAI` – Main/Package Contractor, `SUB` – Subcontractors, `SUP` – Suppliers), assign their e-mail addresses (used as field authorization keys!), contract sums, and logistics overhead rates (`Column K`).
+3. **`T03` & `T04`:** Verify trade codes and delivery time windows (logistics slots).
+
+### Step 3: Link Forms in the Script (`Code.gs`)
+1. In your copied Google Sheet, open the top menu: **Extensions ➔ Apps Script**.
+2. In `Code.gs`, locate the form ID variables (`form0Id`, `form1AId_Unique`, `form1BId`, `form2Id`, `form3Id`, `form4Id`).
+3. Open each of your copied forms in edit mode and copy its unique ID from the browser address bar:
+   `https://google.com`**`[YOUR_FORM_ID_IS_HERE]`**`/edit`
+4. Paste your IDs in place of the placeholders and save the project (`Ctrl + S`).
+
+### Step 4: Authorization & Trigger Setup
+1. In the Apps Script editor, select the **`runNativeFormUpdate`** function from the top toolbar and click **Run**.
+2. **Google Authorization:** On first run, a warning screen *"Google hasn't verified this app"* will appear. Click **Advanced ➔ Go to [Project Name] (unsafe) ➔ Allow** to grant the script permission to update forms and send Logistics Passports via e-mail.
+3. In the left sidebar of the editor, click the alarm clock icon (**Triggers**) and add **3 triggers** (`+ Add Trigger`):
+   * **Cryptographic Locks & Andon:** Function `onEdit` | Event source: *From spreadsheet* | Event type: *On edit*.
+   * **Live Form Synchronization:** Function `runNativeFormUpdate` | Event source: *From spreadsheet* | Event type: *On form submit*.
+   * **Nightly FX Rate Sync:** Function `runNativeFormUpdate` | Event source: *Time-driven* | *Day timer* (e.g., `Midnight to 1am`).
+
+### Step 5: Spatial Site Configuration (`Forms 00`)
+Before construction begins, fill out **Forms 00** to define zones/takts across building levels, capital storage limits, and assigned **delivery gates**. The system will automatically populate `T00_SPATIAL_CONFIG` and `T02_TAKT_MATRIX`, unlocking weekly scheduling in `Forms 0`.
+
 
 ---
 
