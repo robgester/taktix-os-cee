@@ -95,7 +95,7 @@ System składa się z głównego Arkusza Google oraz **8 powiązanych formularzy
 
 | Moduł / Formularz | Rola w systemie | Link do skopiowania szablonu |
 | :--- | :--- | :--- |
-| **TAKTIX OS CEE (Master Sheet)** | Główny Monolit (15 tabel + `Code.gs`) | `[Wklej link z końcówką /copy]` |
+| **TAKTIX OS CEE (Master Sheet)** | Główny Monolit (15 tabel + `Code.gs`) | https://docs.google.com/spreadsheets/d/1qSq911sIXM64ZnRMQ1SAD7iG7ubDQjygXEGlmZIqgYc/copy |
 | **Forms 00** | Konfiguracja przestrzenna i bramy wjazdowe | `[Wklej link z końcówką /copy]` |
 | **Forms 0** | Planowanie tygodniowe (`T06`) | `[Wklej link z końcówką /copy]` |
 | **Forms 1A** | Rezerwacja slotów dostaw przez dostawców | `[Wklej link z końcówką /copy]` |
