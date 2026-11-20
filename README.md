@@ -105,6 +105,14 @@ System składa się z głównego Arkusza Google oraz **8 powiązanych formularzy
 | **Forms 4** | Cotygodniowy odbiór jakościowy (`T10`) | `[Wklej link z końcówką /copy]` |
 | **Forms 5** | Rejestr kosztów transformacji Lean (`T09`) | `[Wklej link z końcówką /copy]` |
 
+**Wdrożenie aktywacji formularzy przez kod QR na budowie:**
+•	**Android**: Działa od razu po zeskanowaniu systemowym aparatem (link otwiera się natywnie w Google Chrome z aktywną sesją konta Google).
+
+•	**iPhone (iOS)**: Aby zweryfikowane logowanie Google działało płynnie po zeskanowaniu kodu QR z budowy, brygadzista powinien:
+1.	Ustawić Google Chrome jako domyślną przeglądarkę na iPhonie (Ustawienia iPhone ➔ Chrome ➔ Domyślna aplikacja przeglądarki) lub
+2.	W ustawieniach Safari (Ustawienia ➔ Safari) odznaczyć tymczasowo opcję „Zapobiegaj śledzeniu poza witryną” (Prevent Cross-Site Tracking), jeśli używa Safari, inaczej link z Safari trzeba wkleić do Chrome.
+*(Dzięki ustawieniu Chrome jako domyślnej przeglądarki na służbowym iPhonie skanowanie kodów QR aparatem kieruje od razu do Chrome i wysyła meldunek jednym kliknięciem).*
+
 ### Krok 2: Konfiguracja parametrów projektu (`T01` – `T05`)
 1. **`T01_README_AND_LICENSE`:** Wybierz język interfejsu (`PL` / `DE` / `EN`), walutę raportową holdingu (`PLN` / `EUR`), wskaźniki narzutów marżowych (`B14`, `B15`) oraz limity prac w toku (**WIP**).
 2. **`T05_CONTRACTS_REGISTER`:** Zdefiniuj strukturę wykonawców (`MAI` – główny wykonawca pakietu, `SUB` – podwykonawcy, `SUP` – dostawcy), przypisz ich adresy e-mail (klucz autoryzacji w terenie!), kwoty kontraktowe oraz stawki narzutu logistycznego (`Kolumna K`).
@@ -228,7 +236,7 @@ Das System besteht aus der Haupt-Google-Tabelle sowie **8 verknüpften Baustelle
 
 | Modul / Formular | Rolle im System | Link zum Kopieren der Vorlage |
 | :--- | :--- | :--- |
-| **TAKTIX OS CEE (Master Sheet)** | Haupt-Monolith (15 Tabellen + `Code.gs`) | `[Link mit Endung /copy einfügen]` |
+| **TAKTIX OS CEE (Master Sheet)** | Haupt-Monolith (15 Tabellen + `Code.gs`) | https://docs.google.com/spreadsheets/d/1qSq911sIXM64ZnRMQ1SAD7iG7ubDQjygXEGlmZIqgYc/copy |
 | **Forms 00** | Räumliche Konfiguration & Zufahrtstore | `[Link mit Endung /copy einfügen]` |
 | **Forms 0** | Wöchentliche Taktplanung (`T06`) | `[Link mit Endung /copy einfügen]` |
 | **Forms 1A** | Liefer-Slot-Buchung durch Lieferanten | `[Link mit Endung /copy einfügen]` |
@@ -237,6 +245,14 @@ Das System besteht aus der Haupt-Google-Tabelle sowie **8 verknüpften Baustelle
 | **Forms 3** | Tägliche Baufortschrittsmeldung (`T10`) | `[Link mit Endung /copy einfügen]` |
 | **Forms 4** | Wöchentliche Qualitätsabnahme (`T10`) | `[Link mit Endung /copy einfügen]` |
 | **Forms 5** | Kostenregister Lean-Transformation (`T09`) | `[Link mit Endung /copy einfügen]` |
+
+**Aktivierung von Formularen per QR-Code auf der Baustelle:**
+•	**Android**: Funktioniert sofort nach dem Scannen mit der systemeigenen Kamera-App (der Link öffnet sich direkt in Google Chrome, wobei die Google-Konto-Sitzung aktiv bleibt).
+
+•	**iPhone (iOS)**: Damit die verifizierte Google-Anmeldung nach dem Scannen eines QR-Codes auf der Baustelle reibungslos funktioniert, sollte der Vorarbeiter Folgendes tun:
+1.	Google Chrome als Standardbrowser auf dem iPhone festlegen (iPhone-Einstellungen ➔ Chrome ➔ Standard-Browser-App) oder
+2.	falls Safari verwendet wird: in den Safari-Einstellungen (Einstellungen ➔ Safari) die Option „Übergreifendes Tracking verhindern“ (Prevent Cross-Site Tracking) vorübergehend deaktivieren, andernfalls muss der Link aus Safari in Chrome eingefügt werden.
+*(Wenn Chrome als Standardbrowser auf dem dienstlichen iPhone festgelegt ist, führt das Scannen von QR-Codes mit der Kamera direkt zu Chrome, sodass die Meldung mit nur einem Klick übermittelt werden kann).*
 
 ### Schritt 2: Projektparameter konfigurieren (`T01` – `T05`)
 1. **`T01_README_AND_LICENSE`:** Wählen Sie die Oberflächensprache (`PL` / `DE` / `EN`), die Holding-Berichtswährung (`PLN` / `EUR`), die Margenaufschläge (`B14`, `B15`) sowie die Work-in-Process-Limits (**WIP**).
@@ -362,7 +378,7 @@ The system consists of the master Google Sheet and **8 linked field forms** (`Fo
 
 | Module / Form | Role in System | Template Copy Link |
 | :--- | :--- | :--- |
-| **TAKTIX OS CEE (Master Sheet)** | Core Monolith (15 tables + `Code.gs`) | `[Insert /copy link here]` |
+| **TAKTIX OS CEE (Master Sheet)** | Core Monolith (15 tables + `Code.gs`) | https://docs.google.com/spreadsheets/d/1qSq911sIXM64ZnRMQ1SAD7iG7ubDQjygXEGlmZIqgYc/copy |
 | **Forms 00** | Spatial configuration & delivery gates | `[Insert /copy link here]` |
 | **Forms 0** | Weekly takt scheduling (`T06`) | `[Insert /copy link here]` |
 | **Forms 1A** | Delivery slot booking by suppliers | `[Insert /copy link here]` |
@@ -371,6 +387,14 @@ The system consists of the master Google Sheet and **8 linked field forms** (`Fo
 | **Forms 3** | Daily field progress reporting (`T10`) | `[Insert /copy link here]` |
 | **Forms 4** | Weekly quality sign-off (`T10`) | `[Insert /copy link here]` |
 | **Forms 5** | Lean transformation cost register (`T09`) | `[Insert /copy link here]` |
+
+**Implementing form activation via QR codes on the construction site:**
+•	**Android**: Works immediately upon scanning with the system camera (the link opens natively in Google Chrome, with the Google account session already active).
+
+•	**iPhone (iOS)**: To ensure a seamless, verified Google login when scanning a QR code on the construction site, the foreman should:
+1.	Set Google Chrome as the default browser on the iPhone (iPhone Settings ➔ Chrome ➔ Default Browser App), or
+2.	If using Safari, temporarily disable the "Prevent Cross-Site Tracking" option in the Safari settings (Settings ➔ Safari), otherwise you need to paste the link from Safari into Chrome.
+*(Setting Chrome as the default browser on a work-issued iPhone ensures that scanning a QR code with the camera takes you directly to Chrome, allowing you to submit a report with a single click).*
 
 ### Step 2: Configure Project Parameters (`T01` – `T05`)
 1. **`T01_README_AND_LICENSE`:** Select the interface language (`PL` / `DE` / `EN`), holding reporting currency (`PLN` / `EUR`), margin markups (`B14`, `B15`), and Work in Process (**WIP**) limits.
