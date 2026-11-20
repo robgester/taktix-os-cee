@@ -105,7 +105,8 @@ System składa się z głównego Arkusza Google oraz **8 powiązanych formularzy
 | **Forms 4** | Cotygodniowy odbiór jakościowy (`T10`) | `[Wklej link z końcówką /copy]` |
 | **Forms 5** | Rejestr kosztów transformacji Lean (`T09`) | `[Wklej link z końcówką /copy]` |
 
-**Wdrożenie aktywacji formularzy przez kod QR na budowie:**
+*** Wdrożenie aktywacji formularzy przez kod QR na budowie:
+
 •	**Android**: Działa od razu po zeskanowaniu systemowym aparatem (link otwiera się natywnie w Google Chrome z aktywną sesją konta Google).
 
 •	**iPhone (iOS)**: Aby zweryfikowane logowanie Google działało płynnie po zeskanowaniu kodu QR z budowy, brygadzista powinien:
@@ -246,7 +247,8 @@ Das System besteht aus der Haupt-Google-Tabelle sowie **8 verknüpften Baustelle
 | **Forms 4** | Wöchentliche Qualitätsabnahme (`T10`) | `[Link mit Endung /copy einfügen]` |
 | **Forms 5** | Kostenregister Lean-Transformation (`T09`) | `[Link mit Endung /copy einfügen]` |
 
-**Aktivierung von Formularen per QR-Code auf der Baustelle:**
+*** Aktivierung von Formularen per QR-Code auf der Baustelle:
+
 •	**Android**: Funktioniert sofort nach dem Scannen mit der systemeigenen Kamera-App (der Link öffnet sich direkt in Google Chrome, wobei die Google-Konto-Sitzung aktiv bleibt).
 
 •	**iPhone (iOS)**: Damit die verifizierte Google-Anmeldung nach dem Scannen eines QR-Codes auf der Baustelle reibungslos funktioniert, sollte der Vorarbeiter Folgendes tun:
@@ -388,7 +390,8 @@ The system consists of the master Google Sheet and **8 linked field forms** (`Fo
 | **Forms 4** | Weekly quality sign-off (`T10`) | `[Insert /copy link here]` |
 | **Forms 5** | Lean transformation cost register (`T09`) | `[Insert /copy link here]` |
 
-**Implementing form activation via QR codes on the construction site:**
+*** Implementing form activation via QR codes on the construction site:
+
 •	**Android**: Works immediately upon scanning with the system camera (the link opens natively in Google Chrome, with the Google account session already active).
 
 •	**iPhone (iOS)**: To ensure a seamless, verified Google login when scanning a QR code on the construction site, the foreman should:
