@@ -27,7 +27,7 @@ Wersja CEE zapewnia natywną obsługę wielojęzyczną (PL / DE / EN) oraz wielo
 System opiera się na strukturze powiązanych rejestrów (Single Source of Truth):
 *   **`T00_LOCALISATION`** — Centralny słownik tokenów i automatyczny tłumacz całego interfejsu (PL/DE). Tabela ukryta.
 *   **`T00_SPATIAL_CONFIG`** - Centralny słownik taktów, sekcji, hubów magazynowych i poziomów inwestycji (tabela przejściowa, organizująca). Tabela ukryta.
-*   **`T01_README_AND_LICENSE`** — Główny panel sterowania projektem, wybór języka, wybór waluty (PLN/EUR) i przelicznik kursowy FOREX oraz ustawienie maksymalnej ilości prac w toku (WIP - Work in Process) dla poszczególnych branż i całej inwestycji. Ponadto definiowane są tutaj marże Generalnego Wykonawcy i developera.
+*   **`T01_README_AND_LICENSE`** — Główny panel sterowania projektem, wybór języka, wybór waluty (PLN/EUR) i przelicznik kursowy FOREX oraz ustawienie maksymalnej ilości prac w toku (WIP - Work in Process) dla poszczególnych branż i całej inwestycji, jak również dzienny limit czasowy (od-do) dla potrzeb dostaw. Ponadto definiowane są tutaj marże Generalnego Wykonawcy i developera.
 *   **`T02_TAKT_MATRIX`** — Słownik stref rozładunkowych i Takt-Boxów z wbudowanym limitem składowania kapitału [Max] wyrażonym w walucie bazowej projektu oraz stanem aktualnej rezerwy limitów.
 *   **`T03_PRODUCTION_FLOW_DICTIONARY`** — Rejestr kodów branżowych, dwujęzycznych opisów zakresu prac oraz kryteriów wejścia na front robót.
 *   **`T04_LOGISTICS_SLOTS_DICTIONARY`** — Rejestr okien czasowych dla dostaw materiałowych do zdefiniowanych w `T02` taktów, ogólnych miejsc składowania na terenie budowy lub zewnętrznych hubów magazynowych.
@@ -160,7 +160,7 @@ Die CEE-Version bietet native Unterstützung für mehrere Sprachen (PL / DE / EN
 
 *   **`T00_LOCALISATION`** — Zentrales Token-Wörterbuch und automatischer Interface-Übersetzer (PL/DE). Ausgeblendete Tabelle.
 *   **`T00_SPATIAL_CONFIG`** – Zentrales Verzeichnis von Takten, Sektionen, Lager-Hubs und Investitionsebenen (Zwischen- bzw. Organisationstabelle). Ausgeblendete Tabelle.
-*   **`T01_README_AND_LICENSE`** — Zentrale Projektsteuerung, Sprach- und Währungsauswahl (PLN/EUR) sowie FOREX-Wechselkursumrechnung und Festlegung der maximalen Anzahl laufender Arbeiten (WIP – Work in Process) für die einzelnen Gewerke und das Gesamtprojekt. Zudem werden hier die Margen des Generalunternehmers und des Developers festgelegt.
+*   **`T01_README_AND_LICENSE`** — Zentrale Projektsteuerung, Sprach- und Währungsauswahl (PLN/EUR), FOREX-Wechselkursumrechnung und Festlegung der maximalen Anzahl laufender Arbeiten (WIP – Work in Process) für die einzelnen Gewerke und das Gesamtprojekt sowie ein tägliches Zeitfenster (von–bis) für Lieferzwecke. Zudem werden hier die Margen des Generalunternehmers und des Developers festgelegt.
 *   **`T02_TAKT_MATRIX`** — Verzeichnis der Entladezonen und Takt-Boxen mit integriertem Limit für das gebundene Kapital [Max], angegeben in der Basiswährung des Projekts, mit der Anzeige der aktuellen Limitreserve.
 *   **`T03_PRODUCTION_FLOW_DICTIONARY`** — Verzeichnis der Branchencodes, zweisprachigen Beschreibungen des Leistungsumfangs sowie der Kriterien für den Arbeitsbeginn.
 *   **`T04_LOGISTICS_SLOTS_DICTIONARY`** — Verzeichnis der Zeitfenster für Materiallieferungen an die in `T02` definierten Takte, an allgemeine Lagerbereiche auf der Baustelle oder an externe Lager-Hubs.
@@ -294,7 +294,7 @@ The system is built upon interconnected registers (*Single Source of Truth*):
 
 * **`T00_LOCALISATION`** — Central token dictionary and automatic translator for the entire interface (PL/DE/EN). *Hidden table.*
 * **`T00_SPATIAL_CONFIG`** — Central dictionary of takts, sections, logistics hubs, project levels, and **assigned delivery gates** for site logistics. *Hidden table.*
-* **`T01_README_AND_LICENSE`** — Main project control panel: language selection, reporting currency selection (PLN/EUR), FOREX exchange rate converter, margin parameters, and Work in Process (**WIP**) limits for individual trades and the entire project.
+* **`T01_README_AND_LICENSE`** — Main project control panel: language selection, reporting currency selection (PLN/EUR), FOREX exchange rate converter, margin parameters, and Work in Process (**WIP**) limits for individual trades and the entire project, as well as a daily time limit (from–to) for delivery purposes.
 * **`T02_TAKT_MATRIX`** — Dictionary of unloading zones and Takt-Boxes with built-in capital storage limits `[Max]` expressed in the project's base currency, tracking current limit reserves.
 * **`T03_PRODUCTION_FLOW_DICTIONARY`** — Register of trade codes, multilingual scope descriptions, and front-of-work readiness criteria (*Make-Ready*).
 * **`T04_LOGISTICS_SLOTS_DICTIONARY`** — Register of delivery time slots for material deliveries to takts defined in `T02`, general on-site storage areas, or external off-site logistics hubs.
