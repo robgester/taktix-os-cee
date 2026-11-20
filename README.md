@@ -77,14 +77,44 @@ System eliminuje ręczne wprowadzanie danych poprzez pętle wymiany informacji, 
   
 ---
 
-## Szybki Start / Instrukcja Wdrożenia (Quick Start)
+## 🚀 Szybki Start / Instrukcja Wdrożenia (Quick Start)
 
-Aby uruchomić własną instancję **TAKTIX OS CEE** w środowisku Google Workspace:
+Aby uruchomić własną, w pełni autonomiczną instancję **TAKTIX OS CEE** w środowisku Google Workspace, wykonaj poniższe kroki:
 
-1. **Kopia szablonu:** Utwórz kopię głównego Arkusza Google na swoim Dysku Google (wraz z powiązanymi 8 formularzami: `Forms 00`, `Forms 0`, `Forms 1A`, `Forms 1B`, `Forms 2`, `Forms 3`, `Forms 4`, `Forms 5`).
-2. **Konfiguracja podstawowa (`T01_README_AND_LICENSE`):** Wybierz język interfejsu (`PL` / `DE` / `EN`), walutę raportową holdingu (`PLN` / `EUR`), wskaźniki marżowe oraz limity WIP.
-3. **Konfiguracja skryptu (`Code.gs`):** Otwórz edytor **Rozszerzenia ➔ Apps Script**, wklej plik `Code.gs` i podmień placeholdery identyfikatorów formularzy (`form0Id`, `form1AId_Unique`, `form1BId`, `form2Id`, `form3Id`, `form4Id`) na własne ID skopiowanych formularzy Google.
-4. **Synchronizacja i wyzwalacze (Triggers):** Uruchom jednorazowo funkcję `runNativeFormUpdate` (autoryzując dostęp skryptu), a następnie ustaw wyzwalacze czasowe/zdarzeniowe (`On edit` dla `onEdit` oraz `On form submit` dla `runNativeFormUpdate`).
+### Krok 1: Pobranie szablonów (Folder Drive / Linki `/copy`)
+System składa się z głównego Arkusza Google oraz **8 powiązanych formularzy terenowych** (`Forms 00`, `Forms 0`, `Forms 1A`, `Forms 1B`, `Forms 2`, `Forms 3`, `Forms 4`, `Forms 5`). Wszystkie pliki udostępnione są w trybie tylko do odczytu (*Viewer*), dzięki czemu każdy użytkownik tworzy własną, niezależną kopię na swoim Dysku Google:
+
+1. **Pobranie przez główny Arkusz (Zalecane — najszybsza metoda):**
+   * Otwórz udostępniony link do szablonu Arkusza Google (lub wejdź do publicznego folderu szablonów **TAKTIX_OS_CEE_TEMPLATE**).
+   * Wybierz z górnego menu: **Plik ➔ Utwórz kopię** (*File ➔ Make a copy*).
+   * Google Workspace **automatycznie skopiuje na Twój Dysk Google zarówno główny Arkusz, jak i wszystkie 8 podpiętych do niego formularzy**, zachowując ich powiązania z zakładkami `Form responses`.
+2. **Kopiowanie pojedynczych formularzy (Linki `/copy`):**
+   * Jeśli chcesz skopiować wybrany formularz osobno, kliknij jego dedykowany link z końcówką **`/copy`** (np. `.../forms/d/[ID]/copy`) i potwierdź przyciskiem **Utwórz kopię** (*Make a copy*).
+   * Pamiętaj, aby po skopiowaniu pojedynczego formularza podpiąć go do odpowiedniej zakładki w Arkuszu (**Odpowiedzi ➔ Wybierz miejsce docelowe odpowiedzi ➔ Wybierz istniejący arkusz kalkulacyjny**).
+3. > ⚠️ **Ważna zasada bezpieczeństwa:** Wszystkie silniki obliczeniowe (`ARRAYFORMULA`) są zaszyte w **wierszu #1 (nagłówki)** lub **wierszu #2**. Nigdy nie usuwaj tych wierszy – dane operacyjne wprowadzane są zawsze od wiersza #2 (lub #3 w zależności od tabeli) w dół.
+
+### Krok 2: Konfiguracja parametrów projektu (`T01` – `T05`)
+1. **`T01_README_AND_LICENSE`:** Wybierz język interfejsu (`PL` / `DE` / `EN`), walutę raportową holdingu (`PLN` / `EUR`), wskaźniki narzutów marżowych (`B14`, `B15`) oraz limity prac w toku (**WIP**).
+2. **`T05_CONTRACTS_REGISTER`:** Zdefiniuj strukturę wykonawców (`MAI` – główny wykonawca pakietu, `SUB` – podwykonawcy, `SUP` – dostawcy), przypisz ich adresy e-mail (klucz autoryzacji w terenie!), kwoty kontraktowe oraz stawki narzutu logistycznego (`Kolumna K`).
+3. **`T03` & `T04`:** Zweryfikuj kody prac oraz okna czasowe dostaw (sloty logistyczne).
+
+### Krok 3: Podpięcie formularzy w skrypcie (`Code.gs`)
+1. W skopiowanym Arkuszu Google otwórz górne menu: **Rozszerzenia ➔ Apps Script**.
+2. W pliku `Code.gs` odszukaj zmienne z identyfikatorami formularzy (`form0Id`, `form1AId_Unique`, `form1BId`, `form2Id`, `form3Id`, `form4Id`).
+3. Otwórz każdy ze swoich skopiowanych formularzy w trybie edycji i skopiuj jego unikalny identyfikator z paska adresu przeglądarki:
+   `https://google.com`**`[TUTAJ_JEST_TWOJE_ID_FORMULARZA]`**`/edit`
+4. Wklej swoje identyfikatory w miejsce placeholderów i zapisz projekt (`Ctrl + S`).
+
+### Krok 4: Autoryzacja i konfiguracja wyzwalaczy (Triggers)
+1. W edytorze Apps Script wybierz z górnego paska funkcję **`runNativeFormUpdate`** i kliknij **Uruchom** (*Run*).
+2. **Autoryzacja Google:** Przy pierwszym uruchomieniu pojawi się komunikat *„Google nie zweryfikowało tej aplikacji”*. Kliknij **Zaawansowane ➔ Przejdź do projektu (niebezpieczne) ➔ Zezwól**, aby nadać skryptowi uprawnienia do aktualizacji formularzy i wysyłki paszportów logistycznych e-mailem.
+3. W lewym menu edytora kliknij ikonę budzika (**Wyzwalacze** / *Triggers*) i dodaj **3 wyzwalacze** (`+ Dodaj wyzwalacz`):
+   * **Blokady kryptograficzne i Andon:** Funkcja `onEdit` | Źródło: *Z arkusza kalkulacyjnego* | Typ zdarzenia: *Przy edycji* (`On edit`).
+   * **Aktualizacja formularzy na żywo:** Funkcja `runNativeFormUpdate` | Źródło: *Z arkusza kalkulacyjnego* | Typ zdarzenia: *Przy przesłaniu formularza* (`On form submit`).
+   * **Nocna synchronizacja kursów FX:** Funkcja `runNativeFormUpdate` | Źródło: *Oparty na czasie* (`Time-driven`) | *Licznik dni* (`Day timer`, np. `00:00–01:00`).
+
+### Krok 5: Konfiguracja przestrzenna budowy (`Forms 00`)
+Przed rozpoczęciem robót wypełnij formularz **Forms 00**, definiując strefy/takty na poszczególnych kondygnacjach, limity składowania kapitału oraz przypisane do nich **bramy wjazdowe**. System automatycznie zasili tabele `T00_SPATIAL_CONFIG` oraz `T02_TAKT_MATRIX`, odblokowując możliwość planowania tygodniowego w `Forms 0`.
 
 ---
 
