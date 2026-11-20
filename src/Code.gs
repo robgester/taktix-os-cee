@@ -562,7 +562,7 @@ if (form4Sheet) {
       uniqueAssignmentKeys = Array.from(new Set(rawList05)); 
     }
 
-    var form0Id = "1O-jhrNKXEDIND5iF9lQoYljwJjNnMRcBwjuuyLpJDOY"; 
+    var form0Id = "YOUR_FORM_0_ID_HERE"; 
     try {
       var form0 = FormApp.openById(form0Id);
       var form0Items = form0.getItems(FormApp.ItemType.LIST); 
@@ -623,7 +623,7 @@ if (form4Sheet) {
     }
 
     // Wtrysk do Forms 1A (Dostawca wybiera wolną godzinę z grafiku)
-    var form1AId_Unique = "1mc9bAsRUKd1FHgNxdmT1laeNM4t0qkAf57w9yiFukSw"; 
+    var form1AId_Unique = "YOUR_FORM_1A_ID_HERE"; 
     try {
       // 1. Autonomiczne pobranie dwujęzycznych branż bezpośrednio z kolumny D (4) w T03
       var dictSheet = ss3.getSheetByName("T03_PRODUCTION_FLOW_DICTIONARY");
@@ -664,7 +664,7 @@ if (form4Sheet) {
     }
 
     // Wtrysk do Forms 1B (Portier na bramie ma podgląd pełnego grafiku dostaw)
-    var form1BId = "1yixMtjnLvqCK1sDGZfjTQN4uSIqZbk70vkTXV8znE9o"; 
+    var form1BId = "YOUR_FORM_1B_ID_HERE"; 
     try {
       var form1B = FormApp.openById(form1BId);
       var form1BItems = form1B.getItems();
@@ -687,7 +687,7 @@ if (form4Sheet) {
       uniqueTradeLabels = Array.from(new Set(rawList03));
     }
 
-    var form2Id = "1IMUe2an7WZKhWe7EG0awxRitF05JJD8XoEwb_doH49g";
+    var form2Id = "YOUR_FORM_2_ID_HERE";
      try {
       var form2 = FormApp.openById(form2Id);
       var form2Items = form2.getItems(FormApp.ItemType.LIST);
@@ -705,7 +705,7 @@ if (form4Sheet) {
       Logger.log("⚠️ Informacja: Pomijam wtrysk Forms 2: " + e.toString());
     }
 
-    var form3Id = "1JtGRp4h1GIWDj39EaRrEP5KA99riSHNkBDe1QTUFmnw";
+    var form3Id = "YOUR_FORM_3_ID_HERE";
     try {
       var form3 = FormApp.openById(form3Id);
       
@@ -726,7 +726,7 @@ if (form4Sheet) {
       Logger.log("⚠️ Informacja: Pomijam wtrysk Forms 3: " + e.toString());
     }
  
-    var form4Id = "1vsCxqVH20Ke86BqXpxd-G299wmd4usqHQWYuMzCjgqU";
+    var form4Id = "YOUR_FORM_4_ID_HERE";
     try {
       var form4 = FormApp.openById(form4Id);
       var form4Items = form4.getItems(FormApp.ItemType.LIST);
