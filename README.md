@@ -112,6 +112,7 @@ System składa się z głównego Arkusza Google oraz **8 powiązanych formularzy
 •	**iPhone (iOS)**: Aby zweryfikowane logowanie Google działało płynnie po zeskanowaniu kodu QR z budowy, brygadzista powinien:
 1.	Ustawić Google Chrome jako domyślną przeglądarkę na iPhonie (Ustawienia iPhone ➔ Chrome ➔ Domyślna aplikacja przeglądarki) lub
 2.	W ustawieniach Safari (Ustawienia ➔ Safari) odznaczyć tymczasowo opcję „Zapobiegaj śledzeniu poza witryną” (Prevent Cross-Site Tracking), jeśli używa Safari, inaczej link z Safari trzeba wkleić do Chrome.
+
 *(Dzięki ustawieniu Chrome jako domyślnej przeglądarki na służbowym iPhonie skanowanie kodów QR aparatem kieruje od razu do Chrome i wysyła meldunek jednym kliknięciem).*
 
 ### Krok 2: Konfiguracja parametrów projektu (`T01` – `T05`)
@@ -254,6 +255,7 @@ Das System besteht aus der Haupt-Google-Tabelle sowie **8 verknüpften Baustelle
 •	**iPhone (iOS)**: Damit die verifizierte Google-Anmeldung nach dem Scannen eines QR-Codes auf der Baustelle reibungslos funktioniert, sollte der Vorarbeiter Folgendes tun:
 1.	Google Chrome als Standardbrowser auf dem iPhone festlegen (iPhone-Einstellungen ➔ Chrome ➔ Standard-Browser-App) oder
 2.	falls Safari verwendet wird: in den Safari-Einstellungen (Einstellungen ➔ Safari) die Option „Übergreifendes Tracking verhindern“ (Prevent Cross-Site Tracking) vorübergehend deaktivieren, andernfalls muss der Link aus Safari in Chrome eingefügt werden.
+
 *(Wenn Chrome als Standardbrowser auf dem dienstlichen iPhone festgelegt ist, führt das Scannen von QR-Codes mit der Kamera direkt zu Chrome, sodass die Meldung mit nur einem Klick übermittelt werden kann).*
 
 ### Schritt 2: Projektparameter konfigurieren (`T01` – `T05`)
@@ -397,6 +399,7 @@ The system consists of the master Google Sheet and **8 linked field forms** (`Fo
 •	**iPhone (iOS)**: To ensure a seamless, verified Google login when scanning a QR code on the construction site, the foreman should:
 1.	Set Google Chrome as the default browser on the iPhone (iPhone Settings ➔ Chrome ➔ Default Browser App), or
 2.	If using Safari, temporarily disable the "Prevent Cross-Site Tracking" option in the Safari settings (Settings ➔ Safari), otherwise you need to paste the link from Safari into Chrome.
+
 *(Setting Chrome as the default browser on a work-issued iPhone ensures that scanning a QR code with the camera takes you directly to Chrome, allowing you to submit a report with a single click).*
 
 ### Step 2: Configure Project Parameters (`T01` – `T05`)
