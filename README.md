@@ -37,7 +37,7 @@ System opiera się na strukturze powiązanych rejestrów (Single Source of Truth
 *   **`T08_DELIVERIES`** — Rejestr dostaw z automatycznym radarem przepełnienia logistycznego hubów materiałowych (`HDR_HUB_STATUS`).
 *   **`T09_LEAN_TRANSFORMATION_COSTS`** — Protokół działań, mających na celu wprowadzenie metodyki lean do inwestycji.
 *   **`T10_PLAIN_PROFIT_AND_LOSS`** — Główny ledger finansowy holdingu, zapis codziennych i cotygodniowych raportów, podwójnie ryglowany i zamykany sumą kontrolną SHA-256.
-*   **`T11_WEEKLY_BOX_SCORE`** — Automatyczny kalkulator wskaźnika stabilności procesów Lean (wyliczający rzeczywisty wynik **`PPC %`**).
+*   **`T11_WEEKLY_BOX_SCORE`** — Automatyczny tygodniowy kalkulator wskaźnika stabilności procesów Lean (wyliczający rzeczywisty wynik **`PPC %`**).
 *   **`T12_GLOBAL_BOX_SCORE`** — Globalne zestawienie zatorów, wskaźników WIP Congestion oraz finansowego zaangażowania budowy.
 *   **`T13_WIP_DAILY_MONITOR`** - Dzienny monitor ilości prac w toku (**`WIP`**) dla całej inwestycji i każdej z branż na bazie dopuszczalnych ilości WIP, zapisanych w `T01`.
 
@@ -193,7 +193,7 @@ Die CEE-Version bietet native Unterstützung für mehrere Sprachen (PL / DE / EN
 *   **`T08_DELIVERIES`** — Lieferregister mit automatischer Überwachung von Überlastungen an Material-Logistik-Hubs (`HDR_HUB_STATUS`).
 *   **`T09_LEAN_TRANSFORMATION_COSTS`** — Protokoll der Maßnahmen zur Einführung der Lean-Methodik bei Investitionsvorhaben.
 *   **`T10_PLAIN_PROFIT_AND_LOSS`** — Das Hauptfinanzbuch des Holdings – eine Aufzeichnung täglicher und wöchentlicher Berichte –, doppelt gesichert und mittels SHA-256-Prüfsumme versiegelt.
-*   **`T11_WEEKLY_BOX_SCORE`** — Automatischer Rechner für den Stabilitätsindex von Lean-Prozessen (zur Ermittlung des tatsächlichen **`PPC-%-Werts`**).
+*   **`T11_WEEKLY_BOX_SCORE`** — Automatischer, wöchentlicher Rechner für den Stabilitätsindex von Lean-Prozessen (zur Ermittlung des tatsächlichen **`PPC-%-Werts`**).
 *   **`T12_GLOBAL_BOX_SCORE`** — Globale Übersicht über Engpässe, WIP-Congestion-Kennzahlen und das finanzielle Bauvolumen.
 *   **`T13_WIP_DAILY_MONITOR`** – Tägliche Überwachung der Menge der laufenden Arbeiten (**`WIP`**) für das Gesamtprojekt sowie für die einzelnen Gewerke, basierend auf den in `T01` festgelegten zulässigen WIP-Mengen.
 
