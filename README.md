@@ -118,13 +118,13 @@ Aby brygadziści, dostawcy i portierzy mogli błyskawicznie otwierać formularze
    * **Brama wjazdowa / Portiernia:** `Forms 1B` (oraz `Forms 1A` w regulaminie awizacji dla dostawców).
    * **Strefy robocze / Kondygnacje (Takt-Boxy):** `Forms 3` (raport dzienny) oraz `Forms 4` (odbiór jakościowy).
 
-### Wdrożenie aktywacji formularzy przez kod QR na budowie:
+### Aktywacja formularzy przez kod QR na budowie:
 
 •	**Android**: Działa od razu po zeskanowaniu systemowym aparatem (link otwiera się natywnie w Google Chrome z aktywną sesją konta Google).
 
 •	**iPhone (iOS)**: Aby zweryfikowane logowanie Google działało płynnie po zeskanowaniu kodu QR z budowy, brygadzista powinien:
 1.	Ustawić Google Chrome jako domyślną przeglądarkę na iPhonie (Ustawienia iPhone ➔ Chrome ➔ Domyślna aplikacja przeglądarki) lub
-2.	W ustawieniach Safari (Ustawienia ➔ Safari) odznaczyć tymczasowo opcję „Zapobiegaj śledzeniu poza witryną” (Prevent Cross-Site Tracking), jeśli używa Safari, inaczej link z Safari trzeba wkleić do Chrome.
+2.	W ustawieniach Safari (Ustawienia ➔ Safari) odznaczyć tymczasowo opcję „Zapobiegaj śledzeniu poza witryną” (Prevent Cross-Site Tracking), jeśli używa Safari. Inaczej link z Safari trzeba wkleić do Chrome.
 
 *(Dzięki ustawieniu Chrome jako domyślnej przeglądarki na służbowym iPhonie skanowanie kodów QR aparatem kieruje od razu do Chrome i wysyła meldunek jednym kliknięciem).*
 
