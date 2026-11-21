@@ -103,7 +103,7 @@ System składa się z głównego Arkusza Google oraz **8 powiązanych formularzy
 | **Forms 2** | Zgłaszanie awarii i incydentów Andon (`T07`) | https://docs.google.com/forms/d/1FTk7usclYKJHrUt4RglHMyIlqPByk6kT2azGWM0ORI4/copy |
 | **Forms 3** | Dzienne raportowanie postępu robót (`T10`) | https://docs.google.com/forms/d/1e9608fwHKRltq2R0VQ2j-iZGSXwfP_Eif-8f3q3x6Jk/copy |
 | **Forms 4** | Cotygodniowy odbiór jakościowy (`T10`) | https://docs.google.com/forms/d/1_zrGePZUMyyGLpPqRalFiBxlyLwzwcRE9L5ymkNJmTI/copy |
-| **Forms 5** | Rejestr kosztów transformacji Lean (`T09`) | `[Wklej link z końcówką /copy]` |
+| **Forms 5** | Rejestr kosztów transformacji Lean (`T09`) | https://docs.google.com/forms/d/1nL1u8kQQphKdFoAMJYukB-Rf-06mDRuGd6tLIv4XnvA/copy |
 
 ### 📱 Generowanie kodów QR i wdrożenie na placu budowy
 
@@ -259,7 +259,7 @@ Das System besteht aus der Haupt-Google-Tabelle sowie **8 verknüpften Baustelle
 | **Forms 2** | Störungs- & Andon-Meldungen (`T07`) | https://docs.google.com/forms/d/1FTk7usclYKJHrUt4RglHMyIlqPByk6kT2azGWM0ORI4/copy |
 | **Forms 3** | Tägliche Baufortschrittsmeldung (`T10`) | https://docs.google.com/forms/d/1e9608fwHKRltq2R0VQ2j-iZGSXwfP_Eif-8f3q3x6Jk/copy |
 | **Forms 4** | Wöchentliche Qualitätsabnahme (`T10`) | https://docs.google.com/forms/d/1_zrGePZUMyyGLpPqRalFiBxlyLwzwcRE9L5ymkNJmTI/copy |
-| **Forms 5** | Kostenregister Lean-Transformation (`T09`) | `[Link mit Endung /copy einfügen]` |
+| **Forms 5** | Kostenregister Lean-Transformation (`T09`) | https://docs.google.com/forms/d/1nL1u8kQQphKdFoAMJYukB-Rf-06mDRuGd6tLIv4XnvA/copy |
 
 ### 📱 QR-Codes generieren & auf der Baustelle einsetzen
 
@@ -416,7 +416,7 @@ The system consists of the master Google Sheet and **8 linked field forms** (`Fo
 | **Forms 2** | Breakdown & Andon incident reporting (`T07`) | https://docs.google.com/forms/d/1FTk7usclYKJHrUt4RglHMyIlqPByk6kT2azGWM0ORI4/copy |
 | **Forms 3** | Daily field progress reporting (`T10`) | https://docs.google.com/forms/d/1e9608fwHKRltq2R0VQ2j-iZGSXwfP_Eif-8f3q3x6Jk/copy |
 | **Forms 4** | Weekly quality sign-off (`T10`) | https://docs.google.com/forms/d/1_zrGePZUMyyGLpPqRalFiBxlyLwzwcRE9L5ymkNJmTI/copy |
-| **Forms 5** | Lean transformation cost register (`T09`) | `[Insert /copy link here]` |
+| **Forms 5** | Lean transformation cost register (`T09`) | https://docs.google.com/forms/d/1nL1u8kQQphKdFoAMJYukB-Rf-06mDRuGd6tLIv4XnvA/copy |
 
 ### 📱 Generating QR Codes & On-Site Deployment
 
