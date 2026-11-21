@@ -96,13 +96,13 @@ System składa się z głównego Arkusza Google oraz **8 powiązanych formularzy
 | Moduł / Formularz | Rola w systemie | Link do skopiowania szablonu |
 | :--- | :--- | :--- |
 | **TAKTIX OS CEE (Master Sheet)** | Główny Monolit (15 tabel + `Code.gs`) | https://docs.google.com/spreadsheets/d/1qSq911sIXM64ZnRMQ1SAD7iG7ubDQjygXEGlmZIqgYc/copy |
-| **Forms 00** | Konfiguracja przestrzenna i bramy wjazdowe | `[Wklej link z końcówką /copy]` |
-| **Forms 0** | Planowanie tygodniowe (`T06`) | `[Wklej link z końcówką /copy]` |
-| **Forms 1A** | Rezerwacja slotów dostaw przez dostawców | `[Wklej link z końcówką /copy]` |
-| **Forms 1B** | Kontrola bram wjazdowych przez portiera | `[Wklej link z końcówką /copy]` |
-| **Forms 2** | Zgłaszanie awarii i incydentów Andon (`T07`) | `[Wklej link z końcówką /copy]` |
-| **Forms 3** | Dzienne raportowanie postępu robót (`T10`) | `[Wklej link z końcówką /copy]` |
-| **Forms 4** | Cotygodniowy odbiór jakościowy (`T10`) | `[Wklej link z końcówką /copy]` |
+| **Forms 00** | Konfiguracja przestrzenna i bramy wjazdowe | https://docs.google.com/forms/d/1PpR2nOQNE9A8bsAgZPe5aDEwS6MqPw461F9yxJzkH9o/copy |
+| **Forms 0** | Planowanie tygodniowe (`T06`) | https://docs.google.com/forms/d/1DM270nvHqZwGB5ZD5cVhW4yz-qXoIbKKIFe9i8NMG_s/copy |
+| **Forms 1A** | Rezerwacja slotów dostaw przez dostawców | https://docs.google.com/forms/d/10ZYidaquzIcVsPozJMTOEQJJoOmgbtU3wxy10rO7qsA/copy |
+| **Forms 1B** | Kontrola bram wjazdowych przez portiera | https://docs.google.com/forms/d/1_49rfVS9jJ8DDmAMOAjb0KJM7dM1f3HnmoCsXw7DRvc/copy |
+| **Forms 2** | Zgłaszanie awarii i incydentów Andon (`T07`) | https://docs.google.com/forms/d/1FTk7usclYKJHrUt4RglHMyIlqPByk6kT2azGWM0ORI4/copy |
+| **Forms 3** | Dzienne raportowanie postępu robót (`T10`) | https://docs.google.com/forms/d/1e9608fwHKRltq2R0VQ2j-iZGSXwfP_Eif-8f3q3x6Jk/copy |
+| **Forms 4** | Cotygodniowy odbiór jakościowy (`T10`) | https://docs.google.com/forms/d/1_zrGePZUMyyGLpPqRalFiBxlyLwzwcRE9L5ymkNJmTI/copy |
 | **Forms 5** | Rejestr kosztów transformacji Lean (`T09`) | `[Wklej link z końcówką /copy]` |
 
 ### 📱 Generowanie kodów QR i wdrożenie na placu budowy
@@ -252,13 +252,13 @@ Das System besteht aus der Haupt-Google-Tabelle sowie **8 verknüpften Baustelle
 | Modul / Formular | Rolle im System | Link zum Kopieren der Vorlage |
 | :--- | :--- | :--- |
 | **TAKTIX OS CEE (Master Sheet)** | Haupt-Monolith (15 Tabellen + `Code.gs`) | https://docs.google.com/spreadsheets/d/1qSq911sIXM64ZnRMQ1SAD7iG7ubDQjygXEGlmZIqgYc/copy |
-| **Forms 00** | Räumliche Konfiguration & Zufahrtstore | `[Link mit Endung /copy einfügen]` |
-| **Forms 0** | Wöchentliche Taktplanung (`T06`) | `[Link mit Endung /copy einfügen]` |
-| **Forms 1A** | Liefer-Slot-Buchung durch Lieferanten | `[Link mit Endung /copy einfügen]` |
-| **Forms 1B** | Torkontrolle durch den Pförtner | `[Link mit Endung /copy einfügen]` |
-| **Forms 2** | Störungs- & Andon-Meldungen (`T07`) | `[Link mit Endung /copy einfügen]` |
-| **Forms 3** | Tägliche Baufortschrittsmeldung (`T10`) | `[Link mit Endung /copy einfügen]` |
-| **Forms 4** | Wöchentliche Qualitätsabnahme (`T10`) | `[Link mit Endung /copy einfügen]` |
+| **Forms 00** | Räumliche Konfiguration & Zufahrtstore | https://docs.google.com/forms/d/1PpR2nOQNE9A8bsAgZPe5aDEwS6MqPw461F9yxJzkH9o/copy |
+| **Forms 0** | Wöchentliche Taktplanung (`T06`) | https://docs.google.com/forms/d/1DM270nvHqZwGB5ZD5cVhW4yz-qXoIbKKIFe9i8NMG_s/copy |
+| **Forms 1A** | Liefer-Slot-Buchung durch Lieferanten | https://docs.google.com/forms/d/10ZYidaquzIcVsPozJMTOEQJJoOmgbtU3wxy10rO7qsA/copy |
+| **Forms 1B** | Torkontrolle durch den Pförtner | https://docs.google.com/forms/d/1_49rfVS9jJ8DDmAMOAjb0KJM7dM1f3HnmoCsXw7DRvc/copy |
+| **Forms 2** | Störungs- & Andon-Meldungen (`T07`) | https://docs.google.com/forms/d/1FTk7usclYKJHrUt4RglHMyIlqPByk6kT2azGWM0ORI4/copy |
+| **Forms 3** | Tägliche Baufortschrittsmeldung (`T10`) | https://docs.google.com/forms/d/1e9608fwHKRltq2R0VQ2j-iZGSXwfP_Eif-8f3q3x6Jk/copy |
+| **Forms 4** | Wöchentliche Qualitätsabnahme (`T10`) | https://docs.google.com/forms/d/1_zrGePZUMyyGLpPqRalFiBxlyLwzwcRE9L5ymkNJmTI/copy |
 | **Forms 5** | Kostenregister Lean-Transformation (`T09`) | `[Link mit Endung /copy einfügen]` |
 
 ### 📱 QR-Codes generieren & auf der Baustelle einsetzen
@@ -409,13 +409,13 @@ The system consists of the master Google Sheet and **8 linked field forms** (`Fo
 | Module / Form | Role in System | Template Copy Link |
 | :--- | :--- | :--- |
 | **TAKTIX OS CEE (Master Sheet)** | Core Monolith (15 tables + `Code.gs`) | https://docs.google.com/spreadsheets/d/1qSq911sIXM64ZnRMQ1SAD7iG7ubDQjygXEGlmZIqgYc/copy |
-| **Forms 00** | Spatial configuration & delivery gates | `[Insert /copy link here]` |
-| **Forms 0** | Weekly takt scheduling (`T06`) | `[Insert /copy link here]` |
-| **Forms 1A** | Delivery slot booking by suppliers | `[Insert /copy link here]` |
-| **Forms 1B** | Gate access control by security | `[Insert /copy link here]` |
-| **Forms 2** | Breakdown & Andon incident reporting (`T07`) | `[Insert /copy link here]` |
-| **Forms 3** | Daily field progress reporting (`T10`) | `[Insert /copy link here]` |
-| **Forms 4** | Weekly quality sign-off (`T10`) | `[Insert /copy link here]` |
+| **Forms 00** | Spatial configuration & delivery gates | https://docs.google.com/forms/d/1PpR2nOQNE9A8bsAgZPe5aDEwS6MqPw461F9yxJzkH9o/copy |
+| **Forms 0** | Weekly takt scheduling (`T06`) | https://docs.google.com/forms/d/1DM270nvHqZwGB5ZD5cVhW4yz-qXoIbKKIFe9i8NMG_s/copy |
+| **Forms 1A** | Delivery slot booking by suppliers | https://docs.google.com/forms/d/10ZYidaquzIcVsPozJMTOEQJJoOmgbtU3wxy10rO7qsA/copy |
+| **Forms 1B** | Gate access control by security | https://docs.google.com/forms/d/1_49rfVS9jJ8DDmAMOAjb0KJM7dM1f3HnmoCsXw7DRvc/copy |
+| **Forms 2** | Breakdown & Andon incident reporting (`T07`) | https://docs.google.com/forms/d/1FTk7usclYKJHrUt4RglHMyIlqPByk6kT2azGWM0ORI4/copy |
+| **Forms 3** | Daily field progress reporting (`T10`) | https://docs.google.com/forms/d/1e9608fwHKRltq2R0VQ2j-iZGSXwfP_Eif-8f3q3x6Jk/copy |
+| **Forms 4** | Weekly quality sign-off (`T10`) | https://docs.google.com/forms/d/1_zrGePZUMyyGLpPqRalFiBxlyLwzwcRE9L5ymkNJmTI/copy |
 | **Forms 5** | Lean transformation cost register (`T09`) | `[Insert /copy link here]` |
 
 ### 📱 Generating QR Codes & On-Site Deployment
