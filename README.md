@@ -137,7 +137,7 @@ Aby brygadziści, dostawcy i portierzy mogli błyskawicznie otwierać formularze
 1. W skopiowanym Arkuszu Google otwórz górne menu: **Rozszerzenia ➔ Apps Script**.
 2. W pliku `Code.gs` odszukaj zmienne z identyfikatorami formularzy (`form0Id`, `form1AId_Unique`, `form1BId`, `form2Id`, `form3Id`, `form4Id`).
 3. Otwórz każdy ze swoich skopiowanych formularzy w trybie edycji i skopiuj jego unikalny identyfikator z paska adresu przeglądarki:
-   `https://google.com/forms/d/`**`[TUTAJ_JEST_TWOJE_ID_FORMULARZA]`**`/edit`
+   `https://docs.google.com/forms/d/`**`[TUTAJ_JEST_TWOJE_ID_FORMULARZA]`**`/edit`
 4. Wklej swoje identyfikatory w miejsce placeholderów i zapisz projekt (`Ctrl + S`).
 
 ### Krok 4: Autoryzacja i konfiguracja wyzwalaczy (Triggers)
@@ -293,7 +293,7 @@ Damit Poliere, Lieferanten und Pförtner die Formulare ohne Eintippen von URLs d
 1. Öffnen Sie in Ihrer kopierten Google-Tabelle das obere Menü: **Erweiterungen ➔ Apps Script**.
 2. Suchen Sie in der Datei `Code.gs` nach den Variablen für die Formular-IDs (`form0Id`, `form1AId_Unique`, `form1BId`, `form2Id`, `form3Id`, `form4Id`).
 3. Öffnen Sie jedes Ihrer kopierten Formulare im Bearbeitungsmodus und kopieren Sie die eindeutige ID aus der Adresszeile des Browsers:
-   `https://google.com/forms/d/`**`[HIER_STEHT_IHRE_FORMULAR_ID]`**`/edit`
+   `https://docs.google.com/forms/d/`**`[HIER_STEHT_IHRE_FORMULAR_ID]`**`/edit`
 4. Fügen Sie Ihre IDs anstelle der Platzhalter ein und speichern Sie das Projekt (`Strg + S`).
 
 ### Schritt 4: Autorisierung und Trigger-Konfiguration
@@ -450,7 +450,7 @@ To allow foremen, suppliers, and gate security to launch field forms instantly o
 1. In your copied Google Sheet, open the top menu: **Extensions ➔ Apps Script**.
 2. In `Code.gs`, locate the form ID variables (`form0Id`, `form1AId_Unique`, `form1BId`, `form2Id`, `form3Id`, `form4Id`).
 3. Open each of your copied forms in edit mode and copy its unique ID from the browser address bar:
-   `https://google.com/forms/d/`**`[YOUR_FORM_ID_IS_HERE]`**`/edit`
+   `https://docs.google.com/forms/d/`**`[YOUR_FORM_ID_IS_HERE]`**`/edit`
 4. Paste your IDs in place of the placeholders and save the project (`Ctrl + S`).
 
 ### Step 4: Authorization & Trigger Setup
