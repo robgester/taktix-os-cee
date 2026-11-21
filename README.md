@@ -105,6 +105,19 @@ System składa się z głównego Arkusza Google oraz **8 powiązanych formularzy
 | **Forms 4** | Cotygodniowy odbiór jakościowy (`T10`) | `[Wklej link z końcówką /copy]` |
 | **Forms 5** | Rejestr kosztów transformacji Lean (`T09`) | `[Wklej link z końcówką /copy]` |
 
+### 📱 Generowanie kodów QR i wdrożenie na placu budowy
+
+Aby brygadziści, dostawcy i portierzy mogli błyskawicznie otwierać formularze na smartfonach bez wpisywania adresów URL:
+
+1. **Pobierz link do wypełniania formularza (nie `/edit` ani `/copy`!):**
+   * Otwórz swój skopiowany formularz Google, kliknij przycisk **Wyślij** (*Send*) w prawym górnym rogu, wybierz ikonę **linku (🔗)** i skopiuj adres kończący się na `/viewform`.
+2. **Wygeneruj kod QR w 3 sekundy (wbudowana funkcja Google Chrome):**
+   * Otwórz skopiowany link `/viewform` w przeglądarce **Google Chrome**, kliknij prawym przyciskiem myszy w dowolnym miejscu na stronie i wybierz **Utwórz kod QR dla tej strony** (*Create QR code for this page*), a następnie kliknij **Pobierz** (*Download*).
+3. **Rozmieść kody QR w kluczowych punktach budowy:**
+   * **Tablica Last Planner® / Biuro budowy:** `Forms 00`, `Forms 0`, `Forms 2`, `Forms 5`.
+   * **Brama wjazdowa / Portiernia:** `Forms 1B` (oraz `Forms 1A` w regulaminie awizacji dla dostawców).
+   * **Strefy robocze / Kondygnacje (Takt-Boxy):** `Forms 3` (raport dzienny) oraz `Forms 4` (odbiór jakościowy).
+
 ### Wdrożenie aktywacji formularzy przez kod QR na budowie:
 
 •	**Android**: Działa od razu po zeskanowaniu systemowym aparatem (link otwiera się natywnie w Google Chrome z aktywną sesją konta Google).
@@ -247,6 +260,19 @@ Das System besteht aus der Haupt-Google-Tabelle sowie **8 verknüpften Baustelle
 | **Forms 3** | Tägliche Baufortschrittsmeldung (`T10`) | `[Link mit Endung /copy einfügen]` |
 | **Forms 4** | Wöchentliche Qualitätsabnahme (`T10`) | `[Link mit Endung /copy einfügen]` |
 | **Forms 5** | Kostenregister Lean-Transformation (`T09`) | `[Link mit Endung /copy einfügen]` |
+
+### 📱 QR-Codes generieren & auf der Baustelle einsetzen
+
+Damit Poliere, Lieferanten und Pförtner die Formulare ohne Eintippen von URLs direkt per Smartphone öffnen können:
+
+1. **Formular-Link für Teilnehmer abrufen (nicht `/edit` oder `/copy`!):**
+   * Öffnen Sie Ihr kopiertes Google-Formular, klicken Sie oben rechts auf **Senden** (*Send*), wählen Sie das **Link-Symbol (🔗)** und kopieren Sie die URL mit der Endung `/viewform`.
+2. **QR-Code in 3 Sekunden erstellen (integrierte Funktion in Google Chrome):**
+   * Öffnen Sie den kopierten `/viewform`-Link im Browser **Google Chrome**, machen Sie einen Rechtsklick auf eine freie Fläche der Seite, wählen Sie **QR-Code für diese Seite erstellen** (*Create QR code for this page*) und klicken Sie auf **Herunterladen** (*Download*).
+3. **QR-Codes an den Schlüsselpunkten der Baustelle anbringen:**
+   * **Last Planner®-Tafel / Baucontainer:** `Forms 00`, `Forms 0`, `Forms 2`, `Forms 5`.
+   * **Zufahrtstor / Pförtnerloge:** `Forms 1B` (sowie `Forms 1A` in den Lieferanten-Richtlinien zur Slot-Buchung).
+   * **Arbeitsbereiche / Geschosse (Takt-Boxen):** `Forms 3` (Tagesfortschritt) und `Forms 4` (Qualitätsabnahme).
 
 ### Aktivierung von Formularen per QR-Code auf der Baustelle:
 
@@ -391,6 +417,19 @@ The system consists of the master Google Sheet and **8 linked field forms** (`Fo
 | **Forms 3** | Daily field progress reporting (`T10`) | `[Insert /copy link here]` |
 | **Forms 4** | Weekly quality sign-off (`T10`) | `[Insert /copy link here]` |
 | **Forms 5** | Lean transformation cost register (`T09`) | `[Insert /copy link here]` |
+
+### 📱 Generating QR Codes & On-Site Deployment
+
+To allow foremen, suppliers, and gate security to launch field forms instantly on their smartphones without typing URLs:
+
+1. **Get the Respondent Form Link (not `/edit` or `/copy`!):**
+   * Open your copied Google Form, click **Send** in the top-right corner, select the **link icon (🔗)**, and copy the URL ending with `/viewform`.
+2. **Generate a QR Code in 3 Seconds (Built-in Google Chrome Feature):**
+   * Open the copied `/viewform` link in **Google Chrome**, right-click anywhere on the page, select **Create QR code for this page**, and click **Download**.
+3. **Post QR Codes at Key Site Locations:**
+   * **Last Planner® Board / Site Office:** `Forms 00`, `Forms 0`, `Forms 2`, `Forms 5`.
+   * **Site Entrance / Security Gate:** `Forms 1B` (plus `Forms 1A` in supplier delivery booking instructions).
+   * **Work Zones / Floors (Takt-Boxes):** `Forms 3` (daily progress) and `Forms 4` (quality sign-off).
 
 ### Implementing form activation via QR codes on the construction site:
 
