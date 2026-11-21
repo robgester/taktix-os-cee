@@ -27,7 +27,7 @@ Wersja CEE zapewnia natywną obsługę wielojęzyczną (PL / DE / EN) oraz wielo
 System opiera się na strukturze powiązanych rejestrów (Single Source of Truth):
 *   **`T00_LOCALISATION`** — Centralny słownik tokenów i automatyczny tłumacz całego interfejsu (PL/DE). Tabela ukryta.
 *   **`T00_SPATIAL_CONFIG`** - Centralny słownik taktów, sekcji, hubów magazynowych i poziomów inwestycji (tabela przejściowa, organizująca). Tabela ukryta.
-*   **`T01_README_AND_LICENSE`** — Główny panel sterowania projektem, wybór języka, wybór waluty (PLN/EUR) i przelicznik kursowy FOREX oraz ustawienie maksymalnej ilości prac w toku (WIP - Work in Process) dla poszczególnych branż i całej inwestycji, jak również dzienny limit czasowy (od-do) dla potrzeb dostaw. Ponadto definiowane są tutaj marże Generalnego Wykonawcy i developera.
+*   **`T01_README_AND_LICENSE`** — Główny panel sterowania projektem, wybór języka, wybór waluty (PLN/EUR) i przelicznik kursowy FOREX oraz ustawienie maksymalnej ilości prac w toku (WIP - Work in Process) dla poszczególnych branż i całej inwestycji, jak również dziennego limitu czasowego (od-do) dla potrzeb dostaw. Ponadto definiowane są tutaj marże Generalnego Wykonawcy i developera.
 *   **`T02_TAKT_MATRIX`** — Słownik stref rozładunkowych i Takt-Boxów z wbudowanym limitem składowania kapitału [Max] wyrażonym w walucie bazowej projektu oraz stanem aktualnej rezerwy limitów.
 *   **`T03_PRODUCTION_FLOW_DICTIONARY`** — Rejestr kodów branżowych, dwujęzycznych opisów zakresu prac oraz kryteriów wejścia na front robót.
 *   **`T04_LOGISTICS_SLOTS_DICTIONARY`** — Rejestr okien czasowych dla dostaw materiałowych do zdefiniowanych w `T02` taktów, ogólnych miejsc składowania na terenie budowy lub zewnętrznych hubów magazynowych.
