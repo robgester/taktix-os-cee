@@ -151,6 +151,12 @@ Aby brygadziści, dostawcy i portierzy mogli błyskawicznie otwierać formularze
 ### Krok 5: Konfiguracja przestrzenna budowy (`Forms 00`)
 Przed rozpoczęciem robót wypełnij formularz **Forms 00**, definiując strefy/takty na poszczególnych kondygnacjach, limity składowania kapitału oraz przypisane do nich **bramy wjazdowe**. System automatycznie zasili tabele `T00_SPATIAL_CONFIG` oraz `T02_TAKT_MATRIX`, odblokowując możliwość planowania tygodniowego w `Forms 0`.
 
+### 📊 Krok 6: Podpięcie kokpitu zarządczego Looker Studio (Opcjonalnie)
+1. **Ważne przed kopiowaniem:** Najpierw wypełnij w swoim Arkuszu pierwszy tydzień planu oraz pierwsze meldunki (aby tabele nie były całkowicie puste — konektor Looker Studio wymaga min. 1 wiersza danych do rozpoznania kolumn) i upewnij się, że w komórce `T01!B1` ustawiony jest język **`PL`**.
+2. Otwórz szablon raportu wykonawczego (Live Demo): **[📊 TAKTIX OS CEE — Strategic Executive Dashboard](https://lookerstudio.google.com/reporting/da3aa32b-ad80-4b18-b4da-e2ccabe04b29)**.
+3. Kliknij w prawym górnym rogu **trzy kropki (`⋮`) ➔ Utwórz kopię** (*Make a copy*).
+4. W oknie kopiowania wskaż jako nowe źródła danych odpowiednie zakładki (`T07`, `T08`, `T09`, `T10`, `T11`, `T12`, `T13`) ze **swojej własnej kopii Arkusza TAKTIX OS CEE**.
+
 ---
 
 ## ⚖️ Licencja & Prawa Autorskie
@@ -307,6 +313,11 @@ Damit Poliere, Lieferanten und Pförtner die Formulare ohne Eintippen von URLs d
 ### Schritt 5: Räumliche Baustellenkonfiguration (`Forms 00`)
 Füllen Sie vor Baubeginn das Formular **Forms 00** aus, um Zonen/Takte auf den einzelnen Geschossen, Kapital-Lagerlimits sowie die zugehörigen **Zufahrtstore** zu definieren. Das System befüllt automatisch die Tabellen `T00_SPATIAL_CONFIG` und `T02_TAKT_MATRIX` und schaltet damit die wöchentliche Taktplanung in `Forms 0` frei.
 
+### 📊 Schritt 6: Looker Studio Management-Dashboard verknüpfen (Optional)
+1. **Wichtig vor dem Kopieren:** Erfassen Sie zuerst die erste Planungswoche sowie die ersten Rückmeldungen in Ihrer Tabelle (damit die Tabellen nicht komplett leer sind — der Looker Studio-Connector benötigt mind. 1 Datenzeile zur Spaltenerkennung) und stellen Sie sicher, dass in Zelle `T01!B1` die Sprache **`PL`** gewählt ist (für die Spaltenüberschriften der Vorlage).
+2. Öffnen Sie die Executive-Dashboard-Vorlage (Live-Demo): **[📊 TAKTIX OS CEE — Strategic Executive Dashboard](https://lookerstudio.google.com/reporting/da3aa32b-ad80-4b18-b4da-e2ccabe04b29)**.
+3. Klicken Sie oben rechts auf das **Drei-Punkte-Menü (`⋮`) ➔ Kopie erstellen** (*Make a copy*).
+4. Wählen Sie im Kopierfenster als neue Datenquellen die entsprechenden Tabs (`T07`–`T13`) aus **Ihrer eigenen Kopie der TAKTIX OS CEE-Tabelle** aus.
 
 ---
 
@@ -464,6 +475,11 @@ To allow foremen, suppliers, and gate security to launch field forms instantly o
 ### Step 5: Spatial Site Configuration (`Forms 00`)
 Before construction begins, fill out **Forms 00** to define zones/takts across building levels, capital storage limits, and assigned **delivery gates**. The system will automatically populate `T00_SPATIAL_CONFIG` and `T02_TAKT_MATRIX`, unlocking weekly scheduling in `Forms 0`.
 
+### 📊 Step 6: Connect the Looker Studio Executive Dashboard (Optional)
+1. **Important before copying:** Populate your Google Sheet with your first week of planning and initial field entries first (so the tables are not completely empty — the Looker Studio connector requires at least 1 row of data to map column schemas) and ensure cell `T01!B1` is set to **`PL`** (matching the template's column headers).
+2. Open the Executive Dashboard template (Live Demo): **[📊 TAKTIX OS CEE — Strategic Executive Dashboard](https://lookerstudio.google.com/reporting/da3aa32b-ad80-4b18-b4da-e2ccabe04b29)**.
+3. Click the **three-dots menu (`⋮`) ➔ Make a copy** in the top-right corner.
+4. In the copy dialog, map the new data sources (`T07`–`T13`) to **your own copied instance of the TAKTIX OS CEE Google Sheet**.
 
 ---
 
