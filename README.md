@@ -321,6 +321,8 @@ Füllen Sie vor Baubeginn das Formular **Forms 00** aus, um Zonen/Takte auf den 
 3. Klicken Sie oben rechts auf das **Drei-Punkte-Menü (`⋮`) ➔ Kopie erstellen** (*Make a copy*).
 4. Wählen Sie im Kopierfenster als neue Datenquellen die entsprechenden Tabs (`T07`–`T13`) aus **Ihrer eigenen Kopie der TAKTIX OS CEE-Tabelle** aus.
 
+*(**Hinweis**: Vor dem Kopieren von Looker empfiehlt es sich, jedes Formular mit einem Testeintrag zu prüfen und diesen anschließend wieder zu löschen – so speichert Looker Studio das vollständige Schema aller 7 Tabellen dauerhaft ab.)*
+
 ---
 
 ## ⚖️ Lizenz & Urheberrecht
@@ -482,6 +484,8 @@ Before construction begins, fill out **Forms 00** to define zones/takts across b
 2. Open the Executive Dashboard template (Live Demo): **[📊 TAKTIX OS CEE — Strategic Executive Dashboard](https://lookerstudio.google.com/reporting/da3aa32b-ad80-4b18-b4da-e2ccabe04b29)**.
 3. Click the **three-dots menu (`⋮`) ➔ Make a copy** in the top-right corner.
 4. In the copy dialog, map the new data sources (`T07`–`T13`) to **your own copied instance of the TAKTIX OS CEE Google Sheet**.
+
+*(**Tip**: Before copying the Looker report, it is a good idea to test each form by submitting one sample entry, then deleting that entry — this ensures that Looker Studio permanently registers the complete schema for all 7 tables.)*
 
 ---
 
