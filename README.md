@@ -157,7 +157,7 @@ Przed rozpoczęciem robót wypełnij formularz **Forms 00**, definiując strefy/
 3. Kliknij w prawym górnym rogu **trzy kropki (`⋮`) ➔ Utwórz kopię** (*Make a copy*).
 4. W oknie kopiowania wskaż jako nowe źródła danych odpowiednie zakładki (`T07`, `T08`, `T09`, `T10`, `T11`, `T12`, `T13`) ze **swojej własnej kopii Arkusza TAKTIX OS CEE**.
 
-(**Wskazówka**: przed kopiowaniem Lookera warto przetestować każdy formularz 1 wpisem próbnym, a następnie wyczyścić ten wpis — wtedy Looker Studio zapamięta kompletny schemat wszystkich 7 tabel na stałe).
+*(**Wskazówka**: przed kopiowaniem Lookera warto przetestować każdy formularz 1 wpisem próbnym, a następnie wyczyścić ten wpis — wtedy Looker Studio zapamięta kompletny schemat wszystkich 7 tabel na stałe).*
 
 ---
 
