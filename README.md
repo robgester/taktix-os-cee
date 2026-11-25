@@ -167,7 +167,7 @@ Oprogramowanie jest udostępniane na zasadach licencji **GNU General Public Lice
 
 * Gwarantuje to, że system pozostanie wolny i darmowy dla społeczności inżynierskiej.
 * Jakiekolwiek wbudowanie kodu źródłowego **TAKTIX OS** (w tym skryptu `Code.gs` oraz architektury formuł) do systemów komercyjnych wymusza pełne otwarcie kodu źródłowego oprogramowania nadrzędnego na tych samych zasadach licencyjnych.
-* W projekcie należy również dodać plik `LICENSE` zawierający pełny tekst licencji GNU GPL v3.0 w głównym katalogu repozytorium GitHub.
+* W projektach pochodnych należy również dołączyć plik LICENSE zawierający pełny tekst licencji GNU GPL v3.0.
 * Kod źródłowy udostępniany jest na licencji GNU GPL v3. W przypadku publikacji zmodyfikowanych wersji pochodnych (forków) prosimy o nadanie im własnej nazwy, aby odróżnić je od oficjalnego wydania TAKTIX OS.
 
 *Copyright (c) 2026 by Robert Szczepaniak. All rights reserved.*
@@ -332,7 +332,7 @@ Die Software ist unter den Bedingungen der **GNU General Public License v3 (GPL 
 
 * Dies stellt sicher, dass das System für die Ingenieurs-Community frei und kostenlos bleibt.
 * Die Einbindung des Quellcodes von **TAKTIX OS** (einschliesslich des Skripts `Code.gs` sowie der Formelarchitektur) in kommerzielle Systeme verpflichtet dazu, den Quellcode der übergeordneten Software unter denselben Lizenzbedingungen vollständig offenzulegen.
-* Zudem muss im Hauptverzeichnis des GitHub-Repositorys eine Datei namens `LICENSE` hinzugefügt werden, die den vollständigen Text der GNU GPL v3.0-Lizenz enthält.
+* Bei abgeleiteten Projekten ist zudem eine LICENSE-Datei beizufügen, die den vollständigen Text der GNU GPL v3.0-Lizenz enthält.
 * Der Quellcode wird unter der GNU GPL v3-Lizenz bereitgestellt. Bei der Veröffentlichung modifizierter abgeleiteter Versionen (Forks) bitten wir darum, diesen einen eigenen Namen zu geben, um sie von der offiziellen Version von TAKTIX OS zu unterscheiden.
 
 *Copyright (c) 2026 by Robert Szczepaniak. All rights reserved.*
@@ -497,7 +497,7 @@ This software is distributed under the **GNU General Public License v3.0 (GPL-3.
 
 * This guarantees that the system remains free and open for the engineering community.
 * Any incorporation of **TAKTIX OS** source code (including the `Code.gs` script and formula architecture) into proprietary commercial systems requires the complete source code of the parent software to be released under the same license terms.
-* The project should also include a `LICENSE` file containing the full text of the GNU GPL v3.0 license in the root directory of the GitHub repository.
+* For derivative projects, you must also include a LICENSE file containing the full text of the GNU GPL v3.0 license.
 * The source code is provided under the GNU GPL v3 license. If you publish modified derivative versions (forks), please give them a unique name to distinguish them from the official release of TAKTIX OS.
   
 *Copyright (c) 2026 by Robert Szczepaniak. All rights reserved.*
